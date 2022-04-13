@@ -21,6 +21,7 @@ specifiers:
   sass: ^1.50.0
   typescript: ^4.5.4
   vite: ^2.9.0
+  vite-plugin-compression: ^0.5.1
   vue: ^3.2.25
   vue-router: 4.0.14
   vue-tsc: ^0.29.8
@@ -50,6 +51,7 @@ devDependencies:
   sass: registry.npmmirror.com/sass/1.50.0
   typescript: registry.npmmirror.com/typescript/4.6.3
   vite: registry.npmmirror.com/vite/2.9.1_sass@1.50.0
+  vite-plugin-compression: registry.npmmirror.com/vite-plugin-compression/0.5.1_vite@2.9.1
   vue-tsc: registry.npmmirror.com/vue-tsc/0.29.8_typescript@4.6.3
 
 packages:
@@ -5953,6 +5955,27 @@ packages:
     dependencies:
       spdx-correct: registry.npmmirror.com/spdx-correct/3.1.1
       spdx-expression-parse: registry.npmmirror.com/spdx-expression-parse/3.0.1
+    dev: true
+
+  registry.npmmirror.com/vite-plugin-compression/0.5.1_vite@2.9.1:
+    resolution:
+      {
+        integrity: sha512-5QJKBDc+gNYVqL/skgFAP81Yuzo9R+EAf19d+EtsMF/i8kFUpNi3J/H01QD3Oo8zBQn+NzoCIFkpPLynoOzaJg==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/vite-plugin-compression/-/vite-plugin-compression-0.5.1.tgz,
+      }
+    id: registry.npmmirror.com/vite-plugin-compression/0.5.1
+    name: vite-plugin-compression
+    version: 0.5.1
+    peerDependencies:
+      vite: '>=2.0.0'
+    dependencies:
+      chalk: registry.npmmirror.com/chalk/4.1.2
+      debug: registry.npmmirror.com/debug/4.3.4
+      fs-extra: registry.npmmirror.com/fs-extra/10.0.1
+      vite: registry.npmmirror.com/vite/2.9.1_sass@1.50.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   registry.npmmirror.com/vite/2.9.1_sass@1.50.0:

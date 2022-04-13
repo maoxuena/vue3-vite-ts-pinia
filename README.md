@@ -616,3 +616,54 @@ console.log(import.meta.env.VITE_APP_WEB_URL)
 "build:dev": "vite build --mode development",
 "build:pro": "vite build --mode production",
 ```
+
+## Vite 常用基础配置
+
+### 运行、代理、打包配置
+
+```
+server: {
+    host: '0.0.0.0',
+    port: 3000,
+    open: true,
+    https: false,
+    proxy: {}
+},
+```
+
+### 生产环境去除 console、debugger
+
+```
+build:{
+  ...
+  terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      }
+  }
+}
+```
+
+### 生产环境生成 .gz 文件
+
+1. 安装
+
+```
+pnpm i vite-plugin-compression --save-dev
+```
+
+plugins 中添加
+
+```
+import viteCompression from 'vite-plugin-compression'
+
+// gzip压缩 生产环境生成 .gz 文件
+viteCompression({
+  verbose: true,
+  disable: false,
+  threshold: 10240,
+  algorithm: 'gzip',
+  ext: '.gz',
+}),
+```
