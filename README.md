@@ -585,3 +585,34 @@ export const useMainStore = defineStore({
   },
 })
 ```
+
+## 环境变量配置
+
+1. 项目根目录新建:.env.development
+
+```
+NODE_ENV=development
+
+VITE_APP_WEB_URL= 'YOUR WEB URL'
+```
+
+2. 项目根目录新建:.env.production
+
+```
+NODE_ENV=production
+
+VITE_APP_WEB_URL= 'YOUR WEB URL'
+```
+
+3. 组件中使用
+
+```
+console.log(import.meta.env.VITE_APP_WEB_URL)
+```
+
+4. 配置 package.json
+
+```
+"build:dev": "vite build --mode development",
+"build:pro": "vite build --mode production",
+```
