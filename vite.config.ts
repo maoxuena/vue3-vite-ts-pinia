@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import path from 'path'
+import { resolve } from 'path'
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import'
 // @ts-ignore
 import viteCompression from 'vite-plugin-compression'
@@ -43,7 +43,7 @@ export default defineConfig({
   resolve: {
     // 配置别名
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      '@': resolve(__dirname, 'src'),
     },
   },
   css: {
