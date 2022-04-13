@@ -489,3 +489,99 @@ pnpm i nprogress
 ```
 pnpm i @types/nprogress --save-dev
 ```
+
+## 状态管理 pinia
+
+### 安装
+
+```
+pnpm i pinia@next
+```
+
+### main.ts 中引入
+
+```
+# 引入
+import { createPinia } from "pinia"
+# 创建根存储库并将其传递给应用程序
+app.use(createPinia())
+```
+
+### 创建 store/mian.ts
+
+```
+import { defineStore } from 'pinia'
+
+export const useMainStore = defineStore({
+  id: 'mian',
+  state: () => ({
+    name: '超级管理员',
+  }),
+})
+```
+
+### 组建中获取 store
+
+```
+<template>
+  <div>{{ mainStore.name }}</div>
+</template>
+
+<script setup lang="ts">
+import { useMainStore } from '@/store/mian'
+const mainStore = useMainStore()
+</script>
+```
+
+### getters 用法
+
+```
+import { defineStore } from 'pinia'
+
+export const useMainStore = defineStore({
+  '''
+  getters: {
+    nameLength: (state) => state.name.length,
+  },
+})
+```
+
+### 组件中使用 getters
+
+```
+<template>
+  <div>用户名:{{ mainStore.name }}<br />长度:{{ mainStore.nameLength }}</div>
+  <hr />
+  <button @click="updateName">修改store中的name</button>
+</template>
+
+<script setup lang="ts">
+import { useMainStore } from '@/store/mian'
+
+const mainStore = useMainStore()
+
+const updateName = () => {
+  // $patch 修改 store 中的数据
+  mainStore.$patch({
+    name: '名称被修改了,nameLength也随之改变了',
+  })
+}
+</script>
+```
+
+### actions 用法
+
+```
+import { defineStore } from 'pinia'
+
+export const useMainStore = defineStore({
+  ...
+  actions: {
+    async insertPost(data: string) {
+      // 可以做异步
+      // await doAjaxRequest(data);
+      this.name = data
+    },
+  },
+})
+```
