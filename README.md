@@ -386,9 +386,9 @@ dist
 
 ```
 # eslint 检查
-yarn lint
+pnpm lint
 # prettier 自动格式化
-yarn prettier
+pnpm prettier
 ```
 
 ## 配置文件引用别名 alias
@@ -458,4 +458,14 @@ css: {
 .test{
   color: $test-color;
 }
+```
+
+## 路由
+
+vue-router 官方文档: https://next.router.vuejs.org/zh/guide/
+
+### 安装
+
+```
+pnpm i vue-router
 ```
