@@ -469,3 +469,23 @@ vue-router 官方文档: https://next.router.vuejs.org/zh/guide/
 ```
 pnpm i vue-router
 ```
+
+## 统一请求封装
+
+### 安装 axios
+
+```
+pnpm i axios
+```
+
+### 安装 nprogress 用于请求 loading
+
+```
+pnpm i nprogress
+```
+
+### 类型声明，或者添加一个包含 `declare module 'nprogress'
+
+```
+pnpm i @types/nprogress --save-dev
+```

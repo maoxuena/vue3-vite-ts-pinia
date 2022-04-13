@@ -11,12 +11,15 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "axios": "^0.26.1",
+    "nprogress": "^0.2.0",
     "vue": "^3.2.25",
     "vue-router": "4.0.14"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
     "@commitlint/config-conventional": "^16.2.1",
+    "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^5.19.0",
     "@typescript-eslint/parser": "^5.19.0",
     "@vitejs/plugin-vue": "^2.3.0",
