@@ -138,4 +138,6 @@ const naive = create({
   ],
 })
 
-export default naive
+export function setupNaive(app: App<Element>) {
+  app.use(naive)
+}
