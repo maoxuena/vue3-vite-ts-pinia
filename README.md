@@ -390,3 +390,32 @@ yarn lint
 # prettier 自动格式化
 yarn prettier
 ```
+
+## 配置文件引用别名 alias
+### vite.config.ts
+```
+...
+import path from 'path'
+
+export default defineConfig({
+  ...
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
+})
+```
+
+### tsconfig.json
+```
+{
+  "compilerOptions": {
+    ...
+    "paths": {
+      "@/*":["src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+}
+```
