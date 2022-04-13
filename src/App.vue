@@ -18,8 +18,8 @@ const updateName = () => {
   <div>用户名:{{ mainStore.name }}<br />长度:{{ mainStore.nameLength }}</div>
   <hr />
   <button @click="updateName">修改store中的name</button>
-  <n-button>naive button</n-button>
   <n-button type="primary"> Primary </n-button>
+  <el-button type="primary"> Primary </el-button>
   <router-view></router-view>
 </template>
 
