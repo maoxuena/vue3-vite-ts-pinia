@@ -392,7 +392,9 @@ yarn prettier
 ```
 
 ## 配置文件引用别名 alias
+
 ### vite.config.ts
+
 ```
 ...
 import path from 'path'
@@ -408,14 +410,52 @@ export default defineConfig({
 ```
 
 ### tsconfig.json
+
 ```
 {
   "compilerOptions": {
     ...
     "paths": {
-      "@/*":["src/*"]
+      "@/*": ["src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+}
+```
+
+## 配置 css 预处理器 scss
+
+### 安装
+
+```
+pnpm i dart-sass sass --save-dev
+```
+
+### 配置全局 scss 样式文件
+
+1. 在 src 下新增 styles 文件夹，用于存放全局样式文件
+2. 新建 index.scss，设置一个用于测试的颜色变量：
+
+```
+$test-color: red;
+```
+
+3. 配置 Vite
+
+```
+css: {
+  preprocessorOptions: {
+    scss: {
+      additionalData: '@import "@/styles/index.scss";',
+    },
+  },
+},
+```
+
+4. 组件中使用
+
+```
+.test{
+  color: $test-color;
 }
 ```

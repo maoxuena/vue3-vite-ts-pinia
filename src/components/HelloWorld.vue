@@ -7,7 +7,7 @@ const count = ref(0)
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
+  <h1 class="test">{{ msg }}</h1>
 
   <p>
     Recommended IDE setup:
@@ -30,8 +30,7 @@ const count = ref(0)
     <code>components/HelloWorld.vue</code> to test hot module replacement.
   </p>
 </template>
-
-<style scoped>
+<style lang="scss" scoped>
 a {
   color: #42b983;
 }
@@ -46,5 +45,8 @@ code {
   padding: 2px 4px;
   border-radius: 4px;
   color: #304455;
+}
+.test {
+  color: $test-color;
 }
 </style>
