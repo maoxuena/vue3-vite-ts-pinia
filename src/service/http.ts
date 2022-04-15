@@ -2,8 +2,9 @@ import axios, { AxiosRequestConfig } from 'axios'
 import NProgress from 'nprogress'
 
 // 设置请求头和请求路径
-axios.defaults.baseURL = '/api'
-axios.defaults.timeout = 10000
+axios.defaults.baseURL = import.meta.env.VITE_APP_WEB_URL as string // 默认地址
+axios.defaults.timeout = 10000 // 设置超时时间（10s）
+axios.defaults.withCredentials = true // 跨域时候允许携带凭证
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 axios.interceptors.request.use(
   (config): AxiosRequestConfig<any> => {

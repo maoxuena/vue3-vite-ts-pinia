@@ -13,16 +13,19 @@
     </n-form-item>
   </n-form>
   <div class="btn-container flex-container sb-c">
-    <n-button @click="resetForm"> 重置 </n-button>
-    <n-button type="primary" :loading="loading" @click="login"> 登录 </n-button>
+    <n-button @click="handleReset"> 重置 </n-button>
+    <n-button type="primary" :loading="loading" @click="handleLogin"> 登录 </n-button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { FormInst } from 'naive-ui'
-import { LoginFrom } from '../types/index'
 import { Size } from 'naive-ui/lib/form/src/interface'
+import loginApi from '@/service/api/login/login'
+import * as T from '@/service/api/login/types'
+import { LoginFrom } from '../types/index'
 
 // Naive UI组件尺寸
 const size = ref<Size>('medium')
@@ -41,13 +44,24 @@ const loginForm = reactive<LoginFrom>({
 })
 const loading = ref<boolean>(false)
 
+const router = useRouter()
 // 登录
-const login = () => {
-  loginFormRef.value?.validate((errors) => {
+const handleLogin = () => {
+  loginFormRef.value?.validate(async (errors) => {
     if (errors) {
       return false
     }
     loading.value = true
+    try {
+      const requestLoginForm: T.ILoginParams = {
+        username: loginForm.username,
+        password: loginForm.password,
+      }
+      const res = await loginApi.login(requestLoginForm)
+      router.push({ name: 'Home' })
+    } finally {
+      loading.value = false
+    }
     setTimeout(() => {
       loading.value = false
     }, 800)
@@ -55,7 +69,7 @@ const login = () => {
 }
 
 // 重置
-const resetForm = () => {
+const handleReset = () => {
   loginFormRef.value?.restoreValidation()
 }
 </script>

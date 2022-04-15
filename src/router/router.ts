@@ -1,5 +1,15 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import errorRouter from './modules/error'
+
+// * 导入所有router
+const metaRouters = import.meta.globEager('./modules/*.ts')
+
+// * 处理路由
+export const routerArray: RouteRecordRaw[] = []
+Object.keys(metaRouters).forEach((item) => {
+  Object.keys(metaRouters[item]).forEach((key: any) => {
+    routerArray.push(...metaRouters[item][key])
+  })
+})
 
 const routes: RouteRecordRaw[] = [
   {
@@ -16,7 +26,7 @@ const routes: RouteRecordRaw[] = [
       key: 'login',
     },
   },
-  ...errorRouter,
+  ...routerArray,
   {
     // 找不到路由重定向到404页面
     path: '/:pathMatch(.*)',
