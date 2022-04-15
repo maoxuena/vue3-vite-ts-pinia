@@ -1,16 +1,14 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import router from './router'
+import NProgress from '@/config/nprogress'
 
-const routes: RouteRecordRaw[] = [
-  {
-    path: '/login',
-    name: 'Login',
-    component: () => import('@/views/login/IndexPage.vue'), // 注意这里要带上 文件后缀.vue
-  },
-]
+router.beforeEach((to, from, next) => {
+  NProgress.start()
+  next()
+  // to and from are both route objects. must call `next`.
+})
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
+router.afterEach(() => {
+  NProgress.done()
 })
 
 export default router
