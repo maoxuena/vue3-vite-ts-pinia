@@ -1,1 +1,18 @@
-$test-color: red;
+@import './reset.scss';
+@import './naive.scss';
+
+.flex-container {
+  display: flex;
+  &.c-c {
+    justify-content: center;
+    align-items: center;
+  }
+  &.sb-c {
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.page-container {
+  position: relative;
+  height: 100%;
+}

@@ -1,0 +1,35 @@
+.login-container {
+  background-image: url('@/assets/login/bg.svg');
+  background-color: #eee;
+  background-size: cover;
+  background-position: center;
+  .login-box {
+    width: 94%;
+    height: 94%;
+    background-color: hsla(0, 0%, 100%, 0.85);
+    border-radius: 0.15rem;
+    .login-left {
+      img {
+        width: 90%;
+      }
+    }
+    .login-right {
+      .login-form {
+        width: 80%;
+        .login-title {
+          margin-bottom: 0.24rem;
+          .login-icon {
+            width: 0.6rem;
+          }
+          .logo-text {
+            font-weight: bold;
+            font-size: 0.42rem;
+            padding-left: 0.2rem;
+            white-space: nowrap;
+            color: #181818;
+          }
+        }
+      }
+    }
+  }
+}
