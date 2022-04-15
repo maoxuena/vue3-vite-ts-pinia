@@ -1,3 +1,9 @@
 # 忽略格式化文件 (根据项目需要自行添加)
-node_modules
-dist
+/dist/*
+.local
+/node_modules/**
+
+**/*.svg
+**/*.sh
+
+/public/*
