@@ -13,7 +13,7 @@
     </n-form-item>
   </n-form>
   <div class="btn-container flex-container sb-c">
-    <n-button @click="handleReset"> 重置 </n-button>
+    <!-- <n-button @click="handleReset"> 重置 </n-button> -->
     <n-button type="primary" :loading="loading" @click="handleLogin"> 登录 </n-button>
   </div>
 </template>
@@ -69,15 +69,15 @@ const handleLogin = () => {
 }
 
 // 重置
-const handleReset = () => {
-  loginFormRef.value?.restoreValidation()
-}
+// const handleReset = () => {
+//   loginFormRef.value?.restoreValidation()
+// }
 </script>
 
 <style lang="scss" scoped>
 .btn-container {
   :deep(.n-button) {
-    width: 46%;
+    width: 100%;
   }
 }
 </style>

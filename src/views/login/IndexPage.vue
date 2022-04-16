@@ -5,7 +5,7 @@
         <!-- m 以下：不显示，m 到 l：占据空间 3，l 以上：占据空间 4 -->
         <n-grid-item span="0 m:3 l:4">
           <div class="login-left flex-container c-c">
-            <img src="@/assets/login/img1.svg" alt="login" />
+            <img src="@/assets/login/illustration.svg" alt="login" />
           </div>
         </n-grid-item>
         <!-- m 以下：占据空间 6，m 到 l：占据空间 3，l 以上：占据空间 2 -->
@@ -13,7 +13,7 @@
           <div class="login-right flex-container c-c">
             <div class="login-form">
               <div class="login-title flex-container c-c">
-                <img class="login-icon" src="@/assets/logo.png" alt="" />
+                <img class="login-icon" src="@/assets/logo.svg" alt="" />
                 <p class="logo-text">Snow-Admin</p>
               </div>
               <LoginForm></LoginForm>
