@@ -5,7 +5,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import { NConfigProvider, GlobalThemeOverrides } from 'naive-ui'
 
 const themeOverrides: GlobalThemeOverrides = {
@@ -17,4 +16,8 @@ const themeOverrides: GlobalThemeOverrides = {
 }
 </script>
 
-<style></style>
+<style>
+.n-config-provider {
+  height: 100%;
+}
+</style>
