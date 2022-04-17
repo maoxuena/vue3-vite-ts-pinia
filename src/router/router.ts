@@ -70,6 +70,15 @@ const errorRouter: RouteRecordRaw = {
   component: Layout,
   children: [
     {
+      path: '401',
+      name: '401',
+      component: () => import('@/views/error/401Page.vue'),
+      meta: {
+        title: '401页面',
+        requiresAuth: false,
+      },
+    },
+    {
       path: '403',
       name: '403',
       component: () => import('@/views/error/403Page.vue'),

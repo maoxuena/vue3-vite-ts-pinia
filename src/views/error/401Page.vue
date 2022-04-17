@@ -1,6 +1,6 @@
 <template>
   <div class="page-container flex-container c-c">
-    <img class="error-img" src="@/assets/default/403.svg" />
+    <img class="error-img" src="@/assets/default/401.svg" />
   </div>
 </template>
 
