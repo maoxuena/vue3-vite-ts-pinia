@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from 'vue-router'
 import { Layout } from '@/router/constant'
+import { constantRouterIcon } from '@/plugins/naive-icon'
 
 /**
  * 组件模块
@@ -21,7 +22,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
     name: 'Components',
     meta: {
       title: '组件',
-      icon: '',
+      icon: constantRouterIcon.LogoWebComponent,
       sort: 0,
       permissions: ['ComponentsIndex'],
       requiresAuth: true,

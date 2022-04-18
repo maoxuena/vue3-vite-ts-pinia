@@ -1,4 +1,6 @@
+import { Component, h } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
+import { NIcon } from 'naive-ui'
 
 /**
  * 递归处理菜单数据格式
@@ -40,4 +42,11 @@ export function filterRouter(routerMap: Array<any>) {
       !['/:pathMatch(.*)', '/', '/login'].includes(item.path)
     )
   })
+}
+
+/**
+ * render 图标
+ * */
+export function renderIcon(icon: Component) {
+  return () => h(NIcon, null, { default: () => h(icon) })
 }

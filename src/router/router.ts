@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { Layout } from '@/router/constant'
 
+import { constantRouterIcon } from '@/plugins/naive-icon'
+
 // 导入所有router
 const modules = import.meta.globEager('./modules/*.ts')
 
@@ -35,7 +37,7 @@ const homeRoute: RouteRecordRaw = {
   name: 'Home',
   meta: {
     title: '首页',
-    icon: '',
+    icon: constantRouterIcon.Home,
     sort: 0,
     permissions: ['HomeIndex'],
     requiresAuth: true,
@@ -63,7 +65,7 @@ const errorRouter: RouteRecordRaw = {
   name: 'Error',
   meta: {
     title: '错误页面',
-    icon: '',
+    icon: constantRouterIcon.ExclamationCircleFilled,
     requiresAuth: false,
   },
   redirect: '/error/404',
