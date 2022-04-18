@@ -4,4 +4,5 @@ export interface ILoginParams {
 }
 export interface ILoginApi {
   login: (params: ILoginParams) => Promise<any>
+  getUserInfo: () => Promise<any>
 }

@@ -23,6 +23,7 @@ import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { FormInst } from 'naive-ui'
 import { Size } from 'naive-ui/lib/form/src/interface'
+import { useUserStore } from '@/store/modules/user'
 import loginApi from '@/service/api/login/login'
 import * as T from '@/service/api/login/types'
 import { LoginFrom } from '../types/index'
@@ -45,6 +46,7 @@ const loginForm = reactive<LoginFrom>({
 const loading = ref<boolean>(false)
 
 const router = useRouter()
+const userStore = useUserStore()
 // 登录
 const handleLogin = () => {
   loginFormRef.value?.validate(async (errors) => {
@@ -53,11 +55,11 @@ const handleLogin = () => {
     }
     loading.value = true
     try {
-      const requestLoginForm: T.ILoginParams = {
+      const params: T.ILoginParams = {
         username: loginForm.username,
         password: loginForm.password,
       }
-      const res = await loginApi.login(requestLoginForm)
+      const res = await userStore.login(params)
       router.push({ name: 'Home' })
     } finally {
       loading.value = false

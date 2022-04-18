@@ -1,13 +1,34 @@
-import router from './router'
+import { RouteRecordRaw } from 'vue-router'
 import NProgress from '@/config/nprogress'
 import { useAsyncRouteStore } from '@/store/modules/asyncRoute'
-import { RouteRecordRaw } from 'vue-router'
+import { useUserStore } from '@/store/modules/user'
+import { storage } from '@/utils/Storage'
+import router from './router'
 import { redirectRouter } from './redirect'
+
+// 路由白名单
+const whitePathList = ['/login']
 
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
 
-  // TODO: 判断是否已登录，路由菜单是否存在，根据权限进行路由拦截
+  // 白名单可直接进入
+  if (whitePathList.includes(to.path)) {
+    next()
+    return
+  }
+
+  // 判断是否已登录
+  const token = storage.get('ACCESS-TOKEN')
+  if (!token) {
+    next({ path: '/login' })
+    return
+  }
+
+  // TODO: 判断路由菜单是否存在，获取用户相关信息，根据权限进行路由拦截
+  const userStore = useUserStore()
+  const userInfo = await userStore.getInfo()
+
   const asyncRouteStore = useAsyncRouteStore()
   if (asyncRouteStore.getMenus.length === 0) {
     const routes = await asyncRouteStore.generateRoutes()
