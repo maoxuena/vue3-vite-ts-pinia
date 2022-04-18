@@ -1,7 +1,13 @@
 <template>
   <n-layout class="page-container" has-sider>
-    <n-layout-sider bordered show-trigger collapse-mode="width">
-      <Logo></Logo>
+    <n-layout-sider
+      bordered
+      show-trigger
+      collapse-mode="width"
+      :collapsed="collapsed"
+      @collapse="collapsed = true"
+      @expand="collapsed = false">
+      <Logo :collapsed="collapsed"></Logo>
       <AsideMenu></AsideMenu>
     </n-layout-sider>
     <n-layout>
@@ -17,9 +23,13 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import Logo from './components/Logo/IndexPage.vue'
 import AsideMenu from './components/AsideMenu/IndexPage.vue'
 import PageHeader from './components/PageHeader/IndexPage.vue'
+
+// 菜单是否折叠
+const collapsed = ref<Boolean>(false)
 </script>
 
 <style lang="scss" scoped>

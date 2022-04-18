@@ -3,9 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, h, computed } from 'vue'
+import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import type { MenuOption } from 'naive-ui'
 import { useAsyncRouteStore } from '@/store/modules/asyncRoute'
 import { generatorMenu } from '@/utils'
 
