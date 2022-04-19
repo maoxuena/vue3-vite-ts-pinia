@@ -24,3 +24,12 @@
   position: relative;
   height: 100%;
 }
+
+// 单行居中，多行左对齐
+.text-container {
+  text-align: center;
+  > * {
+    display: inline-block;
+    text-align: left;
+  }
+}

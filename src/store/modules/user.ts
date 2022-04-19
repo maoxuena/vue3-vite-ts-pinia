@@ -3,22 +3,9 @@ import { createStorage, storage } from '@/utils/storage'
 import { ResultEnum } from '@/enums/httpEnum'
 import loginApi from '@/service/api/login/login'
 import * as T from '@/service/api/login/types'
+import { IUserInfoState, IUserState } from './types'
 
 const Storage = createStorage({ storage: localStorage })
-
-export interface IUserState {
-  token: string
-  username: string
-  welcome: string
-  avatar: string
-  permissions: any[]
-  info: any
-}
-
-export interface IUserInfoState {
-  email: string
-  username: string
-}
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -43,7 +30,7 @@ export const useUserStore = defineStore({
     getPermissions(): [any][] {
       return this.permissions
     },
-    getUserInfo(): object {
+    getUserInfo(): IUserInfoState {
       return this.info
     },
   },
@@ -80,7 +67,7 @@ export const useUserStore = defineStore({
         if (code === ResultEnum.SUCCESS) {
           this.setUserInfo(data)
         }
-        return Promise.resolve(response)
+        return Promise.resolve(data)
       } catch (e) {
         return Promise.reject(e)
       }

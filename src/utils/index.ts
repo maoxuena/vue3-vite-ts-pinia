@@ -1,6 +1,7 @@
 import { Component, h } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
 import { NIcon } from 'naive-ui'
+import { constantRouterIcon } from '@/plugins/naive-icon'
 
 /**
  * 递归处理菜单数据格式
@@ -49,4 +50,36 @@ export function filterRouter(routerMap: Array<any>) {
  * */
 export function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
+}
+
+/**
+ * @description all模式渲染后端返回路由
+ * @param constantRoutes
+ * @returns {*}
+ */
+// Vite 支持使用特殊的 import.meta.glob 函数从文件系统导入多个模块
+const modules = import.meta.glob('../views/**/**.vue')
+export function convertRouter(asyncRoutes: any[]) {
+  return asyncRoutes.map((route) => {
+    if (route.component) {
+      if (route.component === 'Layout') {
+        route.component = () => import('@/layout/IndexPage.vue')
+      } else if (route.component === 'EmptyLayout') {
+        route.component = () => import('@/layout/EmptyPage.vue')
+      } else {
+        route.component = modules[`../views/${route.component}.vue`]
+      }
+    }
+    if (route.meta?.icon) {
+      const icon = route.meta.icon
+      route.meta.icon = constantRouterIcon[icon as keyof typeof constantRouterIcon]
+    }
+    if (route.children && route.children.length) {
+      route.children = convertRouter(route.children)
+    }
+    if (route.children && route.children.length === 0) {
+      delete route.children
+    }
+    return route
+  })
 }

@@ -13,7 +13,6 @@ import { constantRouterIcon } from '@/plugins/naive-icon'
  * @param meta.keepAlive 缓存该路由
  * @param meta.sort 排序越小越排前
  * @param meta.affix 多页签固定
- * @param meta.requiresAuth 是否需要权限
  * @param meta.alwaysShow 是否总是显示
  * */
 const componentsRouter: Array<RouteRecordRaw> = [
@@ -25,7 +24,6 @@ const componentsRouter: Array<RouteRecordRaw> = [
       icon: constantRouterIcon.LogoWebComponent,
       sort: 0,
       permissions: ['ComponentsIndex'],
-      requiresAuth: true,
     },
     redirect: '/components/index',
     component: Layout,
@@ -36,8 +34,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
         meta: {
           title: '组件',
           permissions: ['ComponentsIndex'],
-          affix: true,
-          requiresAuth: true,
+          affix: false,
         },
         component: () => import('@/views/components/IndexPage.vue'),
       },

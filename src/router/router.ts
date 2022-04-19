@@ -27,7 +27,6 @@ const loginRoute: RouteRecordRaw = {
   component: () => import('@/views/login/IndexPage.vue'), // 注意这里要带上 文件后缀.vue
   meta: {
     title: '登录页',
-    requiresAuth: false,
   },
 }
 
@@ -40,7 +39,6 @@ const homeRoute: RouteRecordRaw = {
     icon: constantRouterIcon.Home,
     sort: 0,
     permissions: ['HomeIndex'],
-    requiresAuth: true,
   },
   redirect: '/home/index',
   component: Layout,
@@ -52,7 +50,6 @@ const homeRoute: RouteRecordRaw = {
         title: '首页',
         permissions: ['HomeIndex'],
         affix: true,
-        requiresAuth: true,
       },
       component: () => import('@/views/home/IndexPage.vue'),
     },
@@ -66,7 +63,7 @@ const errorRouter: RouteRecordRaw = {
   meta: {
     title: '错误页面',
     icon: constantRouterIcon.ExclamationCircleFilled,
-    requiresAuth: false,
+    sort: 9,
   },
   redirect: '/error/404',
   component: Layout,
@@ -77,7 +74,7 @@ const errorRouter: RouteRecordRaw = {
       component: () => import('@/views/error/401Page.vue'),
       meta: {
         title: '401页面',
-        requiresAuth: false,
+        sort: 0,
       },
     },
     {
@@ -86,7 +83,7 @@ const errorRouter: RouteRecordRaw = {
       component: () => import('@/views/error/403Page.vue'),
       meta: {
         title: '403页面',
-        requiresAuth: false,
+        sort: 1,
       },
     },
     {
@@ -95,7 +92,7 @@ const errorRouter: RouteRecordRaw = {
       component: () => import('@/views/error/404Page.vue'),
       meta: {
         title: '404页面',
-        requiresAuth: false,
+        sort: 2,
       },
     },
     {
@@ -104,7 +101,7 @@ const errorRouter: RouteRecordRaw = {
       component: () => import('@/views/error/500Page.vue'),
       meta: {
         title: '500页面',
-        requiresAuth: false,
+        sort: 3,
       },
     },
   ],

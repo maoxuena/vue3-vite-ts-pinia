@@ -20,11 +20,10 @@
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { FormInst } from 'naive-ui'
 import { Size } from 'naive-ui/lib/form/src/interface'
 import { useUserStore } from '@/store/modules/user'
-import loginApi from '@/service/api/login/login'
 import * as T from '@/service/api/login/types'
 import { LoginFrom } from '../types/index'
 
@@ -46,6 +45,7 @@ const loginForm = reactive<LoginFrom>({
 const loading = ref<boolean>(false)
 
 const router = useRouter()
+const route = useRoute()
 const userStore = useUserStore()
 // 登录
 const handleLogin = () => {
@@ -60,7 +60,9 @@ const handleLogin = () => {
         password: loginForm.password,
       }
       const res = await userStore.login(params)
-      router.push({ name: 'Home' })
+      // decodeURIComponent() 函数可对 encodeURIComponent() 函数编码的 URI 进行解码
+      const toPath = decodeURIComponent((route.query?.redirect || '/home') as string)
+      router.replace(toPath)
     } finally {
       loading.value = false
     }
