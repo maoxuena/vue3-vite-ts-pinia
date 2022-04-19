@@ -607,7 +607,7 @@ VITE_APP_WEB_URL= 'YOUR WEB URL'
 3. 组件中使用
 
 ```
-console.log(import.meta.env.VITE_APP_WEB_URL)
+import.meta.env.VITE_APP_WEB_URL
 ```
 
 4. 配置 package.json
