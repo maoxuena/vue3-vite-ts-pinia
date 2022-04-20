@@ -24,5 +24,5 @@ module.exports = {
   insertPragma: false, // 当requirePragma参数为true时，此参数为true，将向@format标记后面添加一个换行符
   proseWrap: 'preserve', // 使用默认的折行标准，因为使用了一些折行敏感型的渲染器（如GitHub comment）而按照markdown文本样式进行折行
   htmlWhitespaceSensitivity: 'css', // 根据显示样式决定 html 要不要折行（在html中空格是否是敏感的，css：遵守CSS显示属性的默认值，strict：空格被认为是敏感的，ignore：空格被认为是不敏感的）
-  endOfLine: 'auto', // 换行符使用 可选值"<auto|lf|crlf|cr>"
+  endOfLine: 'crlf', // 换行符使用 可选值"<auto|lf|crlf|cr>"
 }

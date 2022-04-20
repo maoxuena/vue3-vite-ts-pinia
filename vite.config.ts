@@ -11,6 +11,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
   const env = loadEnv(mode, root)
   return {
+    // root,
     base: env.VITE_PUBLIC_PATH, //打包路径
     plugins: [
       vue(),
@@ -67,6 +68,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
     // 生产环境打包配置
     build: {
+      // outDir: 'dist', // 指定输出路径
+      // assetsDir: 'assets', // 指定生成静态资源的存放路径
       terserOptions: {
         //去除 console debugger
         compress: {
@@ -74,6 +77,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           drop_debugger: true,
         },
       },
+      chunkSizeWarningLimit: 2000,
     },
   }
 }
