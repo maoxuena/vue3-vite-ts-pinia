@@ -7,6 +7,10 @@
     justify-content: center;
     align-items: center;
   }
+  &.fe-c {
+    justify-content: flex-end;
+    align-items: center;
+  }
   &.sb-c {
     justify-content: space-between;
     align-items: center;

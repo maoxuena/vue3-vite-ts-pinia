@@ -38,7 +38,7 @@ export const useUserStore = defineStore({
     setToken(token: string) {
       this.token = token
     },
-    setUserInfo(info: IUserInfoState) {
+    setUserInfo(info: {}) {
       this.info = info
     },
     // 登录
@@ -74,12 +74,11 @@ export const useUserStore = defineStore({
     },
 
     // 登出
-    // async logout() {
-    //   this.setPermissions([])
-    //   this.setUserInfo('')
-    //   storage.remove('ACCESS-TOKEN')
-    //   storage.remove('CURRENT-USER')
-    //   return Promise.resolve('')
-    // },
+    async logout() {
+      this.setUserInfo({})
+      storage.remove('ACCESS-TOKEN')
+      storage.remove('CURRENT-USER')
+      return Promise.resolve('')
+    },
   },
 })

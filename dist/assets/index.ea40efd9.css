@@ -1582,6 +1582,10 @@ body,
   justify-content: center;
   align-items: center;
 }
+.flex-container.fe-c {
+  justify-content: flex-end;
+  align-items: center;
+}
 .flex-container.sb-c {
   justify-content: space-between;
   align-items: center;

@@ -37,14 +37,14 @@ const clickMenuItem = (key: string) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 64px;
-  line-height: 64px;
+  height: 0.64rem;
+  line-height: 0.64rem;
   overflow: hidden;
   white-space: nowrap;
 
   img {
     width: auto;
-    height: 32px;
+    height: 0.32rem;
   }
 
   .title {

@@ -1,11 +1,14 @@
 <template>
   <n-config-provider :theme-overrides="themeOverrides">
-    <router-view></router-view>
+    <AppProvider>
+      <router-view></router-view>
+    </AppProvider>
   </n-config-provider>
 </template>
 
 <script setup lang="ts">
 import { NConfigProvider, GlobalThemeOverrides } from 'naive-ui'
+import AppProvider from '@/components/AppProvider/index.vue'
 
 const themeOverrides: GlobalThemeOverrides = {
   common: {

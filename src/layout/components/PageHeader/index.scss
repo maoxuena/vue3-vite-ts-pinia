@@ -1,0 +1,12 @@
+.header-container {
+  height: 100%;
+  padding: 0 0.2rem;
+  .right {
+    .n-icon {
+      margin-left: 0.1rem;
+      &:not(:last-child) {
+        cursor: pointer;
+      }
+    }
+  }
+}

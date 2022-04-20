@@ -150,6 +150,10 @@ body[data-v-bb37a44e],
   justify-content: center;
   align-items: center;
 }
+.flex-container.fe-c[data-v-bb37a44e] {
+  justify-content: flex-end;
+  align-items: center;
+}
 .flex-container.sb-c[data-v-bb37a44e] {
   justify-content: space-between;
   align-items: center;

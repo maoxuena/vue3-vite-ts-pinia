@@ -1,12 +1,11 @@
-import { _ as s } from './plugin-vue_export-helper.21dcd24c.js'
-import { o as _, c as a, p as o, e as c, a as t } from './index.a7d9147a.js'
+import { _ as s, o as _, c as a, p as c, e as o, a as t } from './index.2609be78.js'
 var r = './assets/404.803e7bd3.svg'
 const n = {},
-  d = (e) => (o('data-v-414f908e'), (e = e()), c(), e),
+  d = (e) => (c('data-v-414f908e'), (e = e()), o(), e),
   p = { class: 'page-container flex-container c-c' },
   i = d(() => t('img', { class: 'error-img', src: r }, null, -1)),
   l = [i]
-function f(e, m) {
+function f(e, v) {
   return _(), a('div', p, l)
 }
 var g = s(n, [
