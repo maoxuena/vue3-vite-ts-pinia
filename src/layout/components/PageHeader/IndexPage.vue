@@ -7,7 +7,7 @@
       </n-icon>
       <n-dropdown trigger="click" :options="options" @select="handleSelect">
         <n-icon size="0.36rem">
-          <person-circle-outline></person-circle-outline>
+          <PersonCircleOutline></PersonCircleOutline>
         </n-icon>
       </n-dropdown>
     </div>

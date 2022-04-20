@@ -6,6 +6,7 @@
 </template>
 
 <script setup lang="ts">
+// 接收父组件参数（采用ts专有声明，无默认值）
 defineProps<{ collapsed: Boolean }>()
 </script>
 
