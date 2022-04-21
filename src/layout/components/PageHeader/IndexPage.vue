@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref } from 'vue'
+import { ref } from 'vue'
 import { useDialog, useMessage } from 'naive-ui'
 import { constantRouterIcon } from '@/plugins/naive-icon'
 import { useUserStore } from '@/store/modules/user'

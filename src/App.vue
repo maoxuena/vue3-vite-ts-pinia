@@ -7,16 +7,29 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue'
 import { NConfigProvider, GlobalThemeOverrides } from 'naive-ui'
 import AppProvider from '@/components/AppProvider/index.vue'
+import { useSettingStore } from './store/modules/setting'
+import { lighten } from '@/utils/theme'
 
-const themeOverrides: GlobalThemeOverrides = {
-  common: {
-    primaryColor: '#155BCD',
-    primaryColorHover: '#84A9FF',
-    primaryColorPressed: '#84A9FF',
-  },
-}
+// 系统配置
+const settingStore = useSettingStore()
+
+const themeOverrides = computed((): GlobalThemeOverrides => {
+  const appTheme = settingStore.appTheme
+  const lightenStr = lighten(settingStore.appTheme, 6)
+  return {
+    common: {
+      primaryColor: appTheme,
+      primaryColorHover: lightenStr,
+      primaryColorPressed: lightenStr,
+    },
+    LoadingBar: {
+      colorLoading: appTheme,
+    },
+  }
+})
 </script>
 
 <style>
