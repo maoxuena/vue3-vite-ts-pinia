@@ -45,7 +45,7 @@ module.exports = {
     curly: 'warn', // 强制所有控制语句使用一致的括号风格
     'default-case': 'warn', // 要求 switch 语句中有 default 分支
     'dot-location': [2, 'property'], // 强制 object.key 中 . 的位置，property：'.'号应与属性在同一行；object：'.' 号应与对象名在同一行
-    'dot-notation': [2, { allowKeywords: false }], // 强制使用.号取属性；allowKeywords：true 使用保留字做属性名时，只能使用.方式取属性，false 使用保留字做属性名时, 只能使用[]方式取属性；allowPattern：当属性名匹配提供的正则表达式时，允许使用[]方式取值,否则只能用.号取值，e.g：[2, { allowPattern: '^[a-z]+(_[a-z]+)+$' }]
+    'dot-notation': 'off', // [2, { allowKeywords: false }], // 强制使用.号取属性；allowKeywords：true 使用保留字做属性名时，只能使用.方式取属性，false 使用保留字做属性名时, 只能使用[]方式取属性；allowPattern：当属性名匹配提供的正则表达式时，允许使用[]方式取值,否则只能用.号取值，e.g：[2, { allowPattern: '^[a-z]+(_[a-z]+)+$' }]
     eqeqeq: 'warn', // 要求使用 === 和 !==
     'no-else-return': 'warn', // 禁止 if 语句中 return 语句之后有 else 块
     'no-empty-function': 'warn', // 禁止出现空函数

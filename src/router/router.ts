@@ -24,7 +24,7 @@ const rootRoute: RouteRecordRaw = {
 const loginRoute: RouteRecordRaw = {
   path: '/login',
   name: 'Login',
-  component: () => import('@/views/login/IndexPage.vue'), // 注意这里要带上 文件后缀.vue
+  component: () => import('@/views/login/LoginPage.vue'), // 注意这里要带上 文件后缀.vue
   meta: {
     title: '登录页',
   },
@@ -38,20 +38,19 @@ const homeRoute: RouteRecordRaw = {
     title: '首页',
     icon: constantRouterIcon.Home,
     sort: 0,
-    permissions: ['HomeIndex'],
   },
   redirect: '/home/index',
   component: Layout,
   children: [
     {
       path: 'index',
-      name: 'HomeIndex',
+      name: 'HomePage',
       meta: {
         title: '首页',
-        permissions: ['HomeIndex'],
         affix: true,
+        sort: 0,
       },
-      component: () => import('@/views/home/IndexPage.vue'),
+      component: () => import('@/views/home/HomePage.vue'),
     },
   ],
 }
