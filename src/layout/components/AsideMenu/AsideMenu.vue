@@ -33,22 +33,5 @@ const clickMenuItem = (key: string) => {
 </script>
 
 <style lang="scss" scoped>
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 0.64rem;
-  line-height: 0.64rem;
-  overflow: hidden;
-  white-space: nowrap;
-
-  img {
-    width: auto;
-    height: 0.32rem;
-  }
-
-  .title {
-    margin-bottom: 0;
-  }
-}
+@import './index.scss';
 </style>

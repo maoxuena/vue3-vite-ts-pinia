@@ -8,6 +8,24 @@ vue3 + vite + typesript + pinia 搭建的前端框架项目
 pnpm create vite project-name -- --template vue-ts
 ```
 
+## 初始化项目
+
+```
+pnpm install
+```
+
+## 运行项目
+
+```
+pnpm run dev
+```
+
+## 编译项目
+
+```
+pnpm run build:pro
+```
+
 ## Git 提交规范
 
 ### 约定式提交

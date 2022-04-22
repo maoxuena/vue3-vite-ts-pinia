@@ -63,7 +63,7 @@ export function convertRouter(asyncRoutes: any[]) {
   return asyncRoutes.map((route) => {
     if (route.component) {
       if (route.component === 'Layout') {
-        route.component = () => import('@/layout/IndexPage.vue')
+        route.component = () => import('@/layout/basePage.vue')
       } else if (route.component === 'EmptyLayout') {
         route.component = () => import('@/layout/EmptyPage.vue')
       } else {

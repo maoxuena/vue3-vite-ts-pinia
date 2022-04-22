@@ -61,18 +61,5 @@ defineExpose({
 </script>
 
 <style lang="scss" scoped>
-.setting-item {
-  .setting-item-title {
-    width: 80px;
-  }
-  .setting-item-action {
-    :deep(.n-color-picker) {
-      width: 0.22rem;
-      height: 0.22rem;
-      .n-color-picker-trigger__value {
-        display: none;
-      }
-    }
-  }
-}
+@import './index.scss';
 </style>

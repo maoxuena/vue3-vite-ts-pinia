@@ -7,7 +7,7 @@
       :collapsed="collapsed"
       @collapse="collapsed = true"
       @expand="collapsed = false">
-      <Logo :collapsed="collapsed"></Logo>
+      <AsideLogo :collapsed="collapsed"></AsideLogo>
       <AsideMenu></AsideMenu>
     </n-layout-sider>
     <n-layout>
@@ -31,10 +31,10 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import Logo from './components/Logo/IndexPage.vue'
-import AsideMenu from './components/AsideMenu/IndexPage.vue'
-import PageHeader from './components/PageHeader/IndexPage.vue'
-import ProjectSetting from './components/ProjectSetting/IndexPage.vue'
+import AsideLogo from './components/AsideLogo/AsideLogo.vue'
+import AsideMenu from './components/AsideMenu/AsideMenu.vue'
+import PageHeader from './components/PageHeader/PageHeader.vue'
+import ProjectSetting from './components/ProjectSetting/ProjectSetting.vue'
 
 // 菜单是否折叠
 const collapsed = ref<Boolean>(false)

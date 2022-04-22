@@ -1,7 +1,7 @@
 /**
  * @description: default layout
  */
-export const Layout = () => import('@/layout/IndexPage.vue')
+export const Layout = () => import('@/layout/basePage.vue')
 
 /**
  * @description: empty layout
