@@ -18,12 +18,14 @@ const settingStore = useSettingStore()
 // 具体主题变量
 const themeOverrides = computed((): GlobalThemeOverrides => {
   const appTheme = settingStore.appTheme
-  const lightenStr = lighten(settingStore.appTheme, 6)
+  const lightenStr = lighten(settingStore.appTheme, 12)
+  const darkStr = lighten(settingStore.appTheme, -5)
   return {
     common: {
       primaryColor: appTheme,
       primaryColorHover: lightenStr,
-      primaryColorPressed: lightenStr,
+      primaryColorPressed: darkStr,
+      primaryColorSuppl: lightenStr,
     },
     LoadingBar: {
       colorLoading: appTheme,

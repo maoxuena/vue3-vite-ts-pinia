@@ -35,4 +35,13 @@
       }
     }
   }
+  &.dark-bg {
+    background-color: #222;
+    .login-box {
+      background-color: hsla(0, 0%, 0%, 0.85);
+      .logo-text {
+        color: #ffffff !important;
+      }
+    }
+  }
 }

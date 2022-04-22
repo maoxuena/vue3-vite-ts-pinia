@@ -1,5 +1,7 @@
 <template>
-  <div class="login-container page-container flex-container c-c">
+  <div
+    class="login-container page-container flex-container c-c"
+    :class="{ 'dark-bg': settingStore.darkTheme }">
     <div class="login-box flex-container c-c">
       <n-grid cols="6" item-responsive responsive="screen">
         <!-- m 以下：不显示，m 到 l：占据空间 3，l 以上：占据空间 4 -->
@@ -26,7 +28,11 @@
 </template>
 
 <script setup lang="ts">
+import { useSettingStore } from '@/store/modules/setting'
 import LoginForm from './components/LoginForm.vue'
+
+// 系统配置
+const settingStore = useSettingStore()
 </script>
 
 <style lang="scss" scoped>
