@@ -1,8 +1,10 @@
 import { defineStore } from 'pinia'
+import { createStorage, storage } from '@/utils/storage'
 import setting from '@/config/setting'
 
 const { darkTheme, appTheme, appThemeList } = setting
 
+const Storage = createStorage({ storage: localStorage })
 interface SettingState {
   // 深色主题
   darkTheme: boolean
@@ -15,8 +17,8 @@ interface SettingState {
 export const useSettingStore = defineStore({
   id: 'setting',
   state: (): SettingState => ({
-    darkTheme,
-    appTheme,
+    darkTheme: Storage.get('DARK-THEME', darkTheme),
+    appTheme: Storage.get('APP-THEME', appTheme),
     appThemeList,
   }),
   getters: {
@@ -31,10 +33,12 @@ export const useSettingStore = defineStore({
     },
   },
   actions: {
-    setDarkTheme(darkTheme: boolean) {
+    async setDarkTheme(darkTheme: boolean) {
+      Storage.set('DARK-THEME', darkTheme)
       this.darkTheme = darkTheme
     },
     async setAppTheme(appTheme: string) {
+      Storage.set('APP-THEME', appTheme)
       this.appTheme = appTheme
     },
     setAppThemeList(appThemeList: string[]) {

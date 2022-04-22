@@ -1,5 +1,5 @@
 <template>
-  <n-config-provider :theme-overrides="themeOverrides">
+  <n-config-provider :theme="getDarkTheme" :theme-overrides="themeOverrides">
     <AppProvider>
       <router-view></router-view>
     </AppProvider>
@@ -8,14 +8,14 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { NConfigProvider, GlobalThemeOverrides } from 'naive-ui'
+import { NConfigProvider, GlobalThemeOverrides, darkTheme } from 'naive-ui'
 import AppProvider from '@/components/AppProvider/index.vue'
 import { useSettingStore } from './store/modules/setting'
 import { lighten } from '@/utils/theme'
 
 // 系统配置
 const settingStore = useSettingStore()
-
+// 具体主题变量
 const themeOverrides = computed((): GlobalThemeOverrides => {
   const appTheme = settingStore.appTheme
   const lightenStr = lighten(settingStore.appTheme, 6)
@@ -30,6 +30,8 @@ const themeOverrides = computed((): GlobalThemeOverrides => {
     },
   }
 })
+// 获取主题
+const getDarkTheme = computed(() => (settingStore.darkTheme ? darkTheme : undefined))
 </script>
 
 <style>
