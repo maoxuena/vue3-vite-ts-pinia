@@ -8,6 +8,7 @@ import {
   SettingsOutline,
   Moon,
   SunnySharp,
+  Map,
 } from '@vicons/ionicons5'
 import { renderIcon } from '@/utils/index'
 
@@ -17,6 +18,7 @@ export const constantRouterIcon = {
   Home: renderIcon(Home),
   LogoWebComponent: renderIcon(LogoWebComponent),
   LogOutOutline: renderIcon(LogOutOutline),
+  Map: renderIcon(Map),
 }
 
 const antdIcon = [ExclamationCircleFilled, FullscreenOutlined, FullscreenExitOutlined]
@@ -28,6 +30,7 @@ const ionicons5Icon = [
   SettingsOutline,
   Moon,
   SunnySharp,
+  Map,
 ]
 const components = [...antdIcon, ...ionicons5Icon]
 

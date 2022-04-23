@@ -5,6 +5,7 @@ import { resolve } from 'path'
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import'
 // @ts-ignore
 import viteCompression from 'vite-plugin-compression'
+import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
 
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfig => {
@@ -43,6 +44,9 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         threshold: 10240,
         algorithm: 'gzip',
         ext: '.gz',
+      }),
+      resolveExternalsPlugin({
+        AMap: 'AMap',
       }),
     ],
     resolve: {

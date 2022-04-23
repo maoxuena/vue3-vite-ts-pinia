@@ -17,24 +17,33 @@ import { constantRouterIcon } from '@/plugins/naive-icon'
  * */
 const componentsRouter: Array<RouteRecordRaw> = [
   {
-    path: '/components',
-    name: 'Components',
+    path: '/map',
+    name: 'Map',
     meta: {
-      title: '组件',
-      icon: constantRouterIcon.LogoWebComponent,
-      sort: 1,
+      title: '地图',
+      icon: constantRouterIcon.Map,
+      sort: 2,
     },
-    redirect: '/components/index',
+    redirect: '/map/amap/index',
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'ComponentsPage',
+        path: 'a-map/index',
+        name: 'AMapPage',
         meta: {
-          title: '组件',
+          title: '高德地图',
           sort: 0,
         },
-        component: () => import('@/views/components/ComponentsPage.vue'),
+        component: () => import('@/views/map/AMap/AMapPage.vue'),
+      },
+      {
+        path: 'b-map/index',
+        name: 'BMapPage',
+        meta: {
+          title: '百度地图',
+          sort: 1,
+        },
+        component: () => import('@/views/map/BMap/BMapPage.vue'),
       },
     ],
   },
