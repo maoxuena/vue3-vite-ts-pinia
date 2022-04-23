@@ -11,10 +11,11 @@ import { computed } from 'vue'
 import { NConfigProvider, GlobalThemeOverrides, darkTheme } from 'naive-ui'
 import AppProvider from '@/components/AppProvider/index.vue'
 import { useSettingStore } from './store/modules/setting'
-import { getChangeColor } from '@/utils/theme'
+import { getChangeColor, updateRoot } from '@/utils/theme'
 
 // 系统配置
 const settingStore = useSettingStore()
+updateRoot(settingStore.appTheme)
 // 具体主题变量
 const themeOverrides = computed((): GlobalThemeOverrides => {
   const appTheme = settingStore.appTheme

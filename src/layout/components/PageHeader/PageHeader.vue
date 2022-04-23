@@ -71,10 +71,22 @@ const handleSelect = (key: string | number): void => {
 
 // 全屏
 const fullscreenIcon = ref<String>('FullscreenOutlined')
-const toggleFullScreen = (): void => {
+const toggleFullScreenIcon = (): void => {
   const isFullscreen = fullscreenIcon.value === 'FullscreenOutlined'
   // TODO: 全屏切换
   fullscreenIcon.value = isFullscreen ? 'FullscreenExitOutlined' : 'FullscreenOutlined'
+}
+
+// 监听全屏切换事件
+document.addEventListener('fullscreenchange', toggleFullScreenIcon)
+
+// 全屏切换
+const toggleFullScreen = () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen()
+  } else if (document.exitFullscreen) {
+    document.exitFullscreen()
+  }
 }
 </script>
 
