@@ -11,24 +11,22 @@ import { computed } from 'vue'
 import { NConfigProvider, GlobalThemeOverrides, darkTheme } from 'naive-ui'
 import AppProvider from '@/components/AppProvider/index.vue'
 import { useSettingStore } from './store/modules/setting'
-import { lighten } from '@/utils/theme'
+import { getChangeColor } from '@/utils/theme'
 
 // 系统配置
 const settingStore = useSettingStore()
 // 具体主题变量
 const themeOverrides = computed((): GlobalThemeOverrides => {
   const appTheme = settingStore.appTheme
-  const lightenStr = lighten(settingStore.appTheme, 12)
-  const darkStr = lighten(settingStore.appTheme, -5)
   return {
     common: {
-      primaryColor: appTheme,
-      primaryColorHover: lightenStr,
-      primaryColorPressed: darkStr,
-      primaryColorSuppl: lightenStr,
+      primaryColor: getChangeColor('primaryColor', appTheme),
+      primaryColorHover: getChangeColor('primaryColorHover', appTheme),
+      primaryColorPressed: getChangeColor('primaryColorPressed', appTheme),
+      primaryColorSuppl: getChangeColor('primaryColorSuppl', appTheme),
     },
     LoadingBar: {
-      colorLoading: appTheme,
+      colorLoading: getChangeColor('primaryColor', appTheme),
     },
   }
 })

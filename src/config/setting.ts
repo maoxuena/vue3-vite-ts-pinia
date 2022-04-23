@@ -10,6 +10,18 @@ export const appThemeList: string[] = [
   '#536dfe',
 ]
 
+// :rootList 里配置的变量 key
+interface TRoot {
+  key: string
+  value: number
+}
+export const rootList: TRoot[] = [
+  { key: 'primaryColor', value: 0 },
+  { key: 'primaryColorHover', value: 12 },
+  { key: 'primaryColorPressed', value: -5 },
+  { key: 'primaryColorSuppl', value: 12 },
+]
+
 const setting = {
   // 深色主题
   darkTheme: false,
@@ -17,6 +29,7 @@ const setting = {
   appTheme: '#155BCD',
   // 系统内置主题色列表
   appThemeList,
+  rootList,
 }
 
 export default setting

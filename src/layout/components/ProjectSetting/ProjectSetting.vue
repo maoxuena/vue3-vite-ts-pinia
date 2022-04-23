@@ -41,6 +41,8 @@
 import { reactive, ref, toRefs } from 'vue'
 import { darkTheme } from 'naive-ui'
 import { useSettingStore } from '@/store/modules/setting'
+import { updateRoot } from '@/utils/theme'
+
 // 接收父组件参数（采用ts专有声明，有默认值）
 interface ParentProps {
   width?: number
@@ -66,6 +68,7 @@ const { color, colorList } = toRefs(state)
 // 改变主题色
 const handleChangeColor = async (value: any): Promise<void> => {
   await settingStore.setAppTheme(value)
+  updateRoot(value)
 }
 
 const isDrawer = ref<Boolean>(false)
