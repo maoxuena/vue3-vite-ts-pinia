@@ -2,6 +2,7 @@
   <div class="header-container flex-container sb-c">
     <div class="left"></div>
     <div class="right flex-container fe-c">
+      <LangSelect></LangSelect>
       <n-icon size="0.24rem">
         <component :is="fullscreenIcon" @click="toggleFullScreen" />
       </n-icon>
@@ -20,9 +21,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useDialog, useMessage } from 'naive-ui'
+import { useRoute, useRouter } from 'vue-router'
 import { constantRouterIcon } from '@/plugins/naive-icon'
 import { useUserStore } from '@/store/modules/user'
-import { useRoute, useRouter } from 'vue-router'
+import LangSelect from '@/components/LangSelect/index.vue'
+
 const options = [
   {
     label: '退出登录',

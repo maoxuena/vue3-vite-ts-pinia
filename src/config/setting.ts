@@ -30,6 +30,7 @@ const setting = {
   // 系统内置主题色列表
   appThemeList,
   rootList,
+  language: 'zh',
 }
 
 export default setting

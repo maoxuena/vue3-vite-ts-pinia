@@ -1,5 +1,9 @@
 <template>
-  <n-config-provider :theme="getDarkTheme" :theme-overrides="themeOverrides">
+  <n-config-provider
+    :locale="i18nLocale.locale"
+    :date-locale="i18nLocale.dateLocale"
+    :theme="getDarkTheme"
+    :theme-overrides="themeOverrides">
     <AppProvider>
       <router-view></router-view>
     </AppProvider>
@@ -10,8 +14,9 @@
 import { computed } from 'vue'
 import { NConfigProvider, GlobalThemeOverrides, darkTheme } from 'naive-ui'
 import AppProvider from '@/components/AppProvider/index.vue'
-import { useSettingStore } from './store/modules/setting'
+import { useSettingStore } from '@/store/modules/setting'
 import { getChangeColor, updateRoot } from '@/utils/theme'
+import language from '@/config/language'
 
 // 系统配置
 const settingStore = useSettingStore()
@@ -33,6 +38,14 @@ const themeOverrides = computed((): GlobalThemeOverrides => {
 })
 // 获取主题
 const getDarkTheme = computed(() => (settingStore.darkTheme ? darkTheme : undefined))
+
+// 语言配置
+const i18nLocale = computed((): any => {
+  if (settingStore.language) {
+    return language[settingStore.language]
+  }
+  return language['zh']
+})
 </script>
 
 <style>
