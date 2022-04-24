@@ -20,7 +20,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
     path: '/components',
     name: 'Components',
     meta: {
-      title: '组件',
+      title: 'components',
       icon: constantRouterIcon.LogoWebComponent,
       sort: 1,
     },
@@ -31,7 +31,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
         path: 'index',
         name: 'ComponentsPage',
         meta: {
-          title: '组件',
+          title: 'components',
           sort: 0,
         },
         component: () => import('@/views/components/ComponentsPage.vue'),

@@ -10,6 +10,7 @@ import {
   SunnySharp,
   Map,
   Language,
+  Search,
 } from '@vicons/ionicons5'
 import { renderIcon } from '@/utils/index'
 
@@ -33,6 +34,7 @@ const ionicons5Icon = [
   SunnySharp,
   Map,
   Language,
+  Search,
 ]
 const components = [...antdIcon, ...ionicons5Icon]
 

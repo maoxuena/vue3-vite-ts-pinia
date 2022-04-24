@@ -45,4 +45,8 @@ const handleSetLanguage = async (key: string) => {
   window.location.reload()
 }
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.language {
+  margin-left: 0.1rem;
+}
+</style>

@@ -20,7 +20,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
     path: '/map',
     name: 'Map',
     meta: {
-      title: '地图',
+      title: 'map',
       icon: constantRouterIcon.Map,
       sort: 2,
     },
@@ -31,7 +31,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
         path: 'a-map/index',
         name: 'AMapPage',
         meta: {
-          title: '高德地图',
+          title: 'amap',
           sort: 0,
         },
         component: () => import('@/views/map/AMap/AMapPage.vue'),
@@ -40,7 +40,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
         path: 'b-map/index',
         name: 'BMapPage',
         meta: {
-          title: '百度地图',
+          title: 'bmap',
           sort: 1,
         },
         component: () => import('@/views/map/BMap/BMapPage.vue'),

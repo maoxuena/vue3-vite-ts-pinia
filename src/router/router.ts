@@ -26,7 +26,7 @@ const loginRoute: RouteRecordRaw = {
   name: 'Login',
   component: () => import('@/views/login/LoginPage.vue'), // 注意这里要带上 文件后缀.vue
   meta: {
-    title: '登录页',
+    title: 'login',
   },
 }
 
@@ -35,7 +35,7 @@ const homeRoute: RouteRecordRaw = {
   path: '/home',
   name: 'Home',
   meta: {
-    title: '首页',
+    title: 'home',
     icon: constantRouterIcon.Home,
     sort: 0,
   },
@@ -46,7 +46,7 @@ const homeRoute: RouteRecordRaw = {
       path: 'index',
       name: 'HomePage',
       meta: {
-        title: '首页',
+        title: 'home',
         affix: true,
         sort: 0,
       },
@@ -60,7 +60,7 @@ const errorRouter: RouteRecordRaw = {
   path: '/error',
   name: 'Error',
   meta: {
-    title: '错误页面',
+    title: 'error',
     icon: constantRouterIcon.ExclamationCircleFilled,
     sort: 9,
   },
@@ -72,7 +72,7 @@ const errorRouter: RouteRecordRaw = {
       name: '401',
       component: () => import('@/views/error/401Page.vue'),
       meta: {
-        title: '401页面',
+        title: '401',
         sort: 0,
       },
     },
@@ -81,7 +81,7 @@ const errorRouter: RouteRecordRaw = {
       name: '403',
       component: () => import('@/views/error/403Page.vue'),
       meta: {
-        title: '403页面',
+        title: '403',
         sort: 1,
       },
     },
@@ -90,7 +90,7 @@ const errorRouter: RouteRecordRaw = {
       name: '404',
       component: () => import('@/views/error/404Page.vue'),
       meta: {
-        title: '404页面',
+        title: '404',
         sort: 2,
       },
     },
@@ -99,7 +99,7 @@ const errorRouter: RouteRecordRaw = {
       name: '500',
       component: () => import('@/views/error/500Page.vue'),
       meta: {
-        title: '500页面',
+        title: '500',
         sort: 3,
       },
     },

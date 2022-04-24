@@ -2,7 +2,11 @@
   <div class="header-container flex-container sb-c">
     <div class="left"></div>
     <div class="right flex-container fe-c">
+      <!-- 全局搜索 -->
+      <HeaderSearch></HeaderSearch>
+      <!-- 语言切换 -->
       <LangSelect></LangSelect>
+      <!-- 全屏 -->
       <n-icon size="0.24rem">
         <component :is="fullscreenIcon" @click="toggleFullScreen" />
       </n-icon>
@@ -25,6 +29,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { constantRouterIcon } from '@/plugins/naive-icon'
 import { useUserStore } from '@/store/modules/user'
 import LangSelect from '@/components/LangSelect/index.vue'
+import HeaderSearch from '@/components/HeaderSearch/index.vue'
 
 const options = [
   {

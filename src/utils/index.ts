@@ -4,6 +4,35 @@ import { NIcon } from 'naive-ui'
 import { constantRouterIcon } from '@/plugins/naive-icon'
 
 /**
+ * 返回所有子集路由
+ */
+const getChildrenRoutes = (routerMap: RouteRecordRaw[]) => {
+  const result: any[] = []
+  routerMap.forEach((route) => {
+    if (route.children && route.children.length > 0) {
+      result.push(...route.children)
+    }
+  })
+  return result
+}
+
+/**
+ * 处理脱离层级的路由：某个一级路由为其他子路由，则剔除该一级路由，保留路由层级
+ * @param {*} routes router.getRoutes()
+ */
+export const filterRouters = (routerMap: RouteRecordRaw[]) => {
+  // 所有的子集路由
+  const childrenRoutes = getChildrenRoutes(filterRouter(routerMap))
+  // 根据子集路由进行查重操作
+  return routerMap.filter((route) => {
+    // 根据 route 在 childrenRoutes 中进行查重，把所有重复路由表剔除
+    return !childrenRoutes.find((childrenRoute) => {
+      return childrenRoute.path === route.path
+    })
+  })
+}
+
+/**
  * 递归处理菜单数据格式
  */
 export function generatorMenu(routerMap: RouteRecordRaw[]) {
