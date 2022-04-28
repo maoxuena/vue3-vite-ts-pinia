@@ -24,6 +24,7 @@ specifiers:
   husky: ^7.0.4
   naive-ui: ^2.28.0
   nprogress: ^0.2.0
+  path-browserify: ^1.0.1
   pinia: ^2.0.0-rc.10
   prettier: ^2.6.2
   sass: ^1.50.0
@@ -45,6 +46,7 @@ dependencies:
   fuse.js: registry.npmmirror.com/fuse.js/6.5.3
   naive-ui: 2.28.0_vue@3.2.32
   nprogress: 0.2.0
+  path-browserify: registry.npmmirror.com/path-browserify/1.0.1
   pinia: 2.0.13_typescript@4.6.3+vue@3.2.32
   vue: 3.2.32
   vue-i18n: registry.npmmirror.com/vue-i18n/9.2.0-beta.35_vue@3.2.32
@@ -3965,6 +3967,12 @@ packages:
     version: 4.2.10
     dev: true
     optional: true
+
+  registry.npmmirror.com/path-browserify/1.0.1:
+    resolution: {integrity: sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/path-browserify/-/path-browserify-1.0.1.tgz}
+    name: path-browserify
+    version: 1.0.1
+    dev: false
 
   registry.npmmirror.com/source-map/0.6.1:
     resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/source-map/-/source-map-0.6.1.tgz}
