@@ -6,7 +6,7 @@
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAsyncRouteStore } from '@/store/modules/asyncRoute'
-import { generatorMenu } from '@/utils'
+import { generatorMenu } from '@/utils/route'
 
 const asyncRouteStore = useAsyncRouteStore()
 const menus = ref<any[]>([])

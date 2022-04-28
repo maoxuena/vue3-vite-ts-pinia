@@ -12,7 +12,7 @@ import {
   Language,
   Search,
 } from '@vicons/ionicons5'
-import { renderIcon } from '@/utils/index'
+import { renderIcon } from '@/utils/route'
 
 // 前端路由图标映射表
 export const constantRouterIcon = {

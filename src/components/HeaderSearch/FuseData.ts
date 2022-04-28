@@ -2,12 +2,8 @@ import path from 'path-browserify'
 import { RouteRecordRaw } from 'vue-router'
 // import i18n from '@/i18n'
 import useCurrentInstance from '@/utils/useCurrentInstance'
-import { filterRouter } from '@/utils/index'
-
-interface TData {
-  path: any
-  title: any[]
-}
+import { filterRouter } from '@/utils/route'
+import { SelectItem } from './types'
 
 /**
  * 筛选出可供搜索的路由对象
@@ -15,7 +11,11 @@ interface TData {
  * @param basePath 基础路径，默认为 /
  * @param prefixTitle
  */
-export const generateRoutes = (routes: RouteRecordRaw[], basePath = '/', prefixTitle = []): any => {
+export const generateRoutes = (
+  routes: RouteRecordRaw[],
+  basePath = '/',
+  prefixTitle: any[] = []
+): any => {
   routes = filterRouter(routes)
   const { proxy } = useCurrentInstance()
   // 创建 result 数据
@@ -23,7 +23,7 @@ export const generateRoutes = (routes: RouteRecordRaw[], basePath = '/', prefixT
   // 循环 routes 路由
   for (const route of routes) {
     // 创建包含 path 和 title 的 item
-    const data: TData = {
+    const data: SelectItem = {
       path: path.resolve(basePath, route.path),
       title: [...prefixTitle],
     }

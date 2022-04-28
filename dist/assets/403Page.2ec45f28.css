@@ -1,1 +1,191 @@
-[data-v-db43d1ce]:root{--primary-color: #155bcd;--primary-color-hover: #3379eb;--primary-color-pressed: #094fc1;--primary-color-suppl: #3379eb}html[data-v-db43d1ce],body[data-v-db43d1ce],div[data-v-db43d1ce],span[data-v-db43d1ce],applet[data-v-db43d1ce],object[data-v-db43d1ce],iframe[data-v-db43d1ce],h1[data-v-db43d1ce],h2[data-v-db43d1ce],h3[data-v-db43d1ce],h4[data-v-db43d1ce],h5[data-v-db43d1ce],h6[data-v-db43d1ce],p[data-v-db43d1ce],blockquote[data-v-db43d1ce],pre[data-v-db43d1ce],a[data-v-db43d1ce],abbr[data-v-db43d1ce],acronym[data-v-db43d1ce],address[data-v-db43d1ce],big[data-v-db43d1ce],cite[data-v-db43d1ce],code[data-v-db43d1ce],del[data-v-db43d1ce],dfn[data-v-db43d1ce],em[data-v-db43d1ce],img[data-v-db43d1ce],ins[data-v-db43d1ce],kbd[data-v-db43d1ce],q[data-v-db43d1ce],s[data-v-db43d1ce],samp[data-v-db43d1ce],small[data-v-db43d1ce],strike[data-v-db43d1ce],strong[data-v-db43d1ce],sub[data-v-db43d1ce],sup[data-v-db43d1ce],tt[data-v-db43d1ce],var[data-v-db43d1ce],b[data-v-db43d1ce],u[data-v-db43d1ce],i[data-v-db43d1ce],center[data-v-db43d1ce],dl[data-v-db43d1ce],dt[data-v-db43d1ce],dd[data-v-db43d1ce],ol[data-v-db43d1ce],ul[data-v-db43d1ce],li[data-v-db43d1ce],fieldset[data-v-db43d1ce],form[data-v-db43d1ce],label[data-v-db43d1ce],legend[data-v-db43d1ce],table[data-v-db43d1ce],caption[data-v-db43d1ce],tbody[data-v-db43d1ce],tfoot[data-v-db43d1ce],thead[data-v-db43d1ce],tr[data-v-db43d1ce],th[data-v-db43d1ce],td[data-v-db43d1ce],article[data-v-db43d1ce],aside[data-v-db43d1ce],canvas[data-v-db43d1ce],details[data-v-db43d1ce],embed[data-v-db43d1ce],figure[data-v-db43d1ce],figcaption[data-v-db43d1ce],footer[data-v-db43d1ce],header[data-v-db43d1ce],hgroup[data-v-db43d1ce],menu[data-v-db43d1ce],nav[data-v-db43d1ce],output[data-v-db43d1ce],ruby[data-v-db43d1ce],section[data-v-db43d1ce],summary[data-v-db43d1ce],time[data-v-db43d1ce],mark[data-v-db43d1ce],audio[data-v-db43d1ce],video[data-v-db43d1ce]{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article[data-v-db43d1ce],aside[data-v-db43d1ce],details[data-v-db43d1ce],figcaption[data-v-db43d1ce],figure[data-v-db43d1ce],footer[data-v-db43d1ce],header[data-v-db43d1ce],hgroup[data-v-db43d1ce],menu[data-v-db43d1ce],nav[data-v-db43d1ce],section[data-v-db43d1ce]{display:block}*[data-v-db43d1ce],*[data-v-db43d1ce]:before,*[data-v-db43d1ce]:after{box-sizing:border-box}body[data-v-db43d1ce]{line-height:1}body[data-v-db43d1ce]{margin:0;padding:0}ol[data-v-db43d1ce],ul[data-v-db43d1ce]{list-style:none}blockquote[data-v-db43d1ce],q[data-v-db43d1ce]{quotes:none}blockquote[data-v-db43d1ce]:before,blockquote[data-v-db43d1ce]:after,q[data-v-db43d1ce]:before,q[data-v-db43d1ce]:after{content:"";content:none}table[data-v-db43d1ce]{border-collapse:collapse;border-spacing:0}[data-v-db43d1ce]:root{font-size:100px}html[data-v-db43d1ce],body[data-v-db43d1ce],#app[data-v-db43d1ce]{height:100%;width:100%;font-size:.14rem}.n-form-item.n-form-item--top-labelled[data-v-db43d1ce]{grid-template-rows:none}.flex-container[data-v-db43d1ce]{display:flex}.flex-container.c-c[data-v-db43d1ce]{justify-content:center;align-items:center}.flex-container.fe-c[data-v-db43d1ce]{justify-content:flex-end;align-items:center}.flex-container.sb-c[data-v-db43d1ce]{justify-content:space-between;align-items:center}.flex-container.sa-c[data-v-db43d1ce]{justify-content:space-around;align-items:center}.flex-container.se-c[data-v-db43d1ce]{justify-content:space-evenly;align-items:center}.page-container[data-v-db43d1ce],.full-container[data-v-db43d1ce]{position:relative;height:100%}.text-container[data-v-db43d1ce]{text-align:center}.text-container>*[data-v-db43d1ce]{display:inline-block;text-align:left}.error-img[data-v-db43d1ce]{width:60%;max-width:6rem;max-height:80%}
+[data-v-db43d1ce]:root {
+  --primary-color: #155bcd;
+  --primary-color-hover: #3379eb;
+  --primary-color-pressed: #094fc1;
+  --primary-color-suppl: #3379eb;
+}
+html[data-v-db43d1ce],
+body[data-v-db43d1ce],
+div[data-v-db43d1ce],
+span[data-v-db43d1ce],
+applet[data-v-db43d1ce],
+object[data-v-db43d1ce],
+iframe[data-v-db43d1ce],
+h1[data-v-db43d1ce],
+h2[data-v-db43d1ce],
+h3[data-v-db43d1ce],
+h4[data-v-db43d1ce],
+h5[data-v-db43d1ce],
+h6[data-v-db43d1ce],
+p[data-v-db43d1ce],
+blockquote[data-v-db43d1ce],
+pre[data-v-db43d1ce],
+a[data-v-db43d1ce],
+abbr[data-v-db43d1ce],
+acronym[data-v-db43d1ce],
+address[data-v-db43d1ce],
+big[data-v-db43d1ce],
+cite[data-v-db43d1ce],
+code[data-v-db43d1ce],
+del[data-v-db43d1ce],
+dfn[data-v-db43d1ce],
+em[data-v-db43d1ce],
+img[data-v-db43d1ce],
+ins[data-v-db43d1ce],
+kbd[data-v-db43d1ce],
+q[data-v-db43d1ce],
+s[data-v-db43d1ce],
+samp[data-v-db43d1ce],
+small[data-v-db43d1ce],
+strike[data-v-db43d1ce],
+strong[data-v-db43d1ce],
+sub[data-v-db43d1ce],
+sup[data-v-db43d1ce],
+tt[data-v-db43d1ce],
+var[data-v-db43d1ce],
+b[data-v-db43d1ce],
+u[data-v-db43d1ce],
+i[data-v-db43d1ce],
+center[data-v-db43d1ce],
+dl[data-v-db43d1ce],
+dt[data-v-db43d1ce],
+dd[data-v-db43d1ce],
+ol[data-v-db43d1ce],
+ul[data-v-db43d1ce],
+li[data-v-db43d1ce],
+fieldset[data-v-db43d1ce],
+form[data-v-db43d1ce],
+label[data-v-db43d1ce],
+legend[data-v-db43d1ce],
+table[data-v-db43d1ce],
+caption[data-v-db43d1ce],
+tbody[data-v-db43d1ce],
+tfoot[data-v-db43d1ce],
+thead[data-v-db43d1ce],
+tr[data-v-db43d1ce],
+th[data-v-db43d1ce],
+td[data-v-db43d1ce],
+article[data-v-db43d1ce],
+aside[data-v-db43d1ce],
+canvas[data-v-db43d1ce],
+details[data-v-db43d1ce],
+embed[data-v-db43d1ce],
+figure[data-v-db43d1ce],
+figcaption[data-v-db43d1ce],
+footer[data-v-db43d1ce],
+header[data-v-db43d1ce],
+hgroup[data-v-db43d1ce],
+menu[data-v-db43d1ce],
+nav[data-v-db43d1ce],
+output[data-v-db43d1ce],
+ruby[data-v-db43d1ce],
+section[data-v-db43d1ce],
+summary[data-v-db43d1ce],
+time[data-v-db43d1ce],
+mark[data-v-db43d1ce],
+audio[data-v-db43d1ce],
+video[data-v-db43d1ce] {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article[data-v-db43d1ce],
+aside[data-v-db43d1ce],
+details[data-v-db43d1ce],
+figcaption[data-v-db43d1ce],
+figure[data-v-db43d1ce],
+footer[data-v-db43d1ce],
+header[data-v-db43d1ce],
+hgroup[data-v-db43d1ce],
+menu[data-v-db43d1ce],
+nav[data-v-db43d1ce],
+section[data-v-db43d1ce] {
+  display: block;
+}
+*[data-v-db43d1ce],
+*[data-v-db43d1ce]:before,
+*[data-v-db43d1ce]:after {
+  box-sizing: border-box;
+}
+body[data-v-db43d1ce] {
+  line-height: 1;
+}
+body[data-v-db43d1ce] {
+  margin: 0;
+  padding: 0;
+}
+ol[data-v-db43d1ce],
+ul[data-v-db43d1ce] {
+  list-style: none;
+}
+blockquote[data-v-db43d1ce],
+q[data-v-db43d1ce] {
+  quotes: none;
+}
+blockquote[data-v-db43d1ce]:before,
+blockquote[data-v-db43d1ce]:after,
+q[data-v-db43d1ce]:before,
+q[data-v-db43d1ce]:after {
+  content: '';
+  content: none;
+}
+table[data-v-db43d1ce] {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+[data-v-db43d1ce]:root {
+  font-size: 100px;
+}
+html[data-v-db43d1ce],
+body[data-v-db43d1ce],
+#app[data-v-db43d1ce] {
+  height: 100%;
+  width: 100%;
+  font-size: 0.14rem;
+}
+.n-form-item.n-form-item--top-labelled[data-v-db43d1ce] {
+  grid-template-rows: none;
+}
+.flex-container[data-v-db43d1ce] {
+  display: flex;
+}
+.flex-container.c-c[data-v-db43d1ce] {
+  justify-content: center;
+  align-items: center;
+}
+.flex-container.fe-c[data-v-db43d1ce] {
+  justify-content: flex-end;
+  align-items: center;
+}
+.flex-container.sb-c[data-v-db43d1ce] {
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-container.sa-c[data-v-db43d1ce] {
+  justify-content: space-around;
+  align-items: center;
+}
+.flex-container.se-c[data-v-db43d1ce] {
+  justify-content: space-evenly;
+  align-items: center;
+}
+.page-container[data-v-db43d1ce],
+.full-container[data-v-db43d1ce] {
+  position: relative;
+  height: 100%;
+}
+.text-container[data-v-db43d1ce] {
+  text-align: center;
+}
+.text-container > *[data-v-db43d1ce] {
+  display: inline-block;
+  text-align: left;
+}
+.error-img[data-v-db43d1ce] {
+  width: 60%;
+  max-width: 6rem;
+  max-height: 80%;
+}

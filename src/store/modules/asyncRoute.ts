@@ -4,7 +4,7 @@ import { RouteRecordRaw } from 'vue-router'
 import { asyncRoutes, publicRoutes } from '@/router/router'
 import { AUTHENTICATION } from '@/config/config'
 import { IAsyncRouteState, IUserInfoState } from './types'
-import { convertRouter } from '@/utils'
+import { convertRouter } from '@/utils/route'
 
 /**
  * @description 路由排序

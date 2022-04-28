@@ -17,9 +17,6 @@
       </n-dropdown>
     </div>
   </div>
-  <n-dialog-provider>
-    <content />
-  </n-dialog-provider>
 </template>
 
 <script setup lang="ts">

@@ -15,6 +15,15 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     // root,
     base: env.VITE_PUBLIC_PATH, //打包路径
     plugins: [
+      // vue({
+      //   template: {
+      //     // 添加以下内容
+      //     compilerOptions: {
+      //       // 将所有包含短横线的标签作为自定义元素处理
+      //       isCustomElement: (tag) => tag.startsWith('-'),
+      //     },
+      //   },
+      // }),
       vue(),
       createStyleImportPlugin({
         resolves: [ElementPlusResolve()],

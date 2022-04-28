@@ -1,9 +1,10 @@
 <template>
-  <div :class="{ show: isShow }" class="header-search">
+  <div :class="{ show: isShow }" class="header-search" @click.stop="isShow = true">
     <n-icon id="guide-search" size="0.24rem" class="search-icon" @click.stop="onShowClick">
       <Search></Search>
     </n-icon>
     <n-select
+      ref="headerSearchSelectRef"
       v-model:value="search"
       class="header-search-select"
       filterable
@@ -17,22 +18,24 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
+import { SelectInst, SelectOption } from 'naive-ui'
 import Fuse from 'fuse.js'
-import { filterRouters } from '@/utils/index'
+import { filterRouters } from '@/utils/route'
 import { watchSwitchLang } from '@/utils/i18n'
 import { generateRoutes } from './FuseData'
+import { FuseItem, SelectItem } from './types'
 
-const loading = ref < Boolean > false
+const loading = ref<Boolean>(false)
 // 控制 search 显示
 const isShow = ref(false)
 // el-select 实例
-const headerSearchSelectRef = ref(null)
+const headerSearchSelectRef = ref<SelectInst | null>(null)
 const onShowClick = () => {
   isShow.value = !isShow.value
-  headerSearchSelectRef.value.focus()
+  headerSearchSelectRef.value?.focus()
 }
 
 // search 相关
@@ -40,9 +43,10 @@ const search = ref('')
 // 搜索结果
 const searchOptions = ref([])
 // 搜索方法
-const handleSearch = (query) => {
+const handleSearch = (query: string) => {
+  loading.value = true
   if (query !== '') {
-    searchOptions.value = fuse.search(query).map((item) => {
+    searchOptions.value = fuse.search(query).map((item: FuseItem) => {
       return {
         label: item.item.title.join(' > '),
         value: item.item,
@@ -51,10 +55,10 @@ const handleSearch = (query) => {
   } else {
     searchOptions.value = []
   }
-  loading.value = true
+  loading.value = false
 }
 // 选中回调
-const handleUpdateValue = (val) => {
+const handleUpdateValue = (val: SelectItem) => {
   router.push(val.path)
   onClose()
 }
@@ -68,8 +72,8 @@ let searchPool = computed(() => {
 /**
  * 搜索库相关
  */
-let fuse
-const initFuse = (searchPool) => {
+let fuse: any
+const initFuse = (searchPool: any) => {
   fuse = new Fuse(searchPool, {
     // 是否按优先级进行排序
     shouldSort: true,
@@ -98,7 +102,7 @@ initFuse(searchPool.value)
  * 关闭 search 的处理事件
  */
 const onClose = () => {
-  headerSearchSelectRef.value.blur()
+  headerSearchSelectRef.value?.blur()
   isShow.value = false
   searchOptions.value = []
 }
