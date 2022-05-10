@@ -1,5 +1,5 @@
 <template>
-  <div class="full-container">
+  <div class="full-container full">
     <n-space class="amap-button">
       <n-button type="primary"> 点聚合 </n-button>
       <n-button type="primary"> 运动路径 </n-button>

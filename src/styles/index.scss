@@ -29,6 +29,10 @@
 .full-container {
   position: relative;
   height: 100%;
+  &.full {
+    margin: -0.24rem;
+    height: calc(100% + 0.48rem);
+  }
 }
 
 // 单行居中，多行左对齐
