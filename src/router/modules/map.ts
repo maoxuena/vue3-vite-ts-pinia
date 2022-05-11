@@ -28,7 +28,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
     component: Layout,
     children: [
       {
-        path: 'a-map/index',
+        path: 'amap/index',
         name: 'AMapPage',
         meta: {
           title: 'amap',
@@ -37,7 +37,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
         component: () => import('@/views/map/AMap/AMapPage.vue'),
       },
       {
-        path: 'b-map/index',
+        path: 'bmap/index',
         name: 'BMapPage',
         meta: {
           title: 'bmap',

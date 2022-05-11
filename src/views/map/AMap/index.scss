@@ -8,3 +8,14 @@
 .amap-container {
   height: 100%;
 }
+.setting-drawer {
+  position: absolute;
+  z-index: 999;
+  bottom: 0;
+  width: 100%;
+  padding: 0.24rem;
+  background: rgba(0, 0, 0, 0.7);
+}
+.radio-label {
+  color: #fff;
+}
