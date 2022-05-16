@@ -8,7 +8,7 @@
     <div id="container" class="amap-container"></div>
     <div v-if="show" class="setting-drawer">
       <template v-if="type === 'style'"></template>
-      <n-radio-group v-model:value="style" name="radiogroup" @update:value="init">
+      <n-radio-group v-model:value="style" name="radiogroup" @update:value="changeStyle">
         <n-space>
           <n-radio v-for="item in styleList" :key="item.value" :value="item.value">
             <span class="radio-label">{{ item.label }}</span>
@@ -26,7 +26,7 @@ import { pointList } from './data'
 
 // 地图主题样式
 import { styleList } from './options/style'
-const style = ref<String>('2d47d18dde35a5d2312c7863a2b0406a')
+const style = ref<String>('')
 
 // 弹窗
 const type = ref<String>('')
@@ -36,6 +36,7 @@ const state = reactive({
   map: {}, // 地图
   zoom: 10, // 地图缩放级别
   center: [121.558196, 29.908339], // 指定地图中心点
+  style: '2d47d18dde35a5d2312c7863a2b0406a',
 })
 /**
  * 地图初始化
@@ -47,11 +48,20 @@ const init = () => {
     resizeEnable: true,
     zoom: state.zoom,
   })
-  state.map.setMapStyle('amap://styles/' + style.value)
+  state.map.setMapStyle('amap://styles/' + state.style)
   state.map.setFeatures(['bg', 'road', 'building', 'point']) // 地图显示信息：'bg', 'road', 'building', 'point'
 }
 
-// 显示弹出层
+/**
+ * 改变主题
+ */
+const changeStyle = (): void => {
+  state.map.setMapStyle('amap://styles/' + style.value)
+}
+
+/**
+ * 显示弹出层
+ */
 const showDrawer = (value): void => {
   show.value = true
   type.value = value
