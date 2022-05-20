@@ -11,7 +11,7 @@ import { computed } from 'vue'
 import { useMessage } from 'naive-ui'
 import { useSettingStore } from '@/store/modules/setting'
 import language from '@/config/language'
-import useCurrentInstance from '@/utils/useCurrentInstance'
+import useCurrentInstance from '@/hooks/useCurrentInstance'
 
 const settingStore = useSettingStore()
 

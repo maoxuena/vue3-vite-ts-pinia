@@ -2,6 +2,7 @@ import { Component, h } from 'vue'
 import { RouteRecordRaw } from 'vue-router'
 import { NIcon } from 'naive-ui'
 import { constantRouterIcon } from '@/plugins/naive-icon'
+import { generateTitle } from '@/utils/i18n'
 
 /**
  * 返回所有子集路由
@@ -39,6 +40,11 @@ export function generatorMenu(routerMap: RouteRecordRaw[]) {
   return filterRouter(routerMap).map((item) => {
     const isRoot = isRootRouter(item)
     const info = isRoot ? item.children[0] : item
+    // 菜单国际化处理
+    if (info.meta?.title) {
+      const title = info.meta.title
+      info.meta.title = generateTitle(title)
+    }
     const currentMenu = {
       ...info,
       ...info.meta,

@@ -1,7 +1,6 @@
 import path from 'path-browserify'
 import { RouteRecordRaw } from 'vue-router'
-// import i18n from '@/i18n'
-import useCurrentInstance from '@/utils/useCurrentInstance'
+import i18n from '@/i18n'
 import { filterRouter } from '@/utils/route'
 import { SelectItem } from './types'
 
@@ -17,7 +16,6 @@ export const generateRoutes = (
   prefixTitle: any[] = []
 ): any => {
   routes = filterRouter(routes)
-  const { proxy } = useCurrentInstance()
   // 创建 result 数据
   let res: any[] = []
   // 循环 routes 路由
@@ -37,7 +35,7 @@ export const generateRoutes = (
       !re.exec(route.path) &&
       !res.find((item) => item.path === data.path)
     ) {
-      const i18ntitle = proxy.$t(`route.${route.meta.title}`)
+      const i18ntitle = i18n.global.t(`route.${route.meta.title}`)
       data.title = [...data.title, i18ntitle]
       res.push(data)
     }

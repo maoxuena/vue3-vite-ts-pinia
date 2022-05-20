@@ -2,7 +2,7 @@ import { watch } from 'vue'
 import { useSettingStore } from '@/store/modules/setting'
 import i18n from '@/i18n/index'
 export function generateTitle(title: string) {
-  return i18n.global.t('msg.route.' + title)
+  return i18n.global.t('route.' + title)
 }
 
 /**

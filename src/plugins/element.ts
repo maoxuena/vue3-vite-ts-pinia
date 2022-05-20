@@ -1,5 +1,5 @@
-import 'element-plus/theme-chalk/base.css'
 import { App } from 'vue'
+import 'element-plus/dist/index.css'
 import {
   ElButton,
   ElTable,
@@ -9,6 +9,8 @@ import {
   ElAvatar,
   ElBacktop,
   ElBadge,
+  ElDatePicker,
+  ElPagination,
 } from 'element-plus'
 
 const components = [
@@ -20,6 +22,8 @@ const components = [
   ElAvatar,
   ElBacktop,
   ElBadge,
+  ElDatePicker,
+  ElPagination,
 ]
 
 export function setupElement(app: App): void {
