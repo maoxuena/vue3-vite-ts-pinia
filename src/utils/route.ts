@@ -47,6 +47,10 @@ export function generatorMenu(routerMap: RouteRecordRaw[]) {
       key: info.name,
       icon: isRoot ? item.meta?.icon : info.meta?.icon,
     }
+    if (currentMenu.meta?.title) {
+      const title = currentMenu.meta.title
+      currentMenu.title = generateTitle(title)
+    }
     // 是否有子菜单，并递归处理
     if (info.children && info.children.length > 0) {
       // 递归
