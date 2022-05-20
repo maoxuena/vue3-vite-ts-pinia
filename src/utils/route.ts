@@ -40,11 +40,6 @@ export function generatorMenu(routerMap: RouteRecordRaw[]) {
   return filterRouter(routerMap).map((item) => {
     const isRoot = isRootRouter(item)
     const info = isRoot ? item.children[0] : item
-    // 菜单国际化处理
-    if (info.meta?.title) {
-      const title = info.meta.title
-      info.meta.title = generateTitle(title)
-    }
     const currentMenu = {
       ...info,
       ...info.meta,
