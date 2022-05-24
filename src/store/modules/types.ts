@@ -23,3 +23,32 @@ export interface IAsyncRouteState {
   routers: any[]
   addRouters: any[]
 }
+
+// 顶部
+export interface IheaderSetting {
+  bgColor: string
+  fixed: boolean
+  isReload: boolean
+}
+
+// 多标签
+export interface ImultiTabsSetting {
+  bgColor: string
+  fixed: boolean
+  show: boolean
+}
+
+// 菜单
+export interface ImenuSetting {
+  minMenuWidth: number
+  menuWidth: number
+  fixed: boolean
+  mixMenu: boolean
+  mobileWidth: number
+}
+
+// 面包屑
+export interface IcrumbsSetting {
+  show: boolean
+  showIcon: boolean
+}

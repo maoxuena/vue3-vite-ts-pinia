@@ -1,8 +1,24 @@
 import { defineStore } from 'pinia'
 import { createStorage, storage } from '@/utils/storage'
 import setting from '@/config/setting'
+import { IcrumbsSetting, IheaderSetting, ImenuSetting, ImultiTabsSetting } from './types'
 
-const { darkTheme, appTheme, appThemeList, language } = setting
+const {
+  darkTheme,
+  appTheme,
+  appThemeList,
+  language,
+  navMode,
+  navTheme,
+  isMobile,
+  headerSetting,
+  showFooter,
+  multiTabsSetting,
+  menuSetting,
+  crumbsSetting,
+  isPageAnimate,
+  pageAnimateType,
+} = setting
 
 const Storage = createStorage({ storage: localStorage })
 interface SettingState {
@@ -14,6 +30,26 @@ interface SettingState {
   appThemeList: string[]
   // 语言
   language: string
+  // 导航模式
+  navMode: string
+  // 导航风格
+  navTheme: string
+  // 是否处于移动端模式
+  isMobile: boolean
+  // 顶部设置
+  headerSetting: IheaderSetting
+  // 页脚
+  showFooter: boolean
+  // 多标签
+  multiTabsSetting: ImultiTabsSetting
+  // 菜单
+  menuSetting: ImenuSetting
+  // 面包屑
+  crumbsSetting: IcrumbsSetting
+  // 是否开启路由动画
+  isPageAnimate: boolean
+  // 路由动画类型
+  pageAnimateType: string
 }
 
 export const useSettingStore = defineStore({
@@ -23,6 +59,16 @@ export const useSettingStore = defineStore({
     appTheme: Storage.get('APP-THEME', appTheme),
     appThemeList,
     language: Storage.get('APP-LANGUAGE', language),
+    navMode: Storage.get('APP-NAVMODE', navMode),
+    navTheme: Storage.get('APP-NAVTHEME', navTheme),
+    isMobile,
+    headerSetting: Storage.get('APP-HEADERSETTING', headerSetting),
+    showFooter: Storage.get('APP-SHOWFOOTER', showFooter),
+    multiTabsSetting: Storage.get('APP-MULTITABSSETTING', multiTabsSetting),
+    menuSetting: Storage.get('APP-MENUSETTING', menuSetting),
+    crumbsSetting: Storage.get('APP-CRUMBSSETTING', crumbsSetting),
+    isPageAnimate: Storage.get('APP-ISPAGEANIMATE', isPageAnimate),
+    pageAnimateType: Storage.get('APP-PAGEANIMATETYPE', pageAnimateType),
   }),
   getters: {
     getDarkTheme(): boolean {
@@ -33,6 +79,33 @@ export const useSettingStore = defineStore({
     },
     getAppThemeList(): string[] {
       return this.appThemeList
+    },
+    getNavMode(): string {
+      return this.navMode
+    },
+    getNavTheme(): string {
+      return this.navTheme
+    },
+    getHeaderSetting(): IheaderSetting {
+      return this.headerSetting
+    },
+    getShowFooter(): boolean {
+      return this.showFooter
+    },
+    getMultiTabsSetting(): ImultiTabsSetting {
+      return this.multiTabsSetting
+    },
+    getMenuSetting(): ImenuSetting {
+      return this.menuSetting
+    },
+    getCrumbsSetting(): string {
+      return this.navMode
+    },
+    getIsPageAnimate(): boolean {
+      return this.isPageAnimate
+    },
+    getPageAnimateType(): string {
+      return this.pageAnimateType
     },
   },
   actions: {
@@ -53,6 +126,51 @@ export const useSettingStore = defineStore({
     async setLanguage(language: string) {
       Storage.set('APP-LANGUAGE', language)
       this.language = language
+    },
+    // 更新导航模式
+    async setNavMode(navMode: string) {
+      Storage.set('APP-NAVMODE', navMode)
+      this.navMode = navMode
+    },
+    // 更新导航风格
+    async setNavTheme(navTheme: string) {
+      Storage.set('APP-NAVTHEME', navTheme)
+      this.navTheme = navTheme
+    },
+    // 更新顶部设置
+    async setHeaderSetting(headerSetting: IheaderSetting) {
+      Storage.set('APP-HEADERSETTING', headerSetting)
+      this.headerSetting = headerSetting
+    },
+    // 更新页脚设置
+    async setShowFooter(showFooter: boolean) {
+      Storage.set('APP-SHOWFOOTER', showFooter)
+      this.showFooter = showFooter
+    },
+    // 更新多标签设置
+    async setMultiTabsSetting(multiTabsSetting: ImultiTabsSetting) {
+      Storage.set('APP-MULTITABSSETTING', multiTabsSetting)
+      this.multiTabsSetting = multiTabsSetting
+    },
+    // 更新菜单设置
+    async setMenuSetting(menuSetting: ImenuSetting) {
+      Storage.set('APP-MENUSETTING', menuSetting)
+      this.menuSetting = menuSetting
+    },
+    // 更新面包屑设置
+    async setCrumbsSetting(crumbsSetting: IcrumbsSetting) {
+      Storage.set('APP-CRUMBSSETTING', crumbsSetting)
+      this.crumbsSetting = crumbsSetting
+    },
+    // 更新路由动画设置
+    async setIsPageAnimate(isPageAnimate: boolean) {
+      Storage.set('APP-ISPAGEANIMATE', isPageAnimate)
+      this.isPageAnimate = isPageAnimate
+    },
+    // 更新路由动画类型
+    async setPageAnimateType(pageAnimateType: string) {
+      Storage.set('APP-PAGEANIMATETYPE', pageAnimateType)
+      this.pageAnimateType = pageAnimateType
     },
   },
 })
