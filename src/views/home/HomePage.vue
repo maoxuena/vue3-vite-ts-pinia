@@ -8,12 +8,9 @@
     <br />
     <n-date-picker v-model:value="timestamp" type="date" clearable />
     <br />
-    <n-pagination
-      v-model:page="page"
-      :page-count="100"
-      size="small"
-      show-quick-jumper
-      show-size-picker />
+    <n-switch :size="settingStore.size" />
+    <br />
+    <n-pagination v-model:page="page" :page-count="100" show-quick-jumper show-size-picker />
     <br />
     <br />
     <h4>Element plus国际化测试</h4>
@@ -32,6 +29,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import useCurrentInstance from '@/hooks/useCurrentInstance'
+import { useSettingStore } from '@/store/modules/setting'
+// 系统配置
+const settingStore = useSettingStore()
+
 const { proxy } = useCurrentInstance()
 const label = proxy.$t('test.text')
 const timestamp = ref(1183135260000)

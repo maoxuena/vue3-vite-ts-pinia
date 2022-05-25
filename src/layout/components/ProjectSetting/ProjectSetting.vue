@@ -175,7 +175,16 @@
             @update:value="handleChangeTabsShow" />
         </div>
       </div>
-      <n-divider title-placement="center">动画</n-divider>
+      <div class="setting-item flex-container sb-c">
+        <div class="setting-item-title">尺寸</div>
+        <div class="setting-item-action">
+          <n-select
+            v-model:value="settingStore.size"
+            :options="sizeOptions"
+            @update:value="handleChangeSize" />
+        </div>
+      </div>
+      <n-divider title-placement="center">动画配置</n-divider>
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">禁用动画</div>
         <div class="setting-item-action">
@@ -203,14 +212,15 @@ import { darkTheme } from 'naive-ui'
 import { useSettingStore } from '@/store/modules/setting'
 import { updateRoot } from '@/utils/theme'
 import { animates as animateOptions } from '@/config/animateSetting'
+import { size as sizeOptions } from '@/config/sizeSetting'
 
 // 接收父组件参数（采用ts专有声明，有默认值）
 interface ParentProps {
-  width?: number
+  width?: number | string
   title?: string
 }
 const props = withDefaults(defineProps<ParentProps>(), {
-  width: 280,
+  width: '2.8rem',
   title: '项目配置',
 })
 
@@ -282,6 +292,11 @@ const handleChangeCrumbsIconShow = async (value: boolean): Promise<void> => {
 const handleChangeTabsShow = async (value: boolean): Promise<void> => {
   const multiTabsSetting = { ...settingStore.multiTabsSetting, show: value }
   await settingStore.setMultiTabsSetting(multiTabsSetting)
+}
+
+// 尺寸
+const handleChangeSize = async (value: string): Promise<void> => {
+  await settingStore.setSize(value)
 }
 
 // 动画

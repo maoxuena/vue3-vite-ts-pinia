@@ -5,7 +5,7 @@
 .setting-item {
   padding: 0.04rem 0;
   .setting-item-title {
-    width: 0.8rem;
+    width: 1.6rem;
   }
   .setting-item-action {
     :deep(.n-color-picker) {
@@ -23,9 +23,9 @@
       }
     }
   }
-  .setting-item-style{
+  .setting-item-style {
     text-align: center;
-    .setting-item-style-img{
+    .setting-item-style-img {
       display: block;
       cursor: pointer;
     }

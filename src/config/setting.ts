@@ -79,6 +79,8 @@ const setting = {
     // 显示图标
     showIcon: false,
   },
+  // 尺寸
+  size: 'medium',
   // 是否开启路由动画
   isPageAnimate: true,
   // 路由动画类型

@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { createStorage, storage } from '@/utils/storage'
 import setting from '@/config/setting'
 import { IcrumbsSetting, IheaderSetting, ImenuSetting, ImultiTabsSetting } from './types'
+import { size as sizeMap } from '@/config/sizeSetting'
 
 const {
   darkTheme,
@@ -16,6 +17,7 @@ const {
   multiTabsSetting,
   menuSetting,
   crumbsSetting,
+  size,
   isPageAnimate,
   pageAnimateType,
 } = setting
@@ -46,6 +48,8 @@ interface SettingState {
   menuSetting: ImenuSetting
   // 面包屑
   crumbsSetting: IcrumbsSetting
+  // 尺寸
+  size: string
   // 是否开启路由动画
   isPageAnimate: boolean
   // 路由动画类型
@@ -67,6 +71,7 @@ export const useSettingStore = defineStore({
     multiTabsSetting: Storage.get('APP-MULTITABSSETTING', multiTabsSetting),
     menuSetting: Storage.get('APP-MENUSETTING', menuSetting),
     crumbsSetting: Storage.get('APP-CRUMBSSETTING', crumbsSetting),
+    size: Storage.get('APP-SIZE', size),
     isPageAnimate: Storage.get('APP-ISPAGEANIMATE', isPageAnimate),
     pageAnimateType: Storage.get('APP-PAGEANIMATETYPE', pageAnimateType),
   }),
@@ -100,6 +105,9 @@ export const useSettingStore = defineStore({
     },
     getCrumbsSetting(): string {
       return this.navMode
+    },
+    getSize(): string {
+      return this.size
     },
     getIsPageAnimate(): boolean {
       return this.isPageAnimate
@@ -161,6 +169,13 @@ export const useSettingStore = defineStore({
     async setCrumbsSetting(crumbsSetting: IcrumbsSetting) {
       Storage.set('APP-CRUMBSSETTING', crumbsSetting)
       this.crumbsSetting = crumbsSetting
+    },
+    // 更新尺寸
+    async setSize(size: string) {
+      Storage.set('APP-SIZE', size)
+      this.size = size
+      const temp = sizeMap.filter((item) => item.value === size)
+      document.documentElement.style.setProperty('font-size', temp[0]?.size ?? '100px')
     },
     // 更新路由动画设置
     async setIsPageAnimate(isPageAnimate: boolean) {
