@@ -15,38 +15,38 @@ import { constantRouterIcon } from '@/plugins/naive-icon'
  * @param meta.affix 多页签固定
  * @param meta.alwaysShow 是否总是显示
  * */
-const mapRouter: Array<RouteRecordRaw> = [
+const screenRouter: Array<RouteRecordRaw> = [
   {
-    path: '/map',
-    name: 'Map',
+    path: '/screen',
+    name: 'Screen',
     meta: {
-      title: 'map',
-      icon: constantRouterIcon.Map,
+      title: 'screen',
+      icon: constantRouterIcon.Screen,
       sort: 2,
     },
-    redirect: '/map/amap/index',
+    redirect: '/screen/screenA/index',
     component: Layout,
     children: [
       {
-        path: 'amap/index',
-        name: 'AMapPage',
+        path: 'screenA/index',
+        name: 'ScreenAPage',
         meta: {
-          title: 'amap',
+          title: 'screenA',
           sort: 0,
         },
-        component: () => import('@/views/map/AMap/AMapPage.vue'),
+        component: () => import('@/views/screen/ScreenA/ScreenAPage.vue'),
       },
       {
-        path: 'bmap/index',
-        name: 'BMapPage',
+        path: 'screenB/index',
+        name: 'ScreenBPage',
         meta: {
-          title: 'bmap',
+          title: 'screenB',
           sort: 1,
         },
-        component: () => import('@/views/map/BMap/BMapPage.vue'),
+        component: () => import('@/views/screen/ScreenB/ScreenBPage.vue'),
       },
     ],
   },
 ]
 
-export default mapRouter
+export default screenRouter

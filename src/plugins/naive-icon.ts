@@ -1,5 +1,10 @@
 import { App } from 'vue'
-import { ExclamationCircleFilled, FullscreenOutlined, FullscreenExitOutlined } from '@vicons/antd'
+import {
+  ExclamationCircleFilled,
+  FullscreenOutlined,
+  FullscreenExitOutlined,
+  FundProjectionScreenOutlined,
+} from '@vicons/antd'
 import {
   Home,
   LogoWebComponent,
@@ -21,9 +26,15 @@ export const constantRouterIcon = {
   LogoWebComponent: renderIcon(LogoWebComponent),
   LogOutOutline: renderIcon(LogOutOutline),
   Map: renderIcon(Map),
+  Screen: renderIcon(FundProjectionScreenOutlined),
 }
 
-const antdIcon = [ExclamationCircleFilled, FullscreenOutlined, FullscreenExitOutlined]
+const antdIcon = [
+  ExclamationCircleFilled,
+  FullscreenOutlined,
+  FullscreenExitOutlined,
+  FundProjectionScreenOutlined,
+]
 const ionicons5Icon = [
   Home,
   LogoWebComponent,
