@@ -4,6 +4,7 @@
       <n-button type="primary" @click="showDrawer('style')"> 主题 </n-button>
       <n-button type="primary" @click="drawPoint"> 绘制点 </n-button>
       <n-button type="primary" @click="drawPolygon"> 绘制区域 </n-button>
+      <n-button type="primary" @click="drawYinzhou"> 鄞州 </n-button>
       <n-button type="primary"> 点聚合 </n-button>
       <n-button type="primary"> 运动路径 </n-button>
     </n-space>
@@ -26,6 +27,7 @@ import AMap from 'AMap' // 引入高德地图
 import { onMounted, reactive, ref } from 'vue'
 import { pointList } from './options/point'
 import { polygonList } from './options/polygon'
+import { yinzhou } from './options/yinzhou'
 
 // 地图主题样式
 import { styleList } from './options/style'
@@ -167,6 +169,53 @@ const drawPolygon = (): void => {
     map.add(polygon)
     map.add(marker)
   })
+}
+
+/**
+ * 鄞州
+ */
+const drawYinzhou = (): void => {
+  const map = state.map
+  const data = yinzhou
+  const polygons = []
+  const lable = []
+
+  for (const i in data.features) {
+    const lines = data.features[i].geometry.coordinates
+    for (const j in lines) {
+      const line = lines[j]
+      // gps：GPS 坐标转为高德坐标；mapbar：图吧坐标转为高德坐标；baidu：百度坐标转为高德坐标；
+      AMap.convertFrom(line, 'gps', function (status, result) {
+        if (result.info === 'ok') {
+          const poly = new AMap.Polygon({
+            path: result.locations,
+            strokeColor: '#0288d1',
+            strokeWeight: 2,
+            strokeOpacity: 0.7,
+            fillOpacity: 0.2,
+            fillColor: '#1791fc',
+            zIndex: 50,
+          })
+          map.add(poly)
+          map.setFitView(poly)
+        }
+      })
+
+      // 添加自定义点标记
+      const marker = new AMap.Marker({
+        map: map,
+        position: lines[0][2], //基点位置
+        offset: new AMap.Pixel(-17, -17), //相对于基点的偏移位置
+        draggable: false, //是否可拖动
+        icon: new AMap.Icon({
+          image: '',
+        }),
+        content: '<div class="custom-content-label">' + data.features[i].properties.name + '</div>', //自定义点标记覆盖物内容
+      })
+      lable.push(marker)
+    }
+    map.add(lable)
+  }
 }
 
 onMounted(() => {
