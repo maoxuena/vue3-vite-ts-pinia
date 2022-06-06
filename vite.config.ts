@@ -3,6 +3,7 @@ import { loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import'
+import { visualizer } from 'rollup-plugin-visualizer'
 // @ts-ignore
 import viteCompression from 'vite-plugin-compression'
 import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
@@ -56,6 +57,10 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       }),
       resolveExternalsPlugin({
         AMap: 'AMap',
+      }),
+      // 打包分析
+      visualizer({
+        filename: 'dist/report.html',
       }),
     ],
     resolve: {
