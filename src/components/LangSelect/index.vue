@@ -1,3 +1,4 @@
+<!-- 语言选择 -->
 <template>
   <n-dropdown trigger="hover" :options="options" @select="handleSetLanguage">
     <n-icon class="language" size="0.24rem">
