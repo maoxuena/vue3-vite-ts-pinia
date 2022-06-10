@@ -6,7 +6,7 @@ module.exports = {
   jsxSingleQuote: true, // jsx语法中使用单引号
   bracketSameLine: true, // >（反尖括号）多行JSX元素放在最后一行的末尾，而不是单独放在下一行
   bracketSpacing: true, // 大括号内的首尾需要空格
-  printWidth: 100, // 一行的字符数，如果超过会进行换行，默认为80
+  printWidth: 140, // 一行的字符数，如果超过会进行换行，默认为80
   singleQuote: true, // 是否使用单引号，默认为false，使用双引号
   semi: false, // 结尾是否需要分号，false 仅在语法可能出现错误的时候才会添加分号，默认true
   overrides: [

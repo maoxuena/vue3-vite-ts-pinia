@@ -13,45 +13,33 @@
         </linearGradient>
       </defs>
       <!-- 背景 -->
-      <path fill-rule="evenodd" fill="url(#linear)" :d="bg" />
-      <!-- 左上三角 -->
-      <path fill-rule="evenodd" fill="rgb(0, 229, 255)" :d="triangleLT" />
-      <!-- 右上三角 -->
-      <path fill-rule="evenodd" fill="rgb(0, 229, 255)" :d="triangleRT" />
-      <!-- 边框 -->
       <path
         fill-rule="evenodd"
         stroke="rgb(0, 229, 255)"
-        stroke-width="1px"
+        stroke-width="1"
         stroke-linecap="butt"
         stroke-linejoin="miter"
-        opacity="0.2"
-        fill="none"
-        :d="border" />
+        stroke-opacity="0.2"
+        fill="url(#linear)"
+        :d="bg" />
+      <!-- 左上三角 -->
+      <path fill-rule="evenodd" stroke-width="1" stroke="rgb(0, 229, 255)" fill="rgb(0, 229, 255)" :d="triangleLT" />
+      <!-- 右上三角 -->
+      <path fill-rule="evenodd" stroke-width="1" stroke="rgb(0, 229, 255)" fill="rgb(0, 229, 255)" :d="triangleRT" />
       <!-- 上左 -->
-      <path fill-rule="evenodd" fill="rgb(0, 229, 255)" :d="headerL" />
+      <path fill-rule="evenodd" stroke-width="1" stroke="rgb(0, 229, 255)" fill="rgb(0, 229, 255)" :d="headerL" />
       <!-- 上右 -->
-      <path fill-rule="evenodd" fill="rgb(0, 229, 255)" :d="headerR" />
+      <path fill-rule="evenodd" stroke-width="1" stroke="rgb(0, 229, 255)" fill="rgb(0, 229, 255)" :d="headerR" />
       <!-- 上中 -->
-      <path fill-rule="evenodd" fill="rgb(0, 229, 255)" :d="headerC" />
+      <path fill-rule="evenodd" stroke-width="1" stroke="rgb(0, 229, 255)" fill="rgb(0, 229, 255)" :d="headerC" />
       <!-- 左侧 -->
-      <path fill-rule="evenodd" fill="rgb(0, 229, 255)" :d="sideL" />
+      <path fill-rule="evenodd" stroke-width="1" stroke="rgb(0, 229, 255)" fill="rgb(0, 229, 255)" :d="sideL" />
       <!-- 右侧 -->
-      <path fill-rule="evenodd" fill="rgb(0, 229, 255)" :d="sideR" />
+      <path fill-rule="evenodd" stroke-width="1" stroke="rgb(0, 229, 255)" fill="rgb(0, 229, 255)" :d="sideR" />
       <!-- 右下点 -->
-      <circle
-        :cx="circleRB.cx"
-        :cy="circleRB.cy"
-        :r="state.radius * state.scale"
-        stroke-width="0"
-        fill="rgb(0, 229, 255)" />
+      <circle :cx="circleRB.cx" :cy="circleRB.cy" :r="state.radius * state.scale" stroke-width="0" fill="rgb(0, 229, 255)" />
       <!-- 左下点 -->
-      <circle
-        :cx="circleLB.cx"
-        :cy="circleLB.cy"
-        :r="state.radius * state.scale"
-        stroke-width="0"
-        fill="rgb(0, 229, 255)" />
+      <circle :cx="circleLB.cx" :cy="circleLB.cy" :r="state.radius * state.scale" stroke-width="0" fill="rgb(0, 229, 255)" />
     </svg>
     <div class="svg-border-content">
       <slot></slot>
@@ -60,211 +48,145 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, reactive, ref } from 'vue'
+import { computed, nextTick, onMounted, reactive, Ref, ref } from 'vue'
 const state = reactive({
-  width: 420,
-  height: 144,
-  margin: [0.5, 0.5, 0.5, 2], // left top right bottom
+  width: 400,
+  height: 100,
+  margin: [1, 1, 2, 1], // top right bottom left
   radius: 4, // 左下、右下圆半径
-  triangle: 7, // 左上、右上三角直角边
+  triangle: 8, // 左上、右上三角直角边
   header: {
     // 上方横条尺寸
-    height: 9,
+    height: 8,
     empty: 0.3, // 两侧空 width*header.empty
-    sideLRX: 6, // 左右两侧横条左右x距离
-    sideTBX: 7, // 左右两侧横条上下x距离
+    sideLRX: 8, // 左右两侧横条左右x距离
+    sideTBX: 8, // 左右两侧横条上下x距离
   },
   side: {
     // 侧边竖条尺寸
     width: 5,
-    height: 53,
-    top: 49,
+    height: 0.3,
+    top: 0.3,
   },
   scale: 1,
 })
-const svgBorder = ref(null)
+const svgBorder: Ref<HTMLElement | null> = ref(null)
 
 const left = computed(() => {
-  return state.margin[0]
+  return state.margin[3] * state.scale
 })
 const top = computed(() => {
-  return state.margin[1]
+  return state.margin[0] * state.scale
 })
 const right = computed(() => {
-  return state.width - state.margin[2]
+  return state.width - state.margin[1] * state.scale
 })
 const bottom = computed(() => {
-  return state.height - state.margin[3]
+  return state.height - state.margin[2] * state.scale
 })
 
+// 背景
 const bg = computed(() => {
-  return `M${left.value},${top.value}               
-          L${state.width * state.header.empty * state.scale},${top.value} 
-          L${state.width * state.header.empty * state.scale + state.header.height * state.scale}, ${
-    top.value + state.header.height * state.scale
-  } 
-          L${
-            state.width * (1 - state.header.empty * state.scale) - state.header.height * state.scale
-          }, ${top.value + state.header.height * state.scale} 
-          L${state.width * (1 - state.header.empty * state.scale)},${top.value} 
-          L${right.value},${top.value} 
+  const empty = 3
+  return `M${left.value},${top.value + (state.triangle + empty) * state.scale}
+          L${left.value + (state.triangle + empty) * state.scale},${top.value}
+          L${state.width * state.header.empty},${top.value} 
+          L${state.width * state.header.empty + state.header.height * state.scale}, ${top.value + state.header.height * state.scale} 
+          L${state.width * (1 - state.header.empty) - state.header.height * state.scale}, ${top.value + state.header.height * state.scale} 
+          L${state.width * (1 - state.header.empty)},${top.value} 
+          L${right.value - (state.triangle + empty) * state.scale},${top.value}
+          L${right.value},${top.value + (state.triangle + empty) * state.scale} 
           L${right.value},${bottom.value} 
           L${left.value},${bottom.value} 
           L${left.value},${top.value} Z`
 })
 
-const border = computed(() => {
-  const lineStart = 0.16
-  const emptyStart = 0.14
-  const triangleEmpty = 4
-  return `M${state.width * lineStart * state.scale},${top.value}
-          L${state.width * state.header.empty * state.scale},${top.value} 
-          L${state.width * state.header.empty * state.scale + state.header.sideLRX * state.scale},${
-    state.header.height * state.scale - top.value
-  } 
-          L${
-            state.width * (1 - state.header.empty * state.scale) -
-            state.header.sideLRX * state.scale
-          },${state.header.height * state.scale - top.value} 
-          L${state.width * (1 - state.header.empty * state.scale)},${top.value} 
-          L${state.width * (1 - lineStart * state.scale)},${top.value}
-          M${state.width * (1 - emptyStart * state.scale)},${top.value}
-          L${right.value - state.triangle * state.scale - triangleEmpty * state.scale},${top.value} 
-          L${right.value},${top.value + state.triangle * state.scale + triangleEmpty * state.scale} 
-          L${right.value},${bottom.value} 
-          L${left.value},${bottom.value} 
-          L${left.value},${top.value + state.triangle * state.scale + triangleEmpty * state.scale}
-          L${left.value + state.triangle * state.scale + triangleEmpty * state.scale},${top.value}
-          L${state.width * emptyStart * state.scale},${top.value}`
-})
-
+// 顶部
 const headerL = computed(() => {
-  return `M${state.width * state.header.empty * state.scale},${top.value}
-          L${state.width * state.header.empty * state.scale + state.header.sideLRX * state.scale},${
-    top.value
-  } 
-          L${
-            state.width * state.header.empty * state.scale +
-            state.header.sideTBX * state.scale +
-            state.header.sideLRX * state.scale
-          },${top.value + state.header.height * state.scale} 
-          L${state.width * state.header.empty * state.scale + state.header.sideTBX * state.scale},${
+  return `M${state.width * state.header.empty},${top.value}
+          L${state.width * state.header.empty + state.header.sideLRX * state.scale},${top.value} 
+          L${state.width * state.header.empty + state.header.sideTBX * state.scale + state.header.sideLRX * state.scale},${
     top.value + state.header.height * state.scale
   } 
-          L${state.width * state.header.empty * state.scale},${top.value} Z`
+          L${state.width * state.header.empty + state.header.sideTBX * state.scale},${top.value + state.header.height * state.scale} 
+          L${state.width * state.header.empty},${top.value} Z`
 })
-
 const headerR = computed(() => {
-  return `M${state.width * (1 - state.header.empty * state.scale)},${top.value}
-          L${
-            state.width * (1 - state.header.empty * state.scale) -
-            state.header.sideLRX * state.scale
-          },${top.value} 
-          L${
-            state.width * (1 - state.header.empty * state.scale) -
-            state.header.sideTBX * state.scale -
-            state.header.sideLRX * state.scale
-          },${top.value + state.header.height * state.scale} 
-          L${
-            state.width * (1 - state.header.empty * state.scale) -
-            state.header.sideTBX * state.scale
-          },${top.value + state.header.height * state.scale} 
-          L${state.width * (1 - state.header.empty * state.scale)},${top.value} Z`
+  return `M${state.width * (1 - state.header.empty)},${top.value}
+          L${state.width * (1 - state.header.empty) - state.header.sideLRX * state.scale},${top.value} 
+          L${state.width * (1 - state.header.empty) - state.header.sideTBX * state.scale - state.header.sideLRX * state.scale},${
+    top.value + state.header.height * state.scale
+  } 
+          L${state.width * (1 - state.header.empty) - state.header.sideTBX * state.scale},${top.value + state.header.height * state.scale} 
+          L${state.width * (1 - state.header.empty)},${top.value} Z`
 })
-
 const headerC = computed(() => {
-  return `M${
-    state.width * state.header.empty * state.scale + state.header.sideLRX * state.scale * 2
-  },${top.value}
-        L${
-          state.width * (1 - state.header.empty * state.scale) -
-          state.header.sideLRX * state.scale * 2
-        },${top.value} 
-        L${
-          state.width * (1 - state.header.empty * state.scale) -
-          state.header.sideLRX * state.scale * 2 -
-          state.header.sideTBX * state.scale
-        },${state.header.height * state.scale - top.value} 
-        L${
-          state.width * state.header.empty * state.scale +
-          state.header.sideLRX * state.scale * 2 +
-          state.header.sideTBX * state.scale
-        },${state.header.height * state.scale - top.value} 
-        L${
-          state.width * state.header.empty * state.scale + state.header.sideLRX * state.scale * 2
-        },${top.value} Z`
+  return `M${state.width * state.header.empty + state.header.sideLRX * state.scale * 2},${top.value}
+        L${state.width * (1 - state.header.empty) - state.header.sideLRX * state.scale * 2},${top.value} 
+        L${state.width * (1 - state.header.empty) - state.header.sideLRX * state.scale * 2 - state.header.sideTBX * state.scale},${
+    top.value + state.header.height * state.scale
+  } 
+        L${state.width * state.header.empty + state.header.sideLRX * state.scale * 2 + state.header.sideTBX * state.scale},${
+    top.value + state.header.height * state.scale
+  } 
+        L${state.width * state.header.empty + state.header.sideLRX * state.scale * 2},${top.value} Z`
 })
-
+// 左右两侧竖条
 const sideL = computed(() => {
-  return `M${left.value},${top.value + state.side.top * state.scale} 
+  return `M${left.value},${top.value + state.height * state.side.top} 
+          L${left.value + state.side.width * state.scale},${top.value + state.height * state.side.top + state.side.width * state.scale} 
           L${left.value + state.side.width * state.scale},${
-    top.value + state.side.top * state.scale + state.side.width * state.scale
+    top.value + state.height * (state.side.top + state.side.height) + state.side.width * state.scale
   } 
-          L${left.value + state.side.width * state.scale},${
-    top.value +
-    state.side.top * state.scale +
-    state.side.width * state.scale +
-    state.side.height * state.scale
-  } 
-          L${left.value},${
-    top.value + state.side.top * state.scale + state.side.height * state.scale
-  } 
-          L${left.value},${top.value + state.side.top * state.scale} Z`
+          L${left.value},${top.value + state.height * (state.side.top + state.side.height)} 
+          L${left.value},${top.value + state.height * state.side.top} Z`
 })
-
 const sideR = computed(() => {
-  return `M${right.value - 1},${top.value + state.side.top * state.scale} 
-          L${right.value - state.side.width * state.scale - 1},${
-    top.value + state.side.top * state.scale + state.side.width * state.scale
+  return `M${right.value},${top.value + state.height * state.side.top} 
+          L${right.value - state.side.width * state.scale},${top.value + state.height * state.side.top + state.side.width * state.scale}
+          L${right.value - state.side.width * state.scale},${
+    top.value + state.height * (state.side.top + state.side.height) + state.side.width * state.scale
   } 
-          L${right.value - state.side.width * state.scale - 1},${
-    top.value +
-    state.side.top * state.scale +
-    state.side.width * state.scale +
-    state.side.height * state.scale
-  } 
-          L${right.value - 1},${
-    top.value + state.side.top * state.scale + state.side.height * state.scale
-  } 
-          L${right.value - 1},${top.value + state.side.top * state.scale} Z`
+          L${right.value},${top.value + state.height * (state.side.top + state.side.height)}
+          L${right.value},${top.value + state.height * state.side.top} Z`
 })
-
+// 圆
 const circleLB = computed(() => {
   return {
     cx: state.radius * state.scale,
     cy: state.height - state.radius * state.scale,
   }
 })
-
 const circleRB = computed(() => {
   return {
     cx: state.width - state.radius * state.scale,
     cy: state.height - state.radius * state.scale,
   }
 })
-
+// 三角形
 const triangleLT = computed(() => {
-  return `M${left.value},${top.value + state.triangle * state.scale} L${left.value},${top.value} L${
-    left.value + state.triangle * state.scale
-  },${top.value}`
+  return `M${left.value},${top.value + state.triangle * state.scale} 
+          L${left.value},${top.value} 
+          L${left.value + state.triangle * state.scale},${top.value}`
 })
-
 const triangleRT = computed(() => {
-  return `M${right.value},${top.value + state.triangle * state.scale} L${right.value},${
-    top.value
-  } L${right.value - state.triangle * state.scale},${top.value}`
+  return `M${right.value},${top.value + state.triangle * state.scale} 
+          L${right.value},${top.value}
+          L${right.value - state.triangle * state.scale},${top.value}`
 })
 
-const computedHeight = (width: Number, height: Number): void => {
+const computedHeight = (width: number, height: number): void => {
   state.scale = state.width / width
   state.height = height * state.scale
 }
 
 onMounted(() => {
   nextTick(() => {
-    const width = svgBorder.value.offsetWidth
-    const height = svgBorder.value.offsetHeight
-    computedHeight(width, height)
+    if (svgBorder.value) {
+      const width = svgBorder.value.offsetWidth
+      const height = svgBorder.value.offsetHeight
+      computedHeight(width, height)
+    }
   })
 })
 </script>

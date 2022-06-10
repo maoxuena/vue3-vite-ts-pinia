@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div style="width: 400px; height: 200px">
-      <svg-border>111</svg-border>
+    <div style="width: 300px; height: 200px">
+      <svg-border>内容</svg-border>
     </div>
   </div>
 </template>
