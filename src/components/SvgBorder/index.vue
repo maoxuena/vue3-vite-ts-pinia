@@ -85,15 +85,45 @@ const bottom = computed(() => {
   return state.height - state.margin[2] * state.scale
 })
 
+// 顶部左侧横条最左侧点x坐标（即顶部左右两侧的空余宽度）
+const topEmptyWidth = computed(() => {
+  return state.width * state.header.empty
+})
+
+// 顶部左右两侧横条宽度
+const topLRWidth = computed(() => {
+  return state.header.sideLRX * state.scale
+})
+
+// 顶部左右两侧横条高度
+const topLRHeight = computed(() => {
+  return state.header.sideTBX * state.scale
+})
+
+// 顶部横条高度
+const topLineHeight = computed(() => {
+  return state.header.height * state.scale
+})
+
+// 两侧竖条顶部最高点距离顶部的距离（即Y坐标值）
+const sidesTopY = computed(() => {
+  return top.value + state.height * state.side.top
+})
+
+// 两侧竖条底部最高点距离顶部的距离（即Y坐标值）
+const sidesBottomY = computed(() => {
+  return top.value + state.height * (state.side.top + state.side.height)
+})
+
 // 背景
 const bg = computed(() => {
   const empty = 3
   return `M${left.value},${top.value + (state.triangle + empty) * state.scale}
           L${left.value + (state.triangle + empty) * state.scale},${top.value}
-          L${state.width * state.header.empty},${top.value} 
-          L${state.width * state.header.empty + state.header.height * state.scale}, ${top.value + state.header.height * state.scale} 
-          L${state.width * (1 - state.header.empty) - state.header.height * state.scale}, ${top.value + state.header.height * state.scale} 
-          L${state.width * (1 - state.header.empty)},${top.value} 
+          L${topEmptyWidth.value},${top.value} 
+          L${topEmptyWidth.value + topLineHeight.value}, ${top.value + topLineHeight.value} 
+          L${state.width - topEmptyWidth.value - topLineHeight.value}, ${top.value + topLineHeight.value} 
+          L${state.width - topEmptyWidth.value},${top.value} 
           L${right.value - (state.triangle + empty) * state.scale},${top.value}
           L${right.value},${top.value + (state.triangle + empty) * state.scale} 
           L${right.value},${bottom.value} 
@@ -103,52 +133,40 @@ const bg = computed(() => {
 
 // 顶部
 const headerL = computed(() => {
-  return `M${state.width * state.header.empty},${top.value}
-          L${state.width * state.header.empty + state.header.sideLRX * state.scale},${top.value} 
-          L${state.width * state.header.empty + state.header.sideTBX * state.scale + state.header.sideLRX * state.scale},${
-    top.value + state.header.height * state.scale
-  } 
-          L${state.width * state.header.empty + state.header.sideTBX * state.scale},${top.value + state.header.height * state.scale} 
-          L${state.width * state.header.empty},${top.value} Z`
+  return `M${topEmptyWidth.value},${top.value}
+          L${topEmptyWidth.value + topLRWidth.value},${top.value} 
+          L${topEmptyWidth.value + topLRHeight.value + topLRWidth.value},${top.value + topLineHeight.value} 
+          L${topEmptyWidth.value + topLRHeight.value},${top.value + topLineHeight.value} 
+          L${topEmptyWidth.value},${top.value} Z`
 })
 const headerR = computed(() => {
-  return `M${state.width * (1 - state.header.empty)},${top.value}
-          L${state.width * (1 - state.header.empty) - state.header.sideLRX * state.scale},${top.value} 
-          L${state.width * (1 - state.header.empty) - state.header.sideTBX * state.scale - state.header.sideLRX * state.scale},${
-    top.value + state.header.height * state.scale
-  } 
-          L${state.width * (1 - state.header.empty) - state.header.sideTBX * state.scale},${top.value + state.header.height * state.scale} 
-          L${state.width * (1 - state.header.empty)},${top.value} Z`
+  return `M${state.width - topEmptyWidth.value},${top.value}
+          L${state.width - topEmptyWidth.value - topLRWidth.value},${top.value} 
+          L${state.width - topEmptyWidth.value - topLRHeight.value - topLRWidth.value},${top.value + topLineHeight.value} 
+          L${state.width - topEmptyWidth.value - topLRHeight.value},${top.value + topLineHeight.value} 
+          L${state.width - topEmptyWidth.value},${top.value} Z`
 })
 const headerC = computed(() => {
-  return `M${state.width * state.header.empty + state.header.sideLRX * state.scale * 2},${top.value}
-        L${state.width * (1 - state.header.empty) - state.header.sideLRX * state.scale * 2},${top.value} 
-        L${state.width * (1 - state.header.empty) - state.header.sideLRX * state.scale * 2 - state.header.sideTBX * state.scale},${
-    top.value + state.header.height * state.scale
-  } 
-        L${state.width * state.header.empty + state.header.sideLRX * state.scale * 2 + state.header.sideTBX * state.scale},${
-    top.value + state.header.height * state.scale
-  } 
-        L${state.width * state.header.empty + state.header.sideLRX * state.scale * 2},${top.value} Z`
+  return `M${topEmptyWidth.value + topLRWidth.value * 2},${top.value}
+          L${state.width - topEmptyWidth.value - topLRWidth.value * 2},${top.value} 
+          L${state.width - topEmptyWidth.value - topLRWidth.value * 2 - topLRHeight.value},${top.value + topLineHeight.value} 
+          L${topEmptyWidth.value + topLRWidth.value * 2 + topLRHeight.value},${top.value + topLineHeight.value} 
+          L${topEmptyWidth.value + topLRWidth.value * 2},${top.value} Z`
 })
 // 左右两侧竖条
 const sideL = computed(() => {
-  return `M${left.value},${top.value + state.height * state.side.top} 
-          L${left.value + state.side.width * state.scale},${top.value + state.height * state.side.top + state.side.width * state.scale} 
-          L${left.value + state.side.width * state.scale},${
-    top.value + state.height * (state.side.top + state.side.height) + state.side.width * state.scale
-  } 
-          L${left.value},${top.value + state.height * (state.side.top + state.side.height)} 
-          L${left.value},${top.value + state.height * state.side.top} Z`
+  return `M${left.value},${sidesTopY.value} 
+          L${left.value + state.side.width * state.scale},${sidesTopY.value + state.side.width * state.scale} 
+          L${left.value + state.side.width * state.scale},${sidesBottomY.value + state.side.width * state.scale} 
+          L${left.value},${sidesBottomY.value} 
+          L${left.value},${sidesTopY.value} Z`
 })
 const sideR = computed(() => {
-  return `M${right.value},${top.value + state.height * state.side.top} 
-          L${right.value - state.side.width * state.scale},${top.value + state.height * state.side.top + state.side.width * state.scale}
-          L${right.value - state.side.width * state.scale},${
-    top.value + state.height * (state.side.top + state.side.height) + state.side.width * state.scale
-  } 
-          L${right.value},${top.value + state.height * (state.side.top + state.side.height)}
-          L${right.value},${top.value + state.height * state.side.top} Z`
+  return `M${right.value},${sidesTopY.value} 
+          L${right.value - state.side.width * state.scale},${sidesTopY.value + state.side.width * state.scale}
+          L${right.value - state.side.width * state.scale},${sidesBottomY.value + state.side.width * state.scale} 
+          L${right.value},${sidesBottomY.value}
+          L${right.value},${sidesTopY.value} Z`
 })
 // 圆
 const circleLB = computed(() => {
