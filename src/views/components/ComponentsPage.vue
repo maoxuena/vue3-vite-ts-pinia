@@ -3,6 +3,9 @@
     <div style="width: 300px; height: 200px">
       <svg-border>内容</svg-border>
     </div>
+    <div style="width: 200px; height: 100px">
+      <svg-border :type="2">内容</svg-border>
+    </div>
   </div>
 </template>
 
