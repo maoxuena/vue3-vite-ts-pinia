@@ -54,6 +54,8 @@ interface SettingState {
   isPageAnimate: boolean
   // 路由动画类型
   pageAnimateType: string
+  // 左侧菜单收缩状态
+  collapsed: boolean
 }
 
 export const useSettingStore = defineStore({
@@ -74,6 +76,7 @@ export const useSettingStore = defineStore({
     size: Storage.get('APP-SIZE', size),
     isPageAnimate: Storage.get('APP-ISPAGEANIMATE', isPageAnimate),
     pageAnimateType: Storage.get('APP-PAGEANIMATETYPE', pageAnimateType),
+    collapsed: Storage.get('APP-COLLAPSED', false),
   }),
   getters: {
     getDarkTheme(): boolean {
@@ -114,6 +117,9 @@ export const useSettingStore = defineStore({
     },
     getPageAnimateType(): string {
       return this.pageAnimateType
+    },
+    getCollapsed(): boolean {
+      return this.collapsed
     },
   },
   actions: {
@@ -186,6 +192,11 @@ export const useSettingStore = defineStore({
     async setPageAnimateType(pageAnimateType: string) {
       Storage.set('APP-PAGEANIMATETYPE', pageAnimateType)
       this.pageAnimateType = pageAnimateType
+    },
+    // 更新左侧菜单收缩状态
+    async setCollapsed(collapsed: boolean) {
+      Storage.set('APP-COLLAPSED', collapsed)
+      this.collapsed = collapsed
     },
   },
 })

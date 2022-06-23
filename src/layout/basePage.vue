@@ -4,10 +4,10 @@
       bordered
       show-trigger
       collapse-mode="width"
-      :collapsed="collapsed"
-      @collapse="collapsed = true"
-      @expand="collapsed = false">
-      <AsideLogo :collapsed="collapsed"></AsideLogo>
+      :collapsed="settingStore.collapsed"
+      @collapse="handleChangeCollapsed(true)"
+      @expand="handleChangeCollapsed(false)">
+      <AsideLogo :collapsed="settingStore.collapsed"></AsideLogo>
       <AsideMenu></AsideMenu>
     </n-layout-sider>
     <n-layout>
@@ -31,13 +31,19 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useSettingStore } from '@/store/modules/setting'
 import AsideLogo from './components/AsideLogo/AsideLogo.vue'
 import AsideMenu from './components/AsideMenu/AsideMenu.vue'
 import PageHeader from './components/PageHeader/PageHeader.vue'
 import ProjectSetting from './components/ProjectSetting/ProjectSetting.vue'
 
+// 系统配置
+const settingStore = useSettingStore()
+
 // 菜单是否折叠
-const collapsed = ref<Boolean>(false)
+const handleChangeCollapsed = async (value: boolean): Promise<void> => {
+  await settingStore.setCollapsed(value)
+}
 
 // 配置抽屉
 const drawerSetting = ref(null)
