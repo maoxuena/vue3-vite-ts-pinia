@@ -2,6 +2,10 @@ const zh = {
   route: {
     home: '首页',
     components: '组件',
+    naiveui: 'Naive UI',
+    modalcomp: '模态框（Modal）',
+    snowui: 'Snow UI',
+    svgborder: 'SVG 边框',
     map: '地图',
     amap: '高德地图',
     bmap: '百度地图',

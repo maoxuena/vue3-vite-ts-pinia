@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import SvgBorder from '@/components/SvgBorder/index.vue'
+import SvgBorder from './index.vue'
 </script>
 
 <style scoped></style>

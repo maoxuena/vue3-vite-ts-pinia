@@ -2,6 +2,10 @@ const en = {
   route: {
     home: 'home',
     components: 'components',
+    naiveui: 'Naive UI',
+    modalcomp: 'Modal',
+    snowui: 'Snow UI',
+    svgborder: 'SVG 边框',
     map: 'map',
     amap: 'aMap',
     bmap: 'bMap',

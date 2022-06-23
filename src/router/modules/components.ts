@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
-import { Layout } from '@/router/constant'
+import { Layout, EmptyLayout } from '@/router/constant'
 import { constantRouterIcon } from '@/plugins/naive-icon'
 
 /**
@@ -28,13 +28,46 @@ const componentsRouter: Array<RouteRecordRaw> = [
     component: Layout,
     children: [
       {
-        path: 'index',
-        name: 'ComponentsPage',
+        path: 'naiveui',
+        name: 'NaiveUi',
         meta: {
-          title: 'components',
+          title: 'naiveui',
           sort: 0,
+          alwaysShow: true,
         },
-        component: () => import('@/views/components/ComponentsPage.vue'),
+        component: EmptyLayout,
+        children: [
+          {
+            path: 'modalcomp',
+            name: 'ModalComp',
+            meta: {
+              title: 'modalcomp',
+              sort: 0,
+            },
+            component: () => import('@/views/components/NaiveUi/ModalComp/ModalCompPage.vue'),
+          },
+        ],
+      },
+      {
+        path: 'snowui',
+        name: 'SnowUi',
+        meta: {
+          title: 'snowui',
+          sort: 0,
+          alwaysShow: true,
+        },
+        component: EmptyLayout,
+        children: [
+          {
+            path: 'svgborder',
+            name: 'SvgBorder',
+            meta: {
+              title: 'svgborder',
+              sort: 0,
+            },
+            component: () => import('@/views/components/SnowUi/SvgBorder/SvgBorderPage.vue'),
+          },
+        ],
       },
     ],
   },
