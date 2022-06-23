@@ -1,10 +1,5 @@
 import { App } from 'vue'
-import {
-  ExclamationCircleFilled,
-  FullscreenOutlined,
-  FullscreenExitOutlined,
-  FundProjectionScreenOutlined,
-} from '@vicons/antd'
+import { ExclamationCircleFilled, FullscreenOutlined, FullscreenExitOutlined, FundProjectionScreenOutlined } from '@vicons/antd'
 import {
   Home,
   LogoWebComponent,
@@ -29,24 +24,8 @@ export const constantRouterIcon = {
   Screen: renderIcon(FundProjectionScreenOutlined),
 }
 
-const antdIcon = [
-  ExclamationCircleFilled,
-  FullscreenOutlined,
-  FullscreenExitOutlined,
-  FundProjectionScreenOutlined,
-]
-const ionicons5Icon = [
-  Home,
-  LogoWebComponent,
-  LogOutOutline,
-  PersonCircleOutline,
-  SettingsOutline,
-  Moon,
-  SunnySharp,
-  Map,
-  Language,
-  Search,
-]
+const antdIcon = [ExclamationCircleFilled, FullscreenOutlined, FullscreenExitOutlined, FundProjectionScreenOutlined]
+const ionicons5Icon = [Home, LogoWebComponent, LogOutOutline, PersonCircleOutline, SettingsOutline, Moon, SunnySharp, Map, Language, Search]
 const components = [...antdIcon, ...ionicons5Icon]
 
 export function setupNaiveIcon(app: App): void {

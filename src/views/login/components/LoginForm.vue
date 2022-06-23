@@ -4,12 +4,7 @@
       <n-input v-model:value="loginForm.username" placeholder="请输入账号" clearable />
     </n-form-item>
     <n-form-item path="password">
-      <n-input
-        v-model:value="loginForm.password"
-        placeholder="请输入密码"
-        type="password"
-        show-password-on="click"
-        clearable />
+      <n-input v-model:value="loginForm.password" placeholder="请输入密码" type="password" show-password-on="click" clearable />
     </n-form-item>
   </n-form>
   <div class="btn-container flex-container sb-c">

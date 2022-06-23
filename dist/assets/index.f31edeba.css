@@ -14,8 +14,8 @@
   --el-font-size-base: 14px;
   --el-font-size-small: 13px;
   --el-font-size-extra-small: 12px;
-  --el-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1', Arial, sans-serif;
+  --el-font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '\5fae\8f6f\96c5\9ed1', Arial,
+    sans-serif;
   --el-font-weight-primary: 500;
   --el-font-line-height-primary: 24px;
   --el-index-normal: 1;
@@ -29,20 +29,14 @@
   --el-transition-duration-fast: 0.2s;
   --el-transition-function-ease-in-out-bezier: cubic-bezier(0.645, 0.045, 0.355, 1);
   --el-transition-function-fast-bezier: cubic-bezier(0.23, 1, 0.32, 1);
-  --el-transition-all: all var(--el-transition-duration)
-    var(--el-transition-function-ease-in-out-bezier);
-  --el-transition-fade: opacity var(--el-transition-duration)
-    var(--el-transition-function-fast-bezier);
-  --el-transition-md-fade: transform var(--el-transition-duration)
-      var(--el-transition-function-fast-bezier),
+  --el-transition-all: all var(--el-transition-duration) var(--el-transition-function-ease-in-out-bezier);
+  --el-transition-fade: opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);
+  --el-transition-md-fade: transform var(--el-transition-duration) var(--el-transition-function-fast-bezier),
     opacity var(--el-transition-duration) var(--el-transition-function-fast-bezier);
   --el-transition-fade-linear: opacity var(--el-transition-duration-fast) linear;
-  --el-transition-border: border-color var(--el-transition-duration-fast)
-    var(--el-transition-function-ease-in-out-bezier);
-  --el-transition-box-shadow: box-shadow var(--el-transition-duration-fast)
-    var(--el-transition-function-ease-in-out-bezier);
-  --el-transition-color: color var(--el-transition-duration-fast)
-    var(--el-transition-function-ease-in-out-bezier);
+  --el-transition-border: border-color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);
+  --el-transition-box-shadow: box-shadow var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);
+  --el-transition-color: color var(--el-transition-duration-fast) var(--el-transition-function-ease-in-out-bezier);
 }
 :root {
   color-scheme: light;
@@ -114,8 +108,7 @@
   --el-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, 0.04), 0px 8px 20px rgba(0, 0, 0, 0.08);
   --el-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.12);
   --el-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, 0.12);
-  --el-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, 0.08), 0px 12px 32px rgba(0, 0, 0, 0.12),
-    0px 8px 16px -8px rgba(0, 0, 0, 0.16);
+  --el-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, 0.08), 0px 12px 32px rgba(0, 0, 0, 0.12), 0px 8px 16px -8px rgba(0, 0, 0, 0.16);
   --el-disabled-bg-color: var(--el-fill-color-light);
   --el-disabled-text-color: var(--el-text-color-placeholder);
   --el-disabled-border-color: var(--el-border-color-light);
@@ -204,19 +197,16 @@
   transform: scale(0.45);
 }
 .collapse-transition {
-  transition: var(--el-transition-duration) height ease-in-out,
-    var(--el-transition-duration) padding-top ease-in-out,
+  transition: var(--el-transition-duration) height ease-in-out, var(--el-transition-duration) padding-top ease-in-out,
     var(--el-transition-duration) padding-bottom ease-in-out;
 }
 .el-collapse-transition-enter-active,
 .el-collapse-transition-leave-active {
-  transition: var(--el-transition-duration) max-height ease-in-out,
-    var(--el-transition-duration) padding-top ease-in-out,
+  transition: var(--el-transition-duration) max-height ease-in-out, var(--el-transition-duration) padding-top ease-in-out,
     var(--el-transition-duration) padding-bottom ease-in-out;
 }
 .horizontal-collapse-transition {
-  transition: var(--el-transition-duration) width ease-in-out,
-    var(--el-transition-duration) padding-left ease-in-out,
+  transition: var(--el-transition-duration) width ease-in-out, var(--el-transition-duration) padding-left ease-in-out,
     var(--el-transition-duration) padding-right ease-in-out;
 }
 .el-list-enter-active,
@@ -991,8 +981,7 @@
 .el-table.is-scrolling-left .el-table-fixed-column--right.is-first-column:before {
   box-shadow: var(--el-table-fixed-right-column);
 }
-.el-table.is-scrolling-left.el-table--border
-  .el-table-fixed-column--left.is-last-column.el-table__cell {
+.el-table.is-scrolling-left.el-table--border .el-table-fixed-column--left.is-last-column.el-table__cell {
   border-right: var(--el-table-border);
 }
 .el-table.is-scrolling-left th.el-table-fixed-column--left {
@@ -1289,23 +1278,19 @@
 .el-autocomplete__popper.el-popper[role='tooltip'] .el-popper__arrow:before {
   border: 1px solid var(--el-border-color-light);
 }
-.el-autocomplete__popper.el-popper[role='tooltip'][data-popper-placement^='top']
-  .el-popper__arrow:before {
+.el-autocomplete__popper.el-popper[role='tooltip'][data-popper-placement^='top'] .el-popper__arrow:before {
   border-top-color: transparent;
   border-left-color: transparent;
 }
-.el-autocomplete__popper.el-popper[role='tooltip'][data-popper-placement^='bottom']
-  .el-popper__arrow:before {
+.el-autocomplete__popper.el-popper[role='tooltip'][data-popper-placement^='bottom'] .el-popper__arrow:before {
   border-bottom-color: transparent;
   border-right-color: transparent;
 }
-.el-autocomplete__popper.el-popper[role='tooltip'][data-popper-placement^='left']
-  .el-popper__arrow:before {
+.el-autocomplete__popper.el-popper[role='tooltip'][data-popper-placement^='left'] .el-popper__arrow:before {
   border-left-color: transparent;
   border-bottom-color: transparent;
 }
-.el-autocomplete__popper.el-popper[role='tooltip'][data-popper-placement^='right']
-  .el-popper__arrow:before {
+.el-autocomplete__popper.el-popper[role='tooltip'][data-popper-placement^='right'] .el-popper__arrow:before {
   border-right-color: transparent;
   border-top-color: transparent;
 }

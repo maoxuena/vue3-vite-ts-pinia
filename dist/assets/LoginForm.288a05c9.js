@@ -23,9 +23,7 @@ const N = { class: 'btn-container flex-container sb-c' },
       const v = m('medium'),
         p = m(null),
         g = f({
-          username: [
-            { required: !0, message: '\u8BF7\u8F93\u5165\u7528\u6237\u540D', trigger: 'blur' },
-          ],
+          username: [{ required: !0, message: '\u8BF7\u8F93\u5165\u7528\u6237\u540D', trigger: 'blur' }],
           password: [{ required: !0, message: '\u8BF7\u8F93\u5165\u5BC6\u7801', trigger: 'blur' }],
         }),
         e = f({ username: 'admin', password: '123456' }),
@@ -119,15 +117,7 @@ const N = { class: 'btn-container flex-container sb-c' },
                 8,
                 ['model', 'rules', 'size']
               ),
-              q('div', N, [
-                s(
-                  d,
-                  { type: 'primary', loading: t.value, onClick: y },
-                  { default: l(() => [V]), _: 1 },
-                  8,
-                  ['loading']
-                ),
-              ]),
+              q('div', N, [s(d, { type: 'primary', loading: t.value, onClick: y }, { default: l(() => [V]), _: 1 }, 8, ['loading'])]),
             ],
             64
           )

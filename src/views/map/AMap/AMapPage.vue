@@ -90,12 +90,7 @@ const drawPoint = (): void => {
       title: data[i].name,
       map: map,
     })
-    markerOption.content =
-      '<div class="map-content">单位名称：' +
-      data[i].name +
-      '<br>单位地址：' +
-      data[i].addr +
-      '</div>'
+    markerOption.content = '<div class="map-content">单位名称：' + data[i].name + '<br>单位地址：' + data[i].addr + '</div>'
     markerOption.on('click', markerClick)
   }
 

@@ -39,9 +39,7 @@ const oe = (n) => (B('data-v-d83e4d1a'), (n = n()), I(), n),
   le = b({
     props: { collapsed: null },
     setup(n) {
-      return (r, s) => (
-        g(), D('div', se, [ae, n.collapsed ? N('', !0) : (g(), D('h2', ce, 'Snow Admin'))])
-      )
+      return (r, s) => (g(), D('div', se, [ae, n.collapsed ? N('', !0) : (g(), D('h2', ce, 'Snow Admin'))]))
     },
   })
 var ue = F(le, [['__scopeId', 'data-v-d83e4d1a']])
@@ -98,8 +96,7 @@ const ie = (n) => (B('data-v-5ad0b603'), (n = n()), I(), n),
             negativeText: '\u53D6\u6D88',
             onPositiveClick: () => {
               s.logout().then(() => {
-                d.success('\u6210\u529F\u9000\u51FA\u767B\u5F55'),
-                  a.replace({ path: '/login', query: { redirect: p.fullPath } })
+                d.success('\u6210\u529F\u9000\u51FA\u767B\u5F55'), a.replace({ path: '/login', query: { redirect: p.fullPath } })
               })
             },
           })
@@ -118,9 +115,7 @@ const ie = (n) => (B('data-v-5ad0b603'), (n = n()), I(), n),
         }
       document.addEventListener('fullscreenchange', w)
       const v = () => {
-        document.fullscreenElement
-          ? document.exitFullscreen && document.exitFullscreen()
-          : document.documentElement.requestFullscreen()
+        document.fullscreenElement ? document.exitFullscreen && document.exitFullscreen() : document.documentElement.requestFullscreen()
       }
       return (l, i) => {
         const y = t('n-icon'),
@@ -137,18 +132,12 @@ const ie = (n) => (B('data-v-5ad0b603'), (n = n()), I(), n),
               u('div', de, [
                 pe,
                 u('div', me, [
-                  e(
-                    y,
-                    { size: '0.24rem' },
-                    { default: o(() => [(g(), $(G(_.value), { onClick: v }))]), _: 1 }
-                  ),
+                  e(y, { size: '0.24rem' }, { default: o(() => [(g(), $(G(_.value), { onClick: v }))]), _: 1 }),
                   e(
                     k,
                     { trigger: 'click', options: r, onSelect: c },
                     {
-                      default: o(() => [
-                        e(y, { size: '0.36rem' }, { default: o(() => [e(A)]), _: 1 }),
-                      ]),
+                      default: o(() => [e(y, { size: '0.36rem' }, { default: o(() => [e(A)]), _: 1 })]),
                       _: 1,
                     }
                   ),
@@ -234,40 +223,18 @@ const P = (n) => (B('data-v-3380f844'), (n = n()), I(), n),
                                     C,
                                     {
                                       value: x(s).darkTheme,
-                                      'onUpdate:value': [
-                                        i[0] || (i[0] = (S) => (x(s).darkTheme = S)),
-                                        h,
-                                      ],
+                                      'onUpdate:value': [i[0] || (i[0] = (S) => (x(s).darkTheme = S)), h],
                                     },
                                     {
-                                      checked: o(() => [
-                                        e(
-                                          k,
-                                          { size: '0.14rem', color: '#ffd93b' },
-                                          { default: o(() => [e(A)]), _: 1 }
-                                        ),
-                                      ]),
-                                      unchecked: o(() => [
-                                        e(
-                                          k,
-                                          { size: '0.14rem', color: '#ffd93b' },
-                                          { default: o(() => [e(E)]), _: 1 }
-                                        ),
-                                      ]),
+                                      checked: o(() => [e(k, { size: '0.14rem', color: '#ffd93b' }, { default: o(() => [e(A)]), _: 1 })]),
+                                      unchecked: o(() => [e(k, { size: '0.14rem', color: '#ffd93b' }, { default: o(() => [e(E)]), _: 1 })]),
                                       _: 1,
                                     },
                                     8,
                                     ['value']
                                   ),
                                 ]),
-                                default: o(() => [
-                                  u(
-                                    'span',
-                                    null,
-                                    Y(x(s).darkTheme ? '\u6DF1' : '\u6D45') + '\u8272\u4E3B\u9898',
-                                    1
-                                  ),
-                                ]),
+                                default: o(() => [u('span', null, Y(x(s).darkTheme ? '\u6DF1' : '\u6D45') + '\u8272\u4E3B\u9898', 1)]),
                                 _: 1,
                               }
                             ),
@@ -280,10 +247,7 @@ const P = (n) => (B('data-v-3380f844'), (n = n()), I(), n),
                               z,
                               {
                                 value: x(a),
-                                'onUpdate:value': [
-                                  i[1] || (i[1] = (S) => (Z(a) ? (a.value = S) : null)),
-                                  m,
-                                ],
+                                'onUpdate:value': [i[1] || (i[1] = (S) => (Z(a) ? (a.value = S) : null)), m],
                                 swatches: x(p),
                               },
                               null,
@@ -349,10 +313,7 @@ const De = b({
                       onExpand: a[1] || (a[1] = (y) => (r.value = !1)),
                     },
                     {
-                      default: o(() => [
-                        e(ue, { collapsed: r.value }, null, 8, ['collapsed']),
-                        e(_e),
-                      ]),
+                      default: o(() => [e(ue, { collapsed: r.value }, null, 8, ['collapsed']), e(_e)]),
                       _: 1,
                     },
                     8,
@@ -360,16 +321,8 @@ const De = b({
                   ),
                   e(v, null, {
                     default: o(() => [
-                      e(
-                        m,
-                        { class: 'layout-header', position: 'absolute', bordered: '' },
-                        { default: o(() => [e(ge)]), _: 1 }
-                      ),
-                      e(
-                        _,
-                        { class: 'layout-content', 'content-style': 'padding: 0.24rem;' },
-                        { default: o(() => [e(c)]), _: 1 }
-                      ),
+                      e(m, { class: 'layout-header', position: 'absolute', bordered: '' }, { default: o(() => [e(ge)]), _: 1 }),
+                      e(_, { class: 'layout-content', 'content-style': 'padding: 0.24rem;' }, { default: o(() => [e(c)]), _: 1 }),
                       e(w, { class: 'layout-footer', bordered: '', position: 'absolute' }),
                     ]),
                     _: 1,
@@ -378,9 +331,7 @@ const De = b({
                 _: 1,
               }
             ),
-            u('span', { class: 'settings-btn', onClick: h }, [
-              e(i, { size: '0.24rem' }, { default: o(() => [e(l)]), _: 1 }),
-            ]),
+            u('span', { class: 'settings-btn', onClick: h }, [e(i, { size: '0.24rem' }, { default: o(() => [e(l)]), _: 1 })]),
             e(ke, { ref_key: 'drawerSetting', ref: s }, null, 512),
           ],
           64

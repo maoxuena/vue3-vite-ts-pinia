@@ -1,14 +1,5 @@
 // 预设 color
-export const appThemeList: string[] = [
-  '#155BCD',
-  '#00C1D4',
-  '#FB9300',
-  '#FC5404',
-  '#ff5c93',
-  '#FF3D68',
-  '#9c27b0',
-  '#536dfe',
-]
+export const appThemeList: string[] = ['#155BCD', '#00C1D4', '#FB9300', '#FC5404', '#ff5c93', '#FF3D68', '#9c27b0', '#536dfe']
 
 // :rootList 里配置的变量 key
 interface TRoot {

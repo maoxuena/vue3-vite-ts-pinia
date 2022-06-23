@@ -27,10 +27,7 @@
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">主题色</div>
         <div class="setting-item-action" style="font-size: 0">
-          <n-color-picker
-            v-model:value="settingStore.appTheme"
-            :swatches="colorList"
-            @update:value="handleChangeColor" />
+          <n-color-picker v-model:value="settingStore.appTheme" :swatches="colorList" @update:value="handleChangeColor" />
         </div>
       </div>
       <n-divider title-placement="center">导航栏模式</n-divider>
@@ -130,76 +127,56 @@
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">固定顶栏</div>
         <div class="setting-item-action">
-          <n-switch
-            v-model:value="settingStore.headerSetting.fixed"
-            @update:value="handleChangeHeaderFixed" />
+          <n-switch v-model:value="settingStore.headerSetting.fixed" @update:value="handleChangeHeaderFixed" />
         </div>
       </div>
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">固定多页签</div>
         <div class="setting-item-action">
-          <n-switch
-            v-model:value="settingStore.multiTabsSetting.fixed"
-            @update:value="handleChangeTabsFixed" />
+          <n-switch v-model:value="settingStore.multiTabsSetting.fixed" @update:value="handleChangeTabsFixed" />
         </div>
       </div>
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">显示重载页面按钮</div>
         <div class="setting-item-action">
-          <n-switch
-            v-model:value="settingStore.headerSetting.isReload"
-            @update:value="handleChangeHeaderReload" />
+          <n-switch v-model:value="settingStore.headerSetting.isReload" @update:value="handleChangeHeaderReload" />
         </div>
       </div>
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">显示面包屑导航</div>
         <div class="setting-item-action">
-          <n-switch
-            v-model:value="settingStore.crumbsSetting.show"
-            @update:value="handleChangeCrumbsShow" />
+          <n-switch v-model:value="settingStore.crumbsSetting.show" @update:value="handleChangeCrumbsShow" />
         </div>
       </div>
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">显示面包屑显示图标</div>
         <div class="setting-item-action">
-          <n-switch
-            v-model:value="settingStore.crumbsSetting.showIcon"
-            @update:value="handleChangeCrumbsIconShow" />
+          <n-switch v-model:value="settingStore.crumbsSetting.showIcon" @update:value="handleChangeCrumbsIconShow" />
         </div>
       </div>
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">显示多页签</div>
         <div class="setting-item-action">
-          <n-switch
-            v-model:value="settingStore.multiTabsSetting.show"
-            @update:value="handleChangeTabsShow" />
+          <n-switch v-model:value="settingStore.multiTabsSetting.show" @update:value="handleChangeTabsShow" />
         </div>
       </div>
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">尺寸</div>
         <div class="setting-item-action">
-          <n-select
-            v-model:value="settingStore.size"
-            :options="sizeOptions"
-            @update:value="handleChangeSize" />
+          <n-select v-model:value="settingStore.size" :options="sizeOptions" @update:value="handleChangeSize" />
         </div>
       </div>
       <n-divider title-placement="center">动画配置</n-divider>
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">禁用动画</div>
         <div class="setting-item-action">
-          <n-switch
-            v-model:value="settingStore.isPageAnimate"
-            @update:value="handleChangeAnimate" />
+          <n-switch v-model:value="settingStore.isPageAnimate" @update:value="handleChangeAnimate" />
         </div>
       </div>
       <div class="setting-item flex-container sb-c">
         <div class="setting-item-title">动画类型</div>
         <div class="setting-item-select">
-          <n-select
-            v-model:value="settingStore.pageAnimateType"
-            :options="animateOptions"
-            @update:value="handleChangeAnimateType" />
+          <n-select v-model:value="settingStore.pageAnimateType" :options="animateOptions" @update:value="handleChangeAnimateType" />
         </div>
       </div>
     </n-drawer-content>

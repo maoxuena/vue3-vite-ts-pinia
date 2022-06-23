@@ -20,12 +20,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import {
-  NDialogProvider,
-  NNotificationProvider,
-  NMessageProvider,
-  NLoadingBarProvider,
-} from 'naive-ui'
+import { NDialogProvider, NNotificationProvider, NMessageProvider, NLoadingBarProvider } from 'naive-ui'
 import MessageContent from '@/components/MessageContent/index.vue'
 import DialogContent from '@/components/DialogContent/index.vue'
 

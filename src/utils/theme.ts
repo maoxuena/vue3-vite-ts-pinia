@@ -21,10 +21,10 @@ function addLight(color: string, amount: number) {
 export function lighten(color: string, amount: number) {
   color = color.indexOf('#') >= 0 ? color.substring(1, color.length) : color
   amount = Math.trunc((255 * amount) / 100) // 将数字的小数部分去掉,只保留整数部分
-  return `#${addLight(color.substring(0, 2), amount)}${addLight(
-    color.substring(2, 4),
+  return `#${addLight(color.substring(0, 2), amount)}${addLight(color.substring(2, 4), amount)}${addLight(
+    color.substring(4, 6),
     amount
-  )}${addLight(color.substring(4, 6), amount)}${color.substring(6, 8)}`
+  )}${color.substring(6, 8)}`
 }
 
 /**

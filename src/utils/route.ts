@@ -72,10 +72,7 @@ export function isRootRouter(item: RouteRecordRaw) {
  */
 export function filterRouter(routerMap: Array<any>) {
   return routerMap.filter((item) => {
-    return (
-      (item.meta?.hidden || false) !== true &&
-      !['/:pathMatch(.*)', '/', '/login'].includes(item.path)
-    )
+    return (item.meta?.hidden || false) !== true && !['/:pathMatch(.*)', '/', '/login'].includes(item.path)
   })
 }
 
