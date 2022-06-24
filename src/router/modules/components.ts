@@ -24,7 +24,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
       icon: constantRouterIcon.LogoWebComponent,
       sort: 1,
     },
-    redirect: '/components/index',
+    redirect: '/components/naiveui',
     component: Layout,
     children: [
       {
@@ -35,6 +35,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
           sort: 0,
           alwaysShow: true,
         },
+        redirect: '/components/naiveui/modalcomp',
         component: EmptyLayout,
         children: [
           {
@@ -56,6 +57,7 @@ const componentsRouter: Array<RouteRecordRaw> = [
           sort: 0,
           alwaysShow: true,
         },
+        redirect: '/components/snowui/svgborder',
         component: EmptyLayout,
         children: [
           {
