@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, nextTick, onMounted, Ref, ref, shallowRef } from 'vue'
+import { computed, nextTick, onMounted, Ref, ref, shallowRef, watch } from 'vue'
 import SvgBorder1 from './modules/SvgBorder1.vue'
 import SvgBorder2 from './modules/SvgBorder2.vue'
 
@@ -33,13 +33,24 @@ const currentComp = computed(() => {
 const svgBorder: Ref<HTMLElement | null> = ref(null)
 const width: Ref<Number> = ref(400)
 const height: Ref<Number> = ref(300)
-onMounted(() => {
+
+const initWH = (): void => {
   nextTick(() => {
     if (svgBorder.value) {
       width.value = svgBorder.value.offsetWidth
       height.value = svgBorder.value.offsetHeight
     }
   })
+}
+watch(
+  () => props.type,
+  (newValue, oldValue) => {
+    initWH()
+  }
+)
+
+onMounted(() => {
+  initWH()
 })
 </script>
 

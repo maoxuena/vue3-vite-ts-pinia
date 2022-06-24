@@ -1,5 +1,5 @@
 <template>
-  <n-form ref="loginFormRef" :model="loginForm" :rules="loginRules" :size="size">
+  <n-form ref="loginFormRef" :model="loginForm" :rules="loginRules" :size="settingStore.size">
     <n-form-item path="username">
       <n-input v-model:value="loginForm.username" placeholder="请输入账号" clearable />
     </n-form-item>
@@ -21,6 +21,10 @@ import { Size } from 'naive-ui/lib/form/src/interface'
 import { useUserStore } from '@/store/modules/user'
 import * as T from '@/service/api/login/types'
 import { LoginFrom } from '../types/index'
+import { useSettingStore } from '@/store/modules/setting'
+
+// 系统配置
+const settingStore = useSettingStore()
 
 // Naive UI组件尺寸
 const size = ref<Size>('medium')

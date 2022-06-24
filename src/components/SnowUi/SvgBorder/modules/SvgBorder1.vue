@@ -203,6 +203,10 @@ const computedHeight = (width: number, height: number): void => {
   state.scale = state.width / width
   state.height = height * state.scale
 }
+
+onMounted(() => {
+  computedHeight(props.width, props.height)
+})
 </script>
 
 <style scoped></style>

@@ -83,6 +83,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       port: 3000,
       open: true,
       https: false,
+      hmr: true, // 禁用或配置 HMR 连接
       proxy: {},
     },
     // 生产环境打包配置
