@@ -5,7 +5,7 @@ const en = {
     naiveui: 'Naive UI',
     modalcomp: 'Modal',
     snowui: 'Snow UI',
-    svgborder: 'SVG 边框',
+    svgborder: 'SVG Border',
     map: 'map',
     amap: 'aMap',
     bmap: 'bMap',

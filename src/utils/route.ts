@@ -43,7 +43,7 @@ export function generatorMenu(routerMap: RouteRecordRaw[]) {
     const currentMenu = {
       ...info,
       ...info.meta,
-      label: info.meta?.title,
+      label: generateTitle(info.meta?.title),
       key: info.name,
       icon: isRoot ? item.meta?.icon : info.meta?.icon,
     }
