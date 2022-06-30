@@ -8,6 +8,8 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
 import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
 
+import svgLoader from 'vite-svg-loader'
+
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
@@ -26,6 +28,27 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       //   },
       // }),
       vue(),
+      svgLoader({
+        svgoConfig: {
+          plugins: [
+            {
+              name: 'cleanupIDs',
+              params: {
+                prefix: {
+                  // 避免不同 svg 内部的 filter id 相同导致样式错乱
+                  // https://github.com/svg/svgo/issues/674#issuecomment-328774019
+                  toString() {
+                    let count: number = this.count ?? 0
+                    count++
+                    this.count = count
+                    return `svg-random-${count.toString(36,)}-`
+                  },
+                } as string,
+              },
+            },
+          ],
+        },
+      }),
       createStyleImportPlugin({
         resolves: [ElementPlusResolve()],
         libs: [

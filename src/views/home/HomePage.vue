@@ -23,6 +23,10 @@
       :page-sizes="[100, 200, 300, 400]"
       layout="total, sizes, prev, pager, next, jumper"
       :total="400" />
+    <h4>svg 图标使用</h4>
+    <i style="font-size: 32px; color: #155bcd">
+      <svg-icon name="logistics-track" />
+    </i>
   </div>
 </template>
 
