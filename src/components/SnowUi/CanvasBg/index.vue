@@ -1,8 +1,8 @@
-<!-- SVG 边框 -->
+<!-- SVG 边框1 -->
 <template>
-  <div ref="svgBorder" class="svg-border-container">
-    <component :is="currentComp" :width="width" :height="height" class="svg-bg"></component>
-    <div class="svg-border-content">
+  <div ref="CanvasBg" class="canvas-bg-container">
+    <component :is="currentComp" :width="width" :height="height" class="canvas-bg"></component>
+    <div class="canvas-bg-content">
       <slot></slot>
     </div>
   </div>
@@ -10,12 +10,10 @@
 
 <script setup lang="ts">
 import { computed, nextTick, onMounted, Ref, ref, shallowRef, watch } from 'vue'
-import SvgBorder1 from './modules/SvgBorder1.vue'
-import SvgBorder2 from './modules/SvgBorder2.vue'
+import CanvasBg1 from './modules/CanvasBg1.vue'
 
 const compMap: any = {
-  1: SvgBorder1,
-  2: SvgBorder2,
+  1: CanvasBg1,
 }
 // 接收父组件参数（采用ts专有声明，有默认值）
 interface ParentProps {
@@ -30,15 +28,15 @@ const currentComp = computed(() => {
   return compMap[props.type]
 })
 
-const svgBorder: Ref<HTMLElement | null> = ref(null)
+const CanvasBg: Ref<HTMLElement | null> = ref(null)
 const width: Ref<Number> = ref(400)
 const height: Ref<Number> = ref(300)
 
 const initWH = (): void => {
   nextTick(() => {
-    if (svgBorder.value) {
-      width.value = svgBorder.value.offsetWidth
-      height.value = svgBorder.value.offsetHeight
+    if (CanvasBg.value) {
+      width.value = CanvasBg.value.offsetWidth
+      height.value = CanvasBg.value.offsetHeight
     }
   })
 }
@@ -55,19 +53,19 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.svg-border-container {
+.canvas-bg-container {
   position: relative;
   width: 100%;
   height: 100%;
   padding: 20px;
-  .svg-bg {
+  .canvas-bg {
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
   }
-  .svg-border-content {
+  .canvas-bg-content {
     position: relative;
     z-index: 9;
     height: 100%;
