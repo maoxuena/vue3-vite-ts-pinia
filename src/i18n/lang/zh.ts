@@ -8,6 +8,7 @@ const zh = {
     svgborder: 'SVG 边框',
     canvasbg: 'Canvas 背景',
     cssbg: 'Css 背景',
+    badgetag: '角标',
     map: '地图',
     amap: '高德地图',
     bmap: '百度地图',

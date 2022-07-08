@@ -8,6 +8,7 @@ const en = {
     svgborder: 'SVG Border',
     canvasbg: 'Canvas Bg',
     cssbg: 'Css Bg',
+    badgetag: 'Badge Tag',
     map: 'map',
     amap: 'aMap',
     bmap: 'bMap',

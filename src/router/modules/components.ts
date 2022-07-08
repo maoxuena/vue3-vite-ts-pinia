@@ -87,6 +87,15 @@ const componentsRouter: Array<RouteRecordRaw> = [
             },
             component: () => import('@/views/components/SnowUi/CssBg/CssBgPage.vue'),
           },
+          {
+            path: 'badgetag',
+            name: 'BadgeTag',
+            meta: {
+              title: 'badgetag',
+              sort: 1,
+            },
+            component: () => import('@/views/components/SnowUi/BadgeTag/BadgeTagPage.vue'),
+          },
         ],
       },
     ],
