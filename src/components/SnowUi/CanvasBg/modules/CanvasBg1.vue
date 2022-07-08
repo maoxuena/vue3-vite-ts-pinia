@@ -31,7 +31,6 @@ watch(
   ([newWidth, newHeight], [oldWidth, oldHeight]) => {
     w.value = newWidth
     h.value = newHeight
-    console.log(w.value, h.value)
     init(w.value, h.value)
     for (let i = 0; i < maxStars.value; i++) {
       count.value++

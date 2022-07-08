@@ -7,6 +7,7 @@ const en = {
     snowui: 'Snow UI',
     svgborder: 'SVG Border',
     canvasbg: 'Canvas Bg',
+    cssbg: 'Css Bg',
     map: 'map',
     amap: 'aMap',
     bmap: 'bMap',
