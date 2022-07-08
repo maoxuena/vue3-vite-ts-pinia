@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 // 接收父组件参数（采用ts专有声明，无默认值）
-defineProps<{ collapsed: Boolean }>()
+defineProps<{ collapsed: boolean }>()
 </script>
 
 <style lang="scss" scoped>

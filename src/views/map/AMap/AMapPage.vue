@@ -31,11 +31,11 @@ import { yinzhou } from './options/yinzhou'
 
 // 地图主题样式
 import { styleList } from './options/style'
-const style = ref<String>('')
+const style = ref<string>('')
 
 // 弹窗
-const type = ref<String>('')
-const show = ref<Boolean>(false)
+const type = ref<string>('')
+const show = ref<boolean>(false)
 
 const state = reactive({
   map: {}, // 地图

@@ -29,8 +29,8 @@ const currentComp = computed(() => {
 })
 
 const CanvasBg: Ref<HTMLElement | null> = ref(null)
-const width: Ref<Number> = ref(400)
-const height: Ref<Number> = ref(300)
+const width: Ref<number> = ref(400)
+const height: Ref<number> = ref(300)
 
 const initWH = (): void => {
   nextTick(() => {

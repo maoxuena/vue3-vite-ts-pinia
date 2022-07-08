@@ -286,8 +286,8 @@ const handleChangeAnimateType = async (value: string): Promise<void> => {
   await settingStore.setPageAnimateType(value)
 }
 
-const isDrawer = ref<Boolean>(false)
-const placement = ref<String>('right')
+const isDrawer = ref<boolean>(false)
+const placement = ref<string>('right')
 
 // 打开抽屉
 const openDrawer = (): void => {

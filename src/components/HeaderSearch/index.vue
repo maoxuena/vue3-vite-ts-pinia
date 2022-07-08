@@ -29,7 +29,7 @@ import { generateRoutes } from './FuseData'
 import { FuseItem, SelectItem } from './types'
 
 // TODO: 还需完善
-const loading = ref<Boolean>(false)
+const loading = ref<boolean>(false)
 // 控制 search 显示
 const isShow = ref(false)
 // el-select 实例

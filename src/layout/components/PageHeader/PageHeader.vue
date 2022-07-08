@@ -75,7 +75,7 @@ const handleSelect = (key: string | number): void => {
 }
 
 // 全屏
-const fullscreenIcon = ref<String>('FullscreenOutlined')
+const fullscreenIcon = ref<string>('FullscreenOutlined')
 const toggleFullScreenIcon = (): void => {
   const isFullscreen = fullscreenIcon.value === 'FullscreenOutlined'
   // TODO: 全屏切换
