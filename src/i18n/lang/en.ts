@@ -6,6 +6,7 @@ const en = {
     modalcomp: 'Modal',
     snowui: 'Snow UI',
     svgborder: 'SVG Border',
+    svgbg: 'Svg Bg',
     canvasbg: 'Canvas Bg',
     cssbg: 'Css Bg',
     badgetag: 'Badge Tag',

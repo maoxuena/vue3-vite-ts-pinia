@@ -15,19 +15,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { nextTick, ref, watch } from 'vue'
-
-// 接收父组件参数（采用ts专有声明，有默认值）
-interface ParentProps {
-  width?: number
-  height?: number
-}
-const props = withDefaults(defineProps<ParentProps>(), {
-  width: 400,
-  height: 300,
-})
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 /* 使用flex布局，让内容垂直和水平居中 */

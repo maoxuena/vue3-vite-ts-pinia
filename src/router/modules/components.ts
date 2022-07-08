@@ -70,6 +70,15 @@ const componentsRouter: Array<RouteRecordRaw> = [
             component: () => import('@/views/components/SnowUi/SvgBorder/SvgBorderPage.vue'),
           },
           {
+            path: 'svgbg',
+            name: 'SvgBg',
+            meta: {
+              title: 'svgbg',
+              sort: 0,
+            },
+            component: () => import('@/views/components/SnowUi/SvgBg/SvgBgPage.vue'),
+          },
+          {
             path: 'canvasbg',
             name: 'CanvasBg',
             meta: {

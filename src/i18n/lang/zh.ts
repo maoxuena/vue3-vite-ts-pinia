@@ -6,6 +6,7 @@ const zh = {
     modalcomp: '模态框（Modal）',
     snowui: 'Snow UI',
     svgborder: 'SVG 边框',
+    svgbg: 'Svg 背景',
     canvasbg: 'Canvas 背景',
     cssbg: 'Css 背景',
     badgetag: '角标',
