@@ -10,6 +10,7 @@ const zh = {
     canvasbg: 'Canvas 背景',
     cssbg: 'Css 背景',
     badgetag: '角标',
+    svgicon: 'Svg 图标',
     map: '地图',
     amap: '高德地图',
     bmap: '百度地图',

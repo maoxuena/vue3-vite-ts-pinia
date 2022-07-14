@@ -107,6 +107,16 @@ const componentsRouter: Array<RouteRecordRaw> = [
           },
         ],
       },
+      {
+        path: 'svgicon',
+        name: 'SvgIcon',
+        meta: {
+          title: 'svgicon',
+          sort: 0,
+          alwaysShow: true,
+        },
+        component: () => import('@/views/components/SvgIcon/SvgIconPage.vue'),
+      },
     ],
   },
 ]

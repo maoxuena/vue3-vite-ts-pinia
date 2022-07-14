@@ -68,6 +68,7 @@ import {
   NBackTop,
   NSkeleton,
   NColorPicker,
+  NEmpty,
 } from 'naive-ui'
 
 const naive = create({
@@ -139,6 +140,7 @@ const naive = create({
     NBackTop,
     NSkeleton,
     NColorPicker,
+    NEmpty,
   ],
 })
 

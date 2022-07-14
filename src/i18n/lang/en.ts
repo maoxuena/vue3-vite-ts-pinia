@@ -10,6 +10,7 @@ const en = {
     canvasbg: 'Canvas Bg',
     cssbg: 'Css Bg',
     badgetag: 'Badge Tag',
+    svgicon: 'Svg Icon',
     map: 'map',
     amap: 'aMap',
     bmap: 'bMap',
