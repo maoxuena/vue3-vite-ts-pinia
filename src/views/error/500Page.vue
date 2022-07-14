@@ -1,6 +1,6 @@
 <template>
   <div class="page-container flex-container c-c">
-    <img class="error-img" src="@/assets/default/500.svg" />
+    <svg-icon class="error-img" name="500"></svg-icon>
   </div>
 </template>
 

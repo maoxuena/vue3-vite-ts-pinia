@@ -41,7 +41,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
                     let count: number = this.count ?? 0
                     count++
                     this.count = count
-                    return `svg-random-${count.toString(36,)}-`
+                    return `svg-random-${count.toString(36)}-`
                   },
                 } as string,
               },

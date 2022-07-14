@@ -1,6 +1,6 @@
 <template>
   <div class="logo flex-container se-c">
-    <img src="@/assets/logo.png" alt="" />
+    <img src="@/assets/images/logo.png" alt="" />
     <h2 v-if="!collapsed" class="title">Snow Admin</h2>
   </div>
 </template>

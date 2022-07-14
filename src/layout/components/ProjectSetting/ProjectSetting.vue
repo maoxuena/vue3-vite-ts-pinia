@@ -35,11 +35,7 @@
         <div class="setting-item-style">
           <n-tooltip placement="top">
             <template #trigger>
-              <img
-                class="setting-item-style-img"
-                src="@/assets/settings/nav-theme-dark.svg"
-                alt="左侧菜单模式"
-                @click="togNavMode('vertical')" />
+              <svg-icon class="setting-item-style-img" name="nav-theme-dark" @click="togNavMode('vertical')"></svg-icon>
             </template>
             <span>左侧菜单模式</span>
           </n-tooltip>
@@ -48,11 +44,7 @@
         <div class="setting-item-style">
           <n-tooltip placement="top">
             <template #trigger>
-              <img
-                class="setting-item-style-img"
-                src="@/assets/settings/nav-horizontal.svg"
-                alt="顶部菜单模式"
-                @click="togNavMode('horizontal')" />
+              <svg-icon class="setting-item-style-img" name="nav-horizontal" @click="togNavMode('horizontal')"></svg-icon>
             </template>
             <span>顶部菜单模式</span>
           </n-tooltip>
@@ -61,11 +53,7 @@
         <div class="setting-item-style">
           <n-tooltip placement="top">
             <template #trigger>
-              <img
-                class="setting-item-style-img"
-                src="@/assets/settings/nav-horizontal-mix.svg"
-                alt="顶部菜单混合模式"
-                @click="togNavMode('horizontal-mix')" />
+              <svg-icon class="setting-item-style-img" name="nav-horizontal-mix" @click="togNavMode('horizontal-mix')"></svg-icon>
             </template>
             <span>顶部菜单混合模式</span>
           </n-tooltip>
@@ -77,11 +65,7 @@
         <div class="setting-item-style">
           <n-tooltip placement="top">
             <template #trigger>
-              <img
-                class="setting-item-style-img"
-                src="@/assets/settings/nav-theme-dark.svg"
-                alt="暗色侧边栏"
-                @click="togNavTheme('dark')" />
+              <svg-icon class="setting-item-style-img" name="nav-theme-dark" @click="togNavTheme('dark')"></svg-icon>
             </template>
             <span>暗色侧边栏</span>
           </n-tooltip>
@@ -90,11 +74,7 @@
         <div class="setting-item-style">
           <n-tooltip placement="top">
             <template #trigger>
-              <img
-                class="setting-item-style-img"
-                src="@/assets/settings/nav-theme-light.svg"
-                alt="白色侧边栏"
-                @click="togNavTheme('light')" />
+              <svg-icon class="setting-item-style-img" name="nav-theme-light" @click="togNavTheme('light')"></svg-icon>
             </template>
             <span>白色侧边栏</span>
           </n-tooltip>
@@ -103,11 +83,7 @@
         <div class="setting-item-style">
           <n-tooltip placement="top">
             <template #trigger>
-              <img
-                class="setting-item-style-img"
-                src="~@/assets/settings/header-theme-dark.svg"
-                alt="暗色顶栏"
-                @click="togNavTheme('header-dark')" />
+              <svg-icon class="setting-item-style-img" name="header-theme-dark" @click="togNavTheme('header-dark')"></svg-icon>
             </template>
             <span>暗色顶栏</span>
           </n-tooltip>

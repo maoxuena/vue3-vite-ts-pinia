@@ -1,5 +1,5 @@
 .login-container {
-  background-image: url('@/assets/login/bg.svg');
+  background-image: url('@/assets/svg/login/bg.svg');
   background-color: #eee;
   background-size: cover;
   background-position: center;
@@ -10,9 +10,10 @@
     border-radius: 0.15rem;
     padding: 2vw;
     .login-left {
-      img {
+      .login-illustration {
         width: 90%;
         max-width: 40vw;
+        height: auto;
       }
     }
     .login-right {
@@ -21,12 +22,9 @@
         width: 80%;
         .login-title {
           margin-bottom: 0.24rem;
-          .login-icon {
-            width: 0.42rem;
-          }
+          font-size: 0.42rem;
           .logo-text {
             font-weight: bold;
-            font-size: 0.42rem;
             padding-left: 0.2rem;
             white-space: nowrap;
             color: #181818;

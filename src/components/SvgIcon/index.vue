@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
 import { computed, getCurrentInstance, nextTick, ref, useAttrs, watch } from 'vue'
-const modules = import.meta.globEager('@/assets/svg/*.svg', {
+const modules = import.meta.globEager('@/assets/svg/**/*.svg', {
   as: 'component',
 })
 
