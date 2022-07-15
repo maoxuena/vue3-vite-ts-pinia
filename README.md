@@ -1,6 +1,6 @@
 # vue3-vite-ts-pinia
 
-vue3 + vite + typesript + pinia 搭建的前端框架项目
+vue3 + vite + typesript + pinia 搭建的前端框架项目 （[预览](https://maoxuena.github.io/vue3-vite-ts-pinia/dist/)）
 
 ## 创建项目
 
