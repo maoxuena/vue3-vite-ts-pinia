@@ -27,6 +27,8 @@
     <i style="font-size: 32px; color: #155bcd">
       <svg-icon name="logistics-track" />
     </i>
+    <n-button @click="setLocalCache">set LocalCache</n-button>
+    <n-button @click="getLocalCache">get LocalCache</n-button>
   </div>
 </template>
 
@@ -34,6 +36,7 @@
 import { ref } from 'vue'
 import useCurrentInstance from '@/hooks/useCurrentInstance'
 import { useSettingStore } from '@/store/modules/setting'
+import { LocalCache } from '@/utils/cache'
 // 系统配置
 const settingStore = useSettingStore()
 
@@ -45,6 +48,13 @@ const page = ref(2)
 const value = ref('2021-10-29')
 const currentPage = ref(4)
 const pageSize = ref(100)
+
+const setLocalCache = () => {
+  LocalCache.setItem('aaa', 'bbb', 5)
+}
+const getLocalCache = () => {
+  const a = LocalCache.getItem('aaa')
+}
 </script>
 
 <style scoped></style>
