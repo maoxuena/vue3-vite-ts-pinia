@@ -31,6 +31,10 @@
     <n-button v-permission="{ action: ['system:user:add'], effect: 'disabled' }">新增</n-button>
     <n-button v-permission="{ action: ['system:user:edit'], effect: 'disabled' }">编辑</n-button>
     <n-button v-permission="{ action: ['system:user:remove'], effect: 'disabled' }">删除</n-button>
+    <n-divider title-placement="left">点击当前区域之外的位置</n-divider>
+    <n-card v-click-outside="handleClickOutside" title="点击当前区域之外的位置" hoverable @click="handleClickInside">
+      {{ clickText }}
+    </n-card>
   </div>
 </template>
 
@@ -49,6 +53,14 @@ const page = ref(2)
 const value = ref('2021-10-29')
 const currentPage = ref(4)
 const pageSize = ref(100)
+
+const clickText = ref<string>('')
+const handleClickOutside = (): void => {
+  clickText.value = '点击当前区域之外的位置'
+}
+const handleClickInside = (): void => {
+  clickText.value = '点击当前区域之内的位置'
+}
 </script>
 
 <style scoped></style>
