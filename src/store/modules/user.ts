@@ -14,7 +14,7 @@ export const useUserStore = defineStore({
     username: '',
     welcome: '',
     avatar: '',
-    permissions: [],
+    permissions: Storage.get('CURRENT-PERMISSIONS', []),
     info: Storage.get('CURRENT-USER', {}),
   }),
   getters: {
@@ -27,7 +27,7 @@ export const useUserStore = defineStore({
     getUsername(): string {
       return this.username
     },
-    getPermissions(): [any][] {
+    getPermissions(): any[] {
       return this.permissions
     },
     getUserInfo(): IUserInfoState {
@@ -41,6 +41,9 @@ export const useUserStore = defineStore({
     setUserInfo(info: {}) {
       this.info = info
     },
+    setPermissions(permissions: any[]) {
+      this.permissions = permissions
+    },
     // 登录
     async login(userInfo: T.ILoginParams) {
       try {
@@ -50,9 +53,13 @@ export const useUserStore = defineStore({
           const ex = 7 * 24 * 60 * 60 * 1000
           storage.set('ACCESS-TOKEN', data.accessToken, ex)
           storage.set('CURRENT-USER', data.userInfo, ex)
+          // TODO:改成实际返回数据 data.userInfo.auth
+          storage.set('CURRENT-PERMISSIONS', [{ value: 'system:user:add' }, { value: 'system:user:edit' }], ex)
           storage.set('IS-LOCKSCREEN', false)
           this.setToken(data.accessToken)
           this.setUserInfo(data.userInfo)
+          // TODO:改成实际返回数据 data.userInfo.auth
+          this.setPermissions([{ value: 'system:user:add' }, { value: 'system:user:edit' }])
         }
         return Promise.resolve(response)
       } catch (e) {
@@ -66,6 +73,8 @@ export const useUserStore = defineStore({
         const { data, code } = response
         if (code === ResultEnum.SUCCESS) {
           this.setUserInfo(data)
+          // TODO:改成实际返回数据
+          this.setPermissions([{ value: 'system:user:add' }, { value: 'system:user:edit' }])
         }
         return Promise.resolve(data)
       } catch (e) {
