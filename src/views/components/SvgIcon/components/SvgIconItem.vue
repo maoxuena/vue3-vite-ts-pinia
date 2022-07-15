@@ -8,11 +8,11 @@
     </n-empty>
   </template>
   <template v-else>
-    <n-grid :x-gap="10" :y-gap="10" cols="2 400:4 600:6 800:8 1000:10 1200:12">
+    <n-grid :x-gap="10" :y-gap="10" cols="2 450:3 600:4 750:5 900:6 1050:7 1200:8 1350:9 1500:10 1650:11 1800:12">
       <n-grid-item v-for="icon in icons" :key="icon">
         <div class="icon-wrap">
-          <svg-icon :name="icon"></svg-icon>
-          <p>{{ icon }}</p>
+          <svg-icon :name="icon" @click="handleCopyIcon(icon)"></svg-icon>
+          <span @click="handleCopyText(icon)">{{ icon }}</span>
         </div>
       </n-grid-item>
     </n-grid>
@@ -20,6 +20,7 @@
 </template>
 
 <script setup lang="ts">
+import handleClipboard from '@/utils/clipboard'
 // 接收父组件参数（采用ts专有声明，有默认值）
 interface ParentProps {
   title?: string
@@ -29,6 +30,15 @@ const props = withDefaults(defineProps<ParentProps>(), {
   title: '',
   icons: () => [],
 })
+
+// 复制图标
+const handleCopyIcon = (item: string) => {
+  handleClipboard(`<svg-icon name="${item}"></svg-icon>`)
+}
+// 复制图标名称
+const handleCopyText = (text: string) => {
+  handleClipboard(text)
+}
 </script>
 
 <style lang="scss" scoped>
@@ -40,19 +50,20 @@ const props = withDefaults(defineProps<ParentProps>(), {
   }
 }
 .icon-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   font-size: 0.36rem;
-  border: 1px solid rgb(239, 239, 245);
-  text-align: center;
   padding: 0.1rem;
-  border-radius: 0.03rem;
-  cursor: pointer;
-  transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  p {
-    font-size: 0.14rem;
-    padding: 0.06rem 0;
+  min-height: 1rem;
+  svg {
+    cursor: pointer;
   }
-  &:hover {
-    box-shadow: 0 1px 2px -2px rgba(0, 0, 0, 0.08), 0 3px 6px 0 rgba(0, 0, 0, 0.06), 0 5px 12px 4px rgba(0, 0, 0, 0.04);
+  span {
+    display: inline-block;
+    font-size: 0.14rem;
+    cursor: pointer;
   }
 }
 </style>
