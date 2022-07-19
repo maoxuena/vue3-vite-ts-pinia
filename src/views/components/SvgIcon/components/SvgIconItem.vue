@@ -13,6 +13,7 @@
         <div class="icon-wrap">
           <svg-icon :name="icon" @click="handleCopyIcon(icon)"></svg-icon>
           <span @click="handleCopyText(icon)">{{ icon }}</span>
+          <div class="icon-copy" @click="handleCopyIcon(icon)">复制</div>
         </div>
       </n-grid-item>
     </n-grid>
@@ -50,6 +51,7 @@ const handleCopyText = (text: string) => {
   }
 }
 .icon-wrap {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,6 +59,8 @@ const handleCopyText = (text: string) => {
   font-size: 0.36rem;
   padding: 0.1rem;
   min-height: 1rem;
+  transition: padding-bottom 0.2s ease-in-out;
+  overflow: hidden;
   svg {
     cursor: pointer;
   }
@@ -64,6 +68,27 @@ const handleCopyText = (text: string) => {
     display: inline-block;
     font-size: 0.14rem;
     cursor: pointer;
+  }
+  .icon-copy {
+    position: absolute;
+    background-color: var(--primary-color);
+    padding: 5px 0;
+    color: #fff;
+    font-size: 12px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    text-align: center;
+  }
+  &:hover {
+    padding-bottom: 20px;
+    box-shadow: 0 0 10px #f0f0f0;
+    .icon-copy {
+      transform: translateY(0);
+    }
   }
 }
 </style>
