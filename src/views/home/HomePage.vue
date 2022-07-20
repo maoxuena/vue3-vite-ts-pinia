@@ -35,6 +35,15 @@
     <n-card v-click-outside="handleClickOutside" title="点击当前区域之外的位置" hoverable @click="handleClickInside">
       {{ clickText }}
     </n-card>
+    <n-divider title-placement="left">水印测试</n-divider>
+    <n-card v-water-mark="waterMark" title="水印测试" hoverable>
+      <p>卡片内容</p>
+      <p>卡片内容</p>
+      <p>卡片内容</p>
+      <p>卡片内容</p>
+      <p>卡片内容</p>
+      <p>卡片内容</p>
+    </n-card>
   </div>
 </template>
 
@@ -61,6 +70,17 @@ const handleClickOutside = (): void => {
 const handleClickInside = (): void => {
   clickText.value = '点击当前区域之内的位置'
 }
+
+const waterMark = ref({
+  text: '水印测试',
+  style: {
+    font: '24px Microsoft YaHei', // 文字大小及字体
+    textColor: 'rgba(34, 200, 200, 0.3)', // 水印颜色
+    rotate: -10, // 旋转角度
+    rowLength: 120, // 每个水印高度
+    colLength: 160, // 每个水印宽度
+  },
+})
 </script>
 
 <style scoped></style>

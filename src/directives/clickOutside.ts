@@ -57,7 +57,7 @@ function createDocumentHandler(el: HTMLElement, binding: DirectiveBinding): Docu
   }
 }
 
-const ClickOutside: ObjectDirective = {
+export const clickOutside: ObjectDirective = {
   beforeMount(el, binding) {
     nodeList.set(el, {
       documentHandler: createDocumentHandler(el, binding),
@@ -74,5 +74,3 @@ const ClickOutside: ObjectDirective = {
     nodeList.delete(el)
   },
 }
-
-export default ClickOutside
