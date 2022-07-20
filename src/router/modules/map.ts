@@ -24,23 +24,23 @@ const mapRouter: Array<RouteRecordRaw> = [
       icon: constantRouterIcon.Map,
       sort: 2,
     },
-    redirect: '/map/amap/index',
+    redirect: '/map/AMap/index',
     component: Layout,
     children: [
       {
-        path: 'amap/index',
+        path: 'AMap/index',
         name: 'AMapPage',
         meta: {
-          title: 'amap',
+          title: 'AMap',
           sort: 0,
         },
         component: () => import('@/views/map/AMap/AMapPage.vue'),
       },
       {
-        path: 'bmap/index',
+        path: 'BMap/index',
         name: 'BMapPage',
         meta: {
-          title: 'bmap',
+          title: 'BMap',
           sort: 1,
         },
         component: () => import('@/views/map/BMap/BMapPage.vue'),

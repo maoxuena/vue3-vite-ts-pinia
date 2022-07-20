@@ -24,25 +24,25 @@ const componentsRouter: Array<RouteRecordRaw> = [
       icon: constantRouterIcon.LogoWebComponent,
       sort: 1,
     },
-    redirect: '/components/naiveui',
+    redirect: '/components/NaiveUi',
     component: Layout,
     children: [
       {
-        path: 'naiveui',
+        path: 'NaiveUi',
         name: 'NaiveUi',
         meta: {
-          title: 'naiveui',
+          title: 'NaiveUi',
           sort: 0,
           alwaysShow: true,
         },
-        redirect: '/components/naiveui/modalcomp',
+        redirect: '/components/NaiveUi/ModalComp',
         component: EmptyLayout,
         children: [
           {
-            path: 'modalcomp',
+            path: 'ModalComp',
             name: 'ModalComp',
             meta: {
-              title: 'modalcomp',
+              title: 'ModalComp',
               sort: 0,
             },
             component: () => import('@/views/components/NaiveUi/ModalComp/ModalCompPage.vue'),
@@ -50,57 +50,57 @@ const componentsRouter: Array<RouteRecordRaw> = [
         ],
       },
       {
-        path: 'snowui',
+        path: 'SnowUi',
         name: 'SnowUi',
         meta: {
-          title: 'snowui',
+          title: 'SnowUi',
           sort: 0,
           alwaysShow: true,
         },
-        redirect: '/components/snowui/svgborder',
+        redirect: '/components/SnowUi/SvgBorder',
         component: EmptyLayout,
         children: [
           {
-            path: 'svgborder',
+            path: 'SvgBorder',
             name: 'SvgBorder',
             meta: {
-              title: 'svgborder',
+              title: 'SvgBorder',
               sort: 0,
             },
             component: () => import('@/views/components/SnowUi/SvgBorder/SvgBorderPage.vue'),
           },
           {
-            path: 'svgbg',
+            path: 'SvgBg',
             name: 'SvgBg',
             meta: {
-              title: 'svgbg',
+              title: 'SvgBg',
               sort: 0,
             },
             component: () => import('@/views/components/SnowUi/SvgBg/SvgBgPage.vue'),
           },
           {
-            path: 'canvasbg',
+            path: 'CanvasBg',
             name: 'CanvasBg',
             meta: {
-              title: 'canvasbg',
+              title: 'CanvasBg',
               sort: 1,
             },
             component: () => import('@/views/components/SnowUi/CanvasBg/CanvasBgPage.vue'),
           },
           {
-            path: 'cssbg',
+            path: 'CssBg',
             name: 'CssBg',
             meta: {
-              title: 'cssbg',
+              title: 'CssBg',
               sort: 1,
             },
             component: () => import('@/views/components/SnowUi/CssBg/CssBgPage.vue'),
           },
           {
-            path: 'badgetag',
+            path: 'BadgeTag',
             name: 'BadgeTag',
             meta: {
-              title: 'badgetag',
+              title: 'BadgeTag',
               sort: 1,
             },
             component: () => import('@/views/components/SnowUi/BadgeTag/BadgeTagPage.vue'),
@@ -108,10 +108,10 @@ const componentsRouter: Array<RouteRecordRaw> = [
         ],
       },
       {
-        path: 'svgicon',
+        path: 'SvgIcon',
         name: 'SvgIcon',
         meta: {
-          title: 'svgicon',
+          title: 'SvgIcon',
           sort: 0,
           alwaysShow: true,
         },

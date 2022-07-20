@@ -11,6 +11,7 @@ import {
   Map,
   Language,
   Search,
+  Add,
 } from '@vicons/ionicons5'
 import { renderIcon } from '@/utils/route'
 
@@ -25,7 +26,19 @@ export const constantRouterIcon = {
 }
 
 const antdIcon = [ExclamationCircleFilled, FullscreenOutlined, FullscreenExitOutlined, FundProjectionScreenOutlined]
-const ionicons5Icon = [Home, LogoWebComponent, LogOutOutline, PersonCircleOutline, SettingsOutline, Moon, SunnySharp, Map, Language, Search]
+const ionicons5Icon = [
+  Home,
+  LogoWebComponent,
+  LogOutOutline,
+  PersonCircleOutline,
+  SettingsOutline,
+  Moon,
+  SunnySharp,
+  Map,
+  Language,
+  Search,
+  Add,
+]
 const components = [...antdIcon, ...ionicons5Icon]
 
 export function setupNaiveIcon(app: App): void {

@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from 'vue-router'
-import { Layout } from '@/router/constant'
+import { Layout, EmptyLayout } from '@/router/constant'
 import { constantRouterIcon } from '@/plugins/naive-icon'
 
 /**
@@ -14,6 +14,7 @@ import { constantRouterIcon } from '@/plugins/naive-icon'
  * @param meta.sort 排序越小越排前
  * @param meta.affix 多页签固定
  * @param meta.alwaysShow 是否总是显示
+ * @param meta.hidden 是否在菜单中显示
  * */
 const screenRouter: Array<RouteRecordRaw> = [
   {
@@ -24,9 +25,18 @@ const screenRouter: Array<RouteRecordRaw> = [
       icon: constantRouterIcon.Screen,
       sort: 2,
     },
-    redirect: '/screen/screenA/index',
+    redirect: '/screen/ScreenDesign/index',
     component: Layout,
     children: [
+      {
+        path: 'ScreenDesign/index',
+        name: 'ScreenDesign',
+        meta: {
+          title: 'ScreenDesign',
+          sort: 0,
+        },
+        component: () => import('@/views/screen/ScreenDesign/ListPage.vue'),
+      },
       {
         path: 'screenA/index',
         name: 'ScreenAPage',
@@ -44,6 +54,28 @@ const screenRouter: Array<RouteRecordRaw> = [
           sort: 1,
         },
         component: () => import('@/views/screen/ScreenB/ScreenBPage.vue'),
+      },
+    ],
+  },
+  {
+    path: '/screenInstance',
+    name: 'ScreenInstance',
+    meta: {
+      title: 'ScreenInstance',
+      sort: 1,
+      hidden: true,
+    },
+    redirect: '/screenInstance/create',
+    component: EmptyLayout,
+    children: [
+      {
+        path: 'create',
+        name: 'ScreenCreate',
+        meta: {
+          title: 'ScreenCreate',
+          sort: 1,
+        },
+        component: () => import('@/views/screen/ScreenInstance/CreatePage.vue'),
       },
     ],
   },
