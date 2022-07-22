@@ -1,0 +1,88 @@
+.screen-create-wrapper{
+  --color-primary: #04a9f5;
+  --header-color: #ccc;
+  --header-color-f: #fafafa;
+  --header-color-hover: #fff;
+  --header-bg: #1e2427;
+  --header-bg-hover: #272d30;
+  --sider-border: 1px solid #181818;
+  --sider-color: #fafafa;
+  --sider-color-1: #bfbfbf;
+  --sider-color-f: #fff;
+  --sider-bg: var(--header-bg);
+  --sider-header-bg: var(--header-bg-hover);
+  --sider-collapse-header-bg: var(--header-bg);
+  --sider-header-border: 1px solid var(--header-bg);
+  --layer-bg: var(--header-bg);
+  --layer-bg-hover: var(--header-bg-hover);
+  --layer-header-bg: var(--header-bg-hover);
+  --footer-color: #fafafa;
+  --footer-bg: var(--header-bg);
+  --form-bg: #181818;
+  --form-label: #fafafa;
+  --form-item-color: rgba(255, 255, 255, .85);
+  --form-item-bg: #202124;
+  --form-item-border: 1px solid #5a5a5a;
+  --form-select-hover: #3c4043;
+  --color-primary-a: rgba(64, 158, 255, 0.4);
+  --modal-bg: #282c34;
+  --contextmenu-bg: #282c34;
+  --contextmenu-bg-hover: #393e49;
+  --contextmenu-divider-color: #22242b;
+  height: 100%;
+}
+.screen-create-header{
+  height: 0.48rem;
+  line-height: 0.48rem;
+  padding: 0 0.2rem;
+  background-color: var(--header-bg);
+  transition: all linear 500ms;
+}
+.screen-create-main{
+  height: calc(100vh - 0.48rem);
+}
+.screen-create-content{
+  height: calc(100% - 0.36rem);
+}
+// footer
+.screen-create-footer{
+  height: 0.36rem;
+  line-height: 0.36rem;
+  padding: 0 0.4rem;
+  background-color: var(--footer-bg);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .n-space {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    > div{
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+    }
+    .tool-item {
+      display: flex;
+      align-items: center;
+      .screen-create-scale {
+        width: 2rem;
+      }
+      .label {
+        font-size: 0.14rem;
+        color: var(--footer-color);
+        margin: 0 0.1rem;
+        white-space: nowrap;
+      }
+      .tool-btn {
+        font-size: 0.14rem;
+        cursor: pointer;
+        color: var(--footer-color);
+        margin: 0 0.05rem;
+        white-space: nowrap;
+
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+}
