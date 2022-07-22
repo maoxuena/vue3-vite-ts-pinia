@@ -69,6 +69,7 @@ import {
   NSkeleton,
   NColorPicker,
   NEmpty,
+  NSlider,
 } from 'naive-ui'
 
 const naive = create({
@@ -141,6 +142,7 @@ const naive = create({
     NSkeleton,
     NColorPicker,
     NEmpty,
+    NSlider,
   ],
 })
 

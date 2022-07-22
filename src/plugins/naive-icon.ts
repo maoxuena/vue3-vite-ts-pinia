@@ -12,6 +12,8 @@ import {
   Language,
   Search,
   Add,
+  EyeOffOutline,
+  EyeOutline,
 } from '@vicons/ionicons5'
 import { renderIcon } from '@/utils/route'
 
@@ -38,6 +40,8 @@ const ionicons5Icon = [
   Language,
   Search,
   Add,
+  EyeOffOutline,
+  EyeOutline,
 ]
 const components = [...antdIcon, ...ionicons5Icon]
 
