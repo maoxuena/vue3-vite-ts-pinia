@@ -1,4 +1,6 @@
-.screen-create-wrapper{
+.screen-create-wrapper {
+  --datav-font-color: #bcc9d4;
+  --datav-data-form-bgcolor: #0e1013;
   --color-primary: #04a9f5;
   --header-color: #ccc;
   --header-color-f: #fafafa;
@@ -20,7 +22,7 @@
   --footer-bg: var(--header-bg);
   --form-bg: #181818;
   --form-label: #fafafa;
-  --form-item-color: rgba(255, 255, 255, .85);
+  --form-item-color: rgba(255, 255, 255, 0.85);
   --form-item-bg: #202124;
   --form-item-border: 1px solid #5a5a5a;
   --form-select-hover: #3c4043;
@@ -31,21 +33,21 @@
   --contextmenu-divider-color: #22242b;
   height: 100%;
 }
-.screen-create-header{
+.screen-create-header {
   height: 0.48rem;
   line-height: 0.48rem;
   padding: 0 0.2rem;
   background-color: var(--header-bg);
   transition: all linear 500ms;
 }
-.screen-create-main{
+.screen-create-main {
   height: calc(100vh - 0.48rem);
 }
-.screen-create-content{
+.screen-create-content {
   height: calc(100% - 0.36rem);
 }
 // footer
-.screen-create-footer{
+.screen-create-footer {
   height: 0.36rem;
   line-height: 0.36rem;
   padding: 0 0.4rem;
@@ -56,7 +58,7 @@
   .n-space {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
-    > div{
+    > div {
       padding-top: 0 !important;
       padding-bottom: 0 !important;
     }

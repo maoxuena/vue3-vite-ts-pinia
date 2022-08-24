@@ -17,10 +17,9 @@
 import { reactive, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { FormInst } from 'naive-ui'
-import { Size } from 'naive-ui/lib/form/src/interface'
 import { useUserStore } from '@/store/modules/user'
 import * as T from '@/service/api/login/types'
-import { LoginFrom } from '../types/index'
+import { LoginFrom, Size } from '../types/index'
 import { useSettingStore } from '@/store/modules/setting'
 
 // 系统配置

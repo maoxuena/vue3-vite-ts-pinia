@@ -17,7 +17,9 @@
       <n-layout has-sider sider-placement="right">
         <n-layout>
           <!-- content 内容 -->
-          <n-layout-content class="screen-create-content"> </n-layout-content>
+          <n-layout-content class="screen-create-content">
+            <create-main></create-main>
+          </n-layout-content>
           <!-- footer 底部 -->
           <n-layout-footer class="screen-create-footer">
             <create-footer></create-footer>
@@ -39,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+import CreateMain from './compontents/CreateMain/CreateMain.vue'
 import CreateFooter from './compontents/CreateFooter.vue'
 </script>
 
