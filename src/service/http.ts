@@ -1,3 +1,4 @@
+import LimitPromise from './limitRequest'
 import axios, { AxiosRequestConfig } from 'axios'
 import NProgress from 'nprogress'
 import { storage } from '@/utils/Storage'
@@ -42,7 +43,7 @@ interface Http {
   download(url: string): void
 }
 
-const http: Http = {
+export const http: Http = {
   get(url, params) {
     return new Promise((resolve, reject) => {
       NProgress.start()
@@ -100,4 +101,20 @@ const http: Http = {
     document.body.appendChild(iframe)
   },
 }
-export default http
+
+// 限制axios并发请求
+const limitPromise = new LimitPromise(2)
+export const limitRequest = {
+  limitPost(url: string, data?: any, resolve?: (value: any | PromiseLike<any>) => void, reject?: (reason?: any) => void) {
+    return limitPromise
+      .call(() => http.post(url, data))
+      .then(resolve)
+      .catch(reject)
+  },
+  limitGet(url: string, data?: any, resolve?: (value: any | PromiseLike<any>) => void, reject?: (reason?: any) => void) {
+    return limitPromise
+      .call(() => http.get(url, data))
+      .then(resolve)
+      .catch(reject)
+  },
+}

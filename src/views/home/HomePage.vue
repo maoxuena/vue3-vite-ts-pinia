@@ -49,6 +49,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { limitRequest } from '@/service/http'
 import useCurrentInstance from '@/hooks/useCurrentInstance'
 import { useSettingStore } from '@/store/modules/setting'
 // 系统配置
@@ -80,6 +81,20 @@ const waterMark = ref({
     rowLength: 120, // 每个水印高度
     colLength: 160, // 每个水印宽度
   },
+})
+
+// 限制axios并发请求测试
+limitRequest.limitGet('/getUserInfo').then((res) => {
+  console.log(16, res)
+})
+limitRequest.limitGet('/getUserInfo').then((res) => {
+  console.log(26, res)
+})
+limitRequest.limitGet('/getUserInfo').then((res) => {
+  console.log(36, res)
+})
+limitRequest.limitGet('/getUserInfo').then((res) => {
+  console.log(46, res)
 })
 </script>
 
