@@ -13,7 +13,10 @@
 
 <script setup lang="ts">
 import { ref, watchEffect, onMounted, onUnmounted } from 'vue'
+import { useScreenStore } from '@/store/modules/screen'
 import { RulerBuilder } from './index'
+
+const screenStore = useScreenStore()
 
 const hRulerRef = ref<any>(null)
 const vRulerRef = ref<any>(null)
@@ -27,8 +30,7 @@ const cw = document.documentElement.clientWidth
 
 watchEffect(() => {
   if (hRulerRef.value && vRulerRef.value) {
-    const guideLine = { h: [], v: [] }
-    const canvas = { scale: 0.2, width: 1920, height: 1080 }
+    const { canvas, guideLine } = screenStore
     const hWidth = Math.max(canvas.width, cw)
     if (hRuler.value) {
       hRuler.value.setSize(hWidth, 20, canvas.scale)
