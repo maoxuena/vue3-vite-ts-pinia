@@ -1,5 +1,55 @@
 .screen-create-wrapper {
   --datav-font-color: #bcc9d4;
+  --datav-font-color-disabled: #424447;
+  --datav-main-color: #2681ff;
+  --datav-error-color: #f43;
+  --datav-red-color: #f15532;
+  --datav-warn-color: #f27a24;
+  --datav-gray-color: #90a0ae;
+  --datav-dark-color: #262c33;
+  --datav-success-color: #50e3c2;
+  --datav-main-hover-color: #409fff;
+  --datav-main-click-color: #2681ff;
+  --datav-pop-bg-color: #1b3964;
+  --datav-slider-color: #74f0ff;
+  --datav-ft-border: 1px solid #3a4659;
+  --datav-loading-color: #1996df;
+  --datav-nav-bg: #13161a;
+  --datav-nav-bg-active: #1d2126;
+  --datav-nav-bg-hover: #21262b;
+  --datav-left-nav-bg: #191c21;
+  --datav-left-nav-hover-bg: transparent;
+  --datav-left-nav-active-bg: #14161a;
+  --datav-body-bg: #171b22;
+  --datav-bgcolor-1: #0b0c0d;
+  --datav-bgcolor-2: #1d262e;
+  --datav-component-bg: #303640;
+  --datav-component-bg-1: #171b22;
+  --datav-border-color: #3a4659;
+  --datav-border: 1px solid var(--datav-border-color);
+  --datav-border-primary: 1px solid var(--datav-main-color);
+  --datav-border-dark: 1px solid #000;
+  --datav-border-disabled: 1px solid #323437;
+  --datav-outline: 1px solid #0b0c0d;
+  --datav-shadow-color: #000;
+  --datav-shadow: 0 0 10px -6px #000;
+  --datav-menu-bg: #27343e;
+  --datav-menu-bg-hover: var(--datav-bgcolor-2);
+  --datav-menu-color-hover: #00baff;
+  --datav-menu-color-disabled: #576369;
+  --datav-layer-wp-bg: #1d2126;
+  --datav-layer-bg: #2e343c;
+  --datav-layer-bg-dark: #0a0b0d;
+  --datav-layer-item-bg: #1b1f25;
+  --datav-layer-item-color-locked: #576369;
+  --datav-layer-item-thumbail-bg: #282a30;
+  --datav-layer-toolbar-bg: #20242a;
+  --datav-layer-toolbar-bg-hover: #3a4650;
+  --datav-layer-toolbar-border: 1px solid #282f3a;
+  --datav-layer-toolbar-icon-color: #282f3a;
+  --datav-layer-input-bg: #363c48;
+  --datav-config-bg: #1c1f25;
+  --datav-config-border: 1px solid #282f3a;
   --datav-data-form-bgcolor: #0e1013;
   --color-primary: #04a9f5;
   --header-color: #ccc;
@@ -65,26 +115,77 @@
     .tool-item {
       display: flex;
       align-items: center;
-      .screen-create-scale {
-        width: 2rem;
-      }
-      .label {
-        font-size: 0.14rem;
-        color: var(--footer-color);
-        margin: 0 0.1rem;
-        white-space: nowrap;
-      }
-      .tool-btn {
-        font-size: 0.14rem;
+      .scale-input-wrap{        
+        position: relative;
+        display: block;
+        width: 58px;
+        height: 20px;
+        line-height: 18px;
+        margin-right: 20px;
+        overflow: hidden;
         cursor: pointer;
-        color: var(--footer-color);
-        margin: 0 0.05rem;
-        white-space: nowrap;
-
-        &:hover {
-          color: var(--color-primary);
+        background: var(--datav-dark-color);
+        border: var(--datav-outline);
+        .scale-input{ 
+          width: 27px;
+          padding-left: 5px;
+          padding-right: 0;
+          font-size: 12px;
+          color: var(--datav-font-color);
+          text-align: right;
+          background: transparent;
+          caret-color: var(--datav-font-color);
+          border: none;
+          &::-webkit-inner-spin-button,
+          &::-webkit-outer-spin-button {
+            margin: 0;
+            appearance: none;
+          }
+        }
+        .percent {
+          padding-left: 1px;
+          color: var(--datav-font-color);
+        }
+        .open-icon{
+          position: absolute;
+          font-weight: bold;
+          color: var(--datav-font-color);
+          transform: scale(0.6);
+          margin-top: 2px;
+          padding: 0 2px;
+          right: -4px;
         }
       }
+      .scale-slider {
+        width: 2rem;
+      }
+    }
+  }
+}
+
+.scale-value-list {  
+  --datav-main-hover-color: #409fff;
+  --datav-outline: 1px solid #0b0c0d;  
+  --datav-bgcolor-1: #0b0c0d;
+  --datav-font-color: #bcc9d4;
+  font-size: 12px;
+  background: #262b33;
+  border: var(--datav-outline);
+  user-select: none;
+  .scale-value-item {
+    padding: 5px 0;
+    color: var(--datav-font-color);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      color: var(--datav-main-hover-color);
+      background: var(--datav-bgcolor-1);
+    }
+
+    &:not(:first-child) {
+      border-top: var(--datav-outline);
     }
   }
 }
