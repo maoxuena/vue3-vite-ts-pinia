@@ -25,6 +25,7 @@ const screenPanelStyle = computed(() => {
     height: `${pageConfig.value.height}px`,
     transform: `scale(${canvas.value.scale}) translate(0px, 0px)`,
     backgroundColor: pageConfig.value.bgcolor,
+    backgroundImage: `url(${pageConfig.value.bgimage})`,
   } as CSSProperties
 })
 </script>
@@ -43,7 +44,7 @@ const screenPanelStyle = computed(() => {
 .screen-wrap {
   position: relative;
   width: 100%;
-  height: calc(100% - 32px);
+  height: 100%;
   overflow: auto;
 
   .screen-panel {

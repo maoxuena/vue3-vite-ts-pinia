@@ -37,6 +37,7 @@ interface PageConfig {
   width: number
   height: number
   bgcolor: string
+  bgimage: string
   grid: number
   screenshot: string
   zoomMode: ZoomMode
@@ -73,7 +74,8 @@ export const useScreenStore = defineStore({
     pageConfig: {
       width: 1920,
       height: 1080,
-      bgcolor: '#0e2a43',
+      bgcolor: 'rgba(13,42,67,0)',
+      bgimage: 'src/assets/images/screen/bj.png',
       grid: 8,
       screenshot: '',
       zoomMode: 1,

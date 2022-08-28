@@ -70,6 +70,8 @@ import {
   NColorPicker,
   NEmpty,
   NSlider,
+  NScrollbar,
+  NUploadDragger,
 } from 'naive-ui'
 
 const naive = create({
@@ -143,6 +145,8 @@ const naive = create({
     NColorPicker,
     NEmpty,
     NSlider,
+    NScrollbar,
+    NUploadDragger,
   ],
 })
 

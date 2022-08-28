@@ -1,48 +1,86 @@
 <template>
-  <n-layout class="screen-create-wrapper">
-    <!-- header 顶部 -->
-    <n-layout-header class="screen-create-header"></n-layout-header>
-    <!-- main 主体 -->
-    <n-layout has-sider class="screen-create-main">
-      <!-- left sider 左边侧栏 -->
-      <n-layout-sider
-        class="screen-create-left-panel"
-        collapse-mode="width"
-        :collapsed-width="10"
-        :width="240"
-        show-trigger="arrow-circle"
-        :show-collapsed-content="false"
-        bordered>
-      </n-layout-sider>
-      <n-layout has-sider sider-placement="right">
-        <n-layout>
-          <!-- content 内容 -->
-          <n-layout-content class="screen-create-content">
-            <create-main></create-main>
-          </n-layout-content>
-          <!-- footer 底部 -->
-          <n-layout-footer class="screen-create-footer">
-            <create-footer></create-footer>
-          </n-layout-footer>
-        </n-layout>
-        <!-- right sider 右边侧栏 -->
+  <n-config-provider :theme="darkTheme" :theme-overrides="themeOverrides" abstract>
+    <n-layout class="screen-create-wrapper">
+      <!-- header 顶部 -->
+      <n-layout-header class="screen-create-header"></n-layout-header>
+      <!-- main 主体 -->
+      <n-layout has-sider class="screen-create-main">
+        <!-- left sider 左边侧栏 -->
         <n-layout-sider
-          class="screen-create-right-panel"
+          class="screen-create-left-panel"
           collapse-mode="width"
-          :collapsed-width="10"
+          :collapsed="collapsedLeft"
+          :collapsed-width="0"
           :width="240"
-          show-trigger="arrow-circle"
-          :show-collapsed-content="false"
-          bordered>
+          :show-collapsed-content="false">
+          <components-panel></components-panel>
         </n-layout-sider>
+        <n-layout has-sider sider-placement="right">
+          <n-layout>
+            <!-- content 内容 -->
+            <n-layout-content class="screen-create-content">
+              <create-main></create-main>
+            </n-layout-content>
+            <!-- footer 底部 -->
+            <n-layout-footer class="screen-create-footer">
+              <create-footer></create-footer>
+            </n-layout-footer>
+          </n-layout>
+          <!-- right sider 右边侧栏 -->
+          <n-layout-sider
+            class="screen-create-right-panel"
+            collapse-mode="width"
+            :collapsed="collapsedRight"
+            :collapsed-width="0"
+            :width="300"
+            :show-collapsed-content="false">
+            <n-tabs v-if="!selectedCom" class="config-tabs tabs-num-2" type="card" display-directive="show:lazy">
+              <n-tab-pane name="pageConfig" tab="页面设置" display-directive="show:lazy">
+                <page-config></page-config>
+              </n-tab-pane>
+              <n-tab-pane name="layout" tab="图层" display-directive="show:lazy"> 图层 </n-tab-pane>
+            </n-tabs>
+            <n-tabs v-else class="config-tabs tabs-num-3" type="card" display-directive="show:lazy">
+              <n-tab-pane name="config" tab="配置" display-directive="show:lazy"> 配置 </n-tab-pane>
+              <n-tab-pane name="data" tab="数据" display-directive="show:lazy"> 数据 </n-tab-pane>
+              <n-tab-pane name="interaction" tab="交互" display-directive="show:lazy"> 交互 </n-tab-pane>
+            </n-tabs>
+          </n-layout-sider>
+        </n-layout>
       </n-layout>
     </n-layout>
-  </n-layout>
+  </n-config-provider>
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
+import { GlobalThemeOverrides, darkTheme } from 'naive-ui'
 import CreateMain from './compontents/CreateMain/CreateMain.vue'
 import CreateFooter from './compontents/CreateFooter.vue'
+import ComponentsPanel from './compontents/ComponentsPanel/ComponentsPanel.vue'
+import PageConfig from './compontents/PageConfig/PageConfig.vue'
+
+// 当前是否显选择组件
+const selectedCom = ref(false)
+
+// 侧边栏是否折叠
+const collapsedLeft = ref(false)
+const collapsedRight = ref(false)
+
+const themeOverrides = {
+  common: {
+    fontSizeMedium: '0.12rem',
+    heightMedium: '0.28rem',
+  },
+  Button: {
+    fontSizeMedium: '0.12rem',
+    heightMedium: '0.28rem',
+    iconSizeMedium: '0.12rem',
+  },
+  Input: {
+    fontSizeMedium: '0.12rem',
+  },
+}
 </script>
 
 <style lang="scss">
