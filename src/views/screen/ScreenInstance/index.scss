@@ -476,3 +476,50 @@
     }
   }
 }
+
+.header-wrap {
+  display: flex;
+  justify-content: space-between;
+  .header-left,
+  .header-right {
+    width: 40%;
+    display: flex;
+  }
+  .header-right {
+    justify-content: flex-end;
+  }
+  .header-center {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.tool-wrap {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  &:last-child {
+    margin-right: 0;
+  }
+  .tool-item {
+    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 24px;
+    cursor: pointer;
+    background: var(--datav-component-bg);
+    box-shadow: inset 0 0 0 1px rgb(255 235 235 / 10%), 0 0 0 1px #181818;
+    transition: 0.2s;
+    &:last-child {
+      margin-right: 0;
+    }
+    .tool-icon {
+      width: 14px;
+      height: 14px;
+      line-height: 14px;
+    }
+  }
+}

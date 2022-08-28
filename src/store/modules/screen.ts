@@ -66,7 +66,7 @@ export const useScreenStore = defineStore({
     editMode: false,
     screen: {
       id: 0,
-      name: '',
+      name: '标题',
       share: '',
       thumbnail: '',
       groupId: 0,

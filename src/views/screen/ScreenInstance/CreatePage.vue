@@ -2,7 +2,9 @@
   <n-config-provider :theme="darkTheme" :theme-overrides="themeOverrides" abstract>
     <n-layout class="screen-create-wrapper">
       <!-- header 顶部 -->
-      <n-layout-header class="screen-create-header"></n-layout-header>
+      <n-layout-header class="screen-create-header">
+        <create-header></create-header>
+      </n-layout-header>
       <!-- main 主体 -->
       <n-layout has-sider class="screen-create-main">
         <!-- left sider 左边侧栏 -->
@@ -55,6 +57,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { GlobalThemeOverrides, darkTheme } from 'naive-ui'
+import CreateHeader from './compontents/CreateHeader/CreateHeader.vue'
 import CreateMain from './compontents/CreateMain/CreateMain.vue'
 import CreateFooter from './compontents/CreateFooter.vue'
 import ComponentsPanel from './compontents/ComponentsPanel/ComponentsPanel.vue'

@@ -1,6 +1,12 @@
 <template>
   <div class="page-config-wrap">
     <div class="config-field">
+      <div class="config-label">标题</div>
+      <div class="config-container">
+        <n-input v-model:value="screen.name" @update:value="onColorChange" />
+      </div>
+    </div>
+    <div class="config-field">
       <div class="config-label">屏幕大小</div>
       <div class="config-container">
         <div class="config-item">
@@ -61,10 +67,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useScreenStore } from '@/store/modules/screen'
 const screenStore = useScreenStore()
-const pageConfig = computed(() => screenStore.pageConfig)
+const { screen, pageConfig } = storeToRefs(screenStore)
 
 // 改变屏幕大小
 const onSizeChange = (value) => {}
