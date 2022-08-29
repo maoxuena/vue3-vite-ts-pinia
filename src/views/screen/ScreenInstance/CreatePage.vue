@@ -55,18 +55,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { darkTheme } from 'naive-ui'
 import { storeToRefs } from 'pinia'
 import { useScreenStore } from '@/store/modules/screen'
 import CreateHeader from './compontents/CreateHeader/CreateHeader.vue'
 import CreateMain from './compontents/CreateMain/CreateMain.vue'
-import CreateFooter from './compontents/CreateFooter.vue'
+import CreateFooter from './compontents/CreateFooter/CreateFooter.vue'
 import ComponentsPanel from './compontents/ComponentsPanel/ComponentsPanel.vue'
 import PageConfig from './compontents/PageConfig/PageConfig.vue'
 
 const screenStore = useScreenStore()
-const { screen, panel } = storeToRefs(screenStore)
+const { panel } = storeToRefs(screenStore)
 
 // 当前是否选择组件
 const selectedCom = ref(false)
@@ -79,6 +79,7 @@ const collapsedRight = computed(() => {
   return panel.value.right === '0'
 })
 
+// 主题配置
 const themeOverrides = {
   common: {
     fontSizeMedium: '0.12rem',
@@ -93,6 +94,13 @@ const themeOverrides = {
     fontSizeMedium: '0.12rem',
   },
 }
+
+onMounted(async () => {
+  screenStore.autoScale(() => ({
+    offsetX: screenStore.getPanelOffsetX,
+    offsetY: screenStore.getPanelOffsetY,
+  }))
+})
 </script>
 
 <style lang="scss">

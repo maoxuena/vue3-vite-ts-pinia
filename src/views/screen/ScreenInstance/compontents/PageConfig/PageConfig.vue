@@ -73,7 +73,12 @@ const screenStore = useScreenStore()
 const { screen, pageConfig } = storeToRefs(screenStore)
 
 // 改变屏幕大小
-const onSizeChange = (value) => {}
+const onSizeChange = () => {
+  screenStore.autoScale(() => ({
+    offsetX: screenStore.getPanelOffsetX,
+    offsetY: screenStore.getPanelOffsetY,
+  }))
+}
 
 // 改变屏幕背景色
 const onColorChange = (value) => {}

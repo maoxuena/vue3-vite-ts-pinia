@@ -31,13 +31,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { watch, ref } from 'vue'
 import { useScreenStore } from '@/store/modules/screen'
 
 const screenStore = useScreenStore()
 
-const scale = ref(100)
-const inputScale = ref(200)
+const scale = ref(20)
+const inputScale = ref(20)
 const scaleList = [
   { label: '200%', value: 200 },
   { label: '150%', value: 150 },
@@ -46,16 +46,31 @@ const scaleList = [
   { label: '自适应', value: -1 },
 ]
 
+watch(
+  () => screenStore.canvas.scale,
+  (value) => {
+    const val = parseInt((value * 100).toFixed(2))
+    scale.value = val
+    inputScale.value = val
+  }
+)
+
+const getPanelOffset = () => ({
+  offsetX: screenStore.getPanelOffsetX,
+  offsetY: screenStore.getPanelOffsetY,
+})
+
 /**
  * 改变缩放比
  * @param { number } value 缩放比
  */
 const changeScale = (value: number) => {
-  console.log('改变缩放比', value)
-}
-
-const autoScale = () => {
-  console.log('自适应')
+  if (value === -1) {
+    screenStore.autoScale(getPanelOffset)
+  } else {
+    const { offsetX, offsetY } = getPanelOffset()
+    screenStore.setScale(value === 0 ? inputScale.value : value, offsetX, offsetY)
+  }
 }
 </script>
 

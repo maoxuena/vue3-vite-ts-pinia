@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { debounce } from 'lodash-es'
 import { createStorage } from '@/utils/storage'
 const Storage = createStorage({ storage: localStorage })
 
@@ -109,6 +110,24 @@ export const useScreenStore = defineStore({
       right: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).right,
     },
   }),
+  getters: {
+    getPanelOffsetX(state) {
+      let offsetX = 0
+      if (state.panel.left === '1') {
+        offsetX += 240
+      }
+
+      if (state.panel.right === '1') {
+        offsetX += 300
+      }
+
+      return offsetX
+    },
+    getPanelOffsetY(state) {
+      const offsetY = 0
+      return offsetY
+    },
+  },
   actions: {
     setEditorOption(payload: {
       screen?: Partial<Project>
@@ -138,6 +157,41 @@ export const useScreenStore = defineStore({
         this.panel = { ...this.panel, ...payload.panel }
         Storage.set('SCREEN-PANEL', this.panel)
       }
+    },
+    async autoScale(payload: () => { offsetX: number; offsetY: number }) {
+      const resize = debounce(() => {
+        const offset = payload()
+        const width = document.documentElement.clientWidth - offset.offsetX
+        const height = document.documentElement.clientHeight - 42 - 32 - offset.offsetY
+
+        const a = (width - 120) / this.pageConfig.width
+        const b = (height - 140) / this.pageConfig.height
+        const scale = parseFloat((a > b ? b : a).toFixed(6)) * 100
+
+        this.setScale(scale, offset.offsetX, offset.offsetY)
+      }, 200)
+
+      window.onresize = resize
+
+      resize()
+    },
+    async setScale(scale: number, offsetX: number, offsetY: number) {
+      let width = document.documentElement.clientWidth - offsetX
+      let height = document.documentElement.clientHeight - 42 - 32 - offsetY
+      const deltaS = Math.min(Math.max(scale, 10), 200) / 100
+
+      // 方便计算滚动条 和 标尺
+      const deltaW = this.pageConfig.width * deltaS
+      const deltaH = this.pageConfig.height * deltaS
+      if (width < deltaW) {
+        width = deltaW + 400
+      }
+
+      if (height < deltaH) {
+        height = deltaH + 400
+      }
+
+      this.canvas = { scale: deltaS, width, height }
     },
   },
 })
