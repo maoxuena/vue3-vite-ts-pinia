@@ -12,9 +12,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect, onMounted, onUnmounted } from 'vue'
+import { ref, watchEffect } from 'vue'
 import { useScreenStore } from '@/store/modules/screen'
 import { RulerBuilder } from './index'
+
+// 接收父组件参数（采用ts专有声明，有默认值）
+interface ParentProps {
+  hScroll: number
+  vScroll: number
+}
+const props = withDefaults(defineProps<ParentProps>(), {
+  hScroll: 0,
+  vScroll: 0,
+})
 
 const screenStore = useScreenStore()
 
@@ -23,8 +33,6 @@ const vRulerRef = ref<any>(null)
 const hRuler = ref<RulerBuilder | null>(null)
 const vRuler = ref<RulerBuilder | null>(null)
 const visible = ref(true)
-const hScroll = ref(0)
-const vScroll = ref(0)
 
 const cw = document.documentElement.clientWidth
 
@@ -85,22 +93,6 @@ const toggleGuides = () => {
     vRuler.value.toggleGuide(visible.value)
   }
 }
-
-const onScroll = (ev: Event) => {
-  const dom = ev.target as HTMLElement
-  hScroll.value = dom.scrollLeft
-  vScroll.value = dom.scrollTop
-}
-
-onMounted(() => {
-  const screenWp = document.getElementById('screen-wrap')
-  screenWp?.addEventListener('scroll', onScroll)
-})
-
-onUnmounted(() => {
-  const screenWp = document.getElementById('screen-wrap')
-  screenWp?.removeEventListener('scroll', onScroll)
-})
 </script>
 
 <style lang="scss">

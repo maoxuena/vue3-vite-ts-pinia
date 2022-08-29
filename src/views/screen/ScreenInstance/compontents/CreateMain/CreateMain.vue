@@ -1,9 +1,13 @@
 <template>
   <div class="create-main">
-    <div id="screen-wrap" class="screen-wrap">
-      <ruler-comp></ruler-comp>
-      <div id="screen-panel" class="screen-panel" :style="screenPanelStyle"></div>
-    </div>
+    <n-scrollbar x-scrollable style="height: 100%" @scroll="handleScroll">
+      <div id="screen-wrap" class="screen-wrap">
+        <div class="screen-inner" :style="screenInnerStyle">
+          <ruler-comp :h-scroll="hScroll" :v-scroll="vScroll"></ruler-comp>
+          <div id="screen-panel" class="screen-panel" :style="screenPanelStyle"></div>
+        </div>
+      </div>
+    </n-scrollbar>
   </div>
 </template>
 
@@ -18,6 +22,13 @@ const screenStore = useScreenStore()
 
 const { pageConfig, canvas } = storeToRefs(screenStore)
 
+const screenInnerStyle = computed(() => {
+  return {
+    width: `${canvas.value.width}px`,
+    height: `${canvas.value.height}px`,
+  } as CSSProperties
+})
+
 const screenPanelStyle = computed(() => {
   return {
     position: 'absolute',
@@ -28,6 +39,13 @@ const screenPanelStyle = computed(() => {
     backgroundImage: `url(${pageConfig.value.bgimage})`,
   } as CSSProperties
 })
+
+const hScroll = ref(0)
+const vScroll = ref(0)
+const handleScroll = (e: Event) => {
+  hScroll.value = e.target.scrollLeft
+  vScroll.value = e.target.scrollTop
+}
 </script>
 
 <style lang="scss" scoped>

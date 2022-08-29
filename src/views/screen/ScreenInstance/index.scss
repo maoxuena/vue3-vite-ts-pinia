@@ -152,6 +152,8 @@
 }
 // footer
 .screen-create-footer {
+  position: relative;
+  z-index: 2;
   height: 0.36rem;
   line-height: 0.36rem;
   padding: 0 0.4rem;
@@ -516,7 +518,7 @@
     &:last-child {
       margin-right: 0;
     }
-    &.active{
+    &.active {
       background: var(--primary-color);
     }
     .tool-icon {
@@ -527,14 +529,14 @@
   }
 }
 
-
-.screen-upload{
+.screen-upload {
   height: 150px;
-  .n-upload-trigger, .n-upload-dragger{
+  .n-upload-trigger,
+  .n-upload-dragger {
     height: 100%;
     width: 100%;
   }
-  .n-upload-dragger{
+  .n-upload-dragger {
     padding: 15px 0;
   }
 }
