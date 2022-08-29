@@ -16,7 +16,7 @@ import { storeToRefs } from 'pinia'
 import { cloneDeep } from 'lodash-es'
 import { useScreenStore } from '@/store/modules/screen'
 import ToolBar from './ToolBar.vue'
-import { tool } from './tool.ts'
+import { tool } from './tool'
 
 const screenStore = useScreenStore()
 const { screen } = storeToRefs(screenStore)
