@@ -516,10 +516,25 @@
     &:last-child {
       margin-right: 0;
     }
+    &.active{
+      background: var(--primary-color);
+    }
     .tool-icon {
       width: 14px;
       height: 14px;
       line-height: 14px;
     }
+  }
+}
+
+
+.screen-upload{
+  height: 150px;
+  .n-upload-trigger, .n-upload-dragger{
+    height: 100%;
+    width: 100%;
+  }
+  .n-upload-dragger{
+    padding: 15px 0;
   }
 }

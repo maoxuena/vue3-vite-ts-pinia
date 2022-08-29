@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { createStorage, storage } from '@/utils/storage'
+import { createStorage } from '@/utils/storage'
 import { ResultEnum } from '@/enums/httpEnum'
 import loginApi from '@/service/api/login/login'
 import * as T from '@/service/api/login/types'
@@ -51,11 +51,11 @@ export const useUserStore = defineStore({
         const { data, code } = response
         if (code === ResultEnum.SUCCESS) {
           const ex = 7 * 24 * 60 * 60 * 1000
-          storage.set('ACCESS-TOKEN', data.accessToken, ex)
-          storage.set('CURRENT-USER', data.userInfo, ex)
+          Storage.set('ACCESS-TOKEN', data.accessToken, ex)
+          Storage.set('CURRENT-USER', data.userInfo, ex)
           // TODO:改成实际返回数据 data.userInfo.auth
-          storage.set('CURRENT-PERMISSIONS', [{ value: 'system:user:add' }, { value: 'system:user:edit' }], ex)
-          storage.set('IS-LOCKSCREEN', false)
+          Storage.set('CURRENT-PERMISSIONS', [{ value: 'system:user:add' }, { value: 'system:user:edit' }], ex)
+          Storage.set('IS-LOCKSCREEN', false)
           this.setToken(data.accessToken)
           this.setUserInfo(data.userInfo)
           // TODO:改成实际返回数据 data.userInfo.auth
@@ -85,8 +85,8 @@ export const useUserStore = defineStore({
     // 登出
     async logout() {
       this.setUserInfo({})
-      storage.remove('ACCESS-TOKEN')
-      storage.remove('CURRENT-USER')
+      Storage.remove('ACCESS-TOKEN')
+      Storage.remove('CURRENT-USER')
       return Promise.resolve('')
     },
   },

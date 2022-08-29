@@ -1,4 +1,6 @@
 import { defineStore } from 'pinia'
+import { createStorage } from '@/utils/storage'
+const Storage = createStorage({ storage: localStorage })
 
 enum ZoomMode {
   // 全屏铺满
@@ -58,6 +60,10 @@ interface ScreenState {
     h: number[]
     v: number[]
   }
+  panel: {
+    left?: string
+    right?: string
+  }
 }
 
 export const useScreenStore = defineStore({
@@ -98,6 +104,10 @@ export const useScreenStore = defineStore({
       h: [],
       v: [],
     },
+    panel: {
+      left: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).left,
+      right: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).right,
+    },
   }),
   actions: {
     setEditorOption(payload: {
@@ -106,6 +116,10 @@ export const useScreenStore = defineStore({
       guideLine?: {
         h: number[]
         v: number[]
+      }
+      panel?: {
+        left?: string
+        right?: string
       }
     }) {
       if (payload.screen) {
@@ -118,6 +132,11 @@ export const useScreenStore = defineStore({
 
       if (payload.guideLine) {
         this.guideLine = { ...payload.guideLine }
+      }
+
+      if (payload.panel) {
+        this.panel = { ...this.panel, ...payload.panel }
+        Storage.set('SCREEN-PANEL', this.panel)
       }
     },
   },

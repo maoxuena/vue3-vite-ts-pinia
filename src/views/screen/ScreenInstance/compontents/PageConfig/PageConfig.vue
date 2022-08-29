@@ -46,7 +46,7 @@
         </n-input>
         <n-upload class="screen-upload" directory-dnd action="" :max="1">
           <n-upload-dragger>
-            <img v-if="pageConfig.bgimage" :src="pageConfig.bgimage" style="width: 100%" />
+            <img v-if="pageConfig.bgimage" :src="pageConfig.bgimage" style="height: 100%" />
             <template v-else>
               <div style="margin-bottom: 0.12rem; font-size: 0.48rem">
                 <svg-icon name="img"></svg-icon>

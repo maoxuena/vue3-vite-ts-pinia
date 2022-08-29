@@ -1,38 +1,47 @@
 <template>
   <div class="header-wrap">
     <div class="header-left">
-      <tool-bar v-if="toolLeft.length > 0" :list="toolLeft"></tool-bar>
+      <div class="tool-wrap">
+        <div class="tool-item" :class="{ active: panel.left === '1' }" @click="changeLeftPanel">
+          <n-tooltip :delay="500" placement="bottom" class="screen-tip">
+            <template #trigger>
+              <i class="tool-icon">
+                <svg-icon name="left-panel"></svg-icon>
+              </i>
+            </template>
+            左侧面板
+          </n-tooltip>
+        </div>
+        <div class="tool-item" :class="{ active: panel.right === '1' }" @click="changeRightPanel">
+          <n-tooltip :delay="500" placement="bottom" class="screen-tip">
+            <template #trigger>
+              <i class="tool-icon">
+                <svg-icon name="right-panel"></svg-icon>
+              </i>
+            </template>
+            右侧面板
+          </n-tooltip>
+        </div>
+      </div>
     </div>
     <div class="header-center">{{ screen.name }}</div>
-    <div class="header-right">
-      <tool-bar v-if="toolRight.length > 0" :list="toolRight"></tool-bar>
-    </div>
+    <div class="header-right"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { cloneDeep } from 'lodash-es'
 import { useScreenStore } from '@/store/modules/screen'
-import ToolBar from './ToolBar.vue'
-import { tool } from './tool'
 
 const screenStore = useScreenStore()
-const { screen } = storeToRefs(screenStore)
+const { screen, panel } = storeToRefs(screenStore)
 
-type ToolType = typeof tool[0]
-const cloneTool: ToolType[] = cloneDeep(tool)
-
-const toolLeft = computed(() => {
-  const list: ToolType[] = cloneTool
-  return list.filter((item) => item.type === 'panel')
-})
-
-const toolRight = computed(() => {
-  const list: ToolType[] = cloneTool
-  return list.filter((item) => item.type === 'publish')
-})
+const changeLeftPanel = () => {
+  screenStore.setEditorOption({ panel: { left: panel.value.left === '1' ? '0' : '1' } })
+}
+const changeRightPanel = () => {
+  screenStore.setEditorOption({ panel: { right: panel.value.right === '1' ? '0' : '1' } })
+}
 </script>
 
 <style lang="scss" scoped></style>

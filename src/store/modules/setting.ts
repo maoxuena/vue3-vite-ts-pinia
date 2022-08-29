@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { createStorage, storage } from '@/utils/storage'
+import { createStorage } from '@/utils/storage'
 import setting from '@/config/setting'
 import { IcrumbsSetting, IheaderSetting, ImenuSetting, ImultiTabsSetting } from './types'
 import { size as sizeMap } from '@/config/sizeSetting'

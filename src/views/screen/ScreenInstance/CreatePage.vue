@@ -14,7 +14,7 @@
           :collapsed="collapsedLeft"
           :collapsed-width="0"
           :width="240"
-          :show-collapsed-content="false">
+          :show-collapsed-content="true">
           <components-panel></components-panel>
         </n-layout-sider>
         <n-layout has-sider sider-placement="right">
@@ -35,7 +35,7 @@
             :collapsed="collapsedRight"
             :collapsed-width="0"
             :width="300"
-            :show-collapsed-content="false">
+            :show-collapsed-content="true">
             <n-tabs v-if="!selectedCom" class="config-tabs tabs-num-2" type="card" display-directive="show:lazy">
               <n-tab-pane name="pageConfig" tab="页面设置" display-directive="show:lazy">
                 <page-config></page-config>
@@ -56,19 +56,28 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { GlobalThemeOverrides, darkTheme } from 'naive-ui'
+import { darkTheme } from 'naive-ui'
+import { storeToRefs } from 'pinia'
+import { useScreenStore } from '@/store/modules/screen'
 import CreateHeader from './compontents/CreateHeader/CreateHeader.vue'
 import CreateMain from './compontents/CreateMain/CreateMain.vue'
 import CreateFooter from './compontents/CreateFooter.vue'
 import ComponentsPanel from './compontents/ComponentsPanel/ComponentsPanel.vue'
 import PageConfig from './compontents/PageConfig/PageConfig.vue'
 
-// 当前是否显选择组件
+const screenStore = useScreenStore()
+const { screen, panel } = storeToRefs(screenStore)
+
+// 当前是否选择组件
 const selectedCom = ref(false)
 
 // 侧边栏是否折叠
-const collapsedLeft = ref(false)
-const collapsedRight = ref(false)
+const collapsedLeft = computed(() => {
+  return panel.value.left === '0'
+})
+const collapsedRight = computed(() => {
+  return panel.value.right === '0'
+})
 
 const themeOverrides = {
   common: {
