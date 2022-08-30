@@ -1,0 +1,49 @@
+.header-wrap {
+  display: flex;
+  justify-content: space-between;
+  .header-left,
+  .header-right {
+    width: 40%;
+    display: flex;
+  }
+  .header-right {
+    justify-content: flex-end;
+  }
+  .header-center {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.tool-wrap {
+  display: flex;
+  align-items: center;
+  margin-right: 0.15rem;
+  &:last-child {
+    margin-right: 0;
+  }
+  .tool-item {
+    margin-right: 0.02rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.4rem;
+    height: 0.24rem;
+    cursor: pointer;
+    background: var(--datav-bg-color-light-5);
+    box-shadow: inset 0 0 0 0.01rem rgb(255 235 235 / 10%), 0 0 0 0.01rem #181818;
+    transition: 0.2s;
+    &:last-child {
+      margin-right: 0;
+    }
+    &.active {
+      background: var(--primary-color);
+    }
+    .tool-icon {
+      width: 0.14rem;
+      height: 0.14rem;
+      line-height: 0.14rem;
+    }
+  }
+}

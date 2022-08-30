@@ -1,5 +1,5 @@
 <template>
-  <div class="page-config-wrap">
+  <div class="screen-page-config-wrap">
     <div class="config-field">
       <div class="config-label">标题</div>
       <div class="config-container">
@@ -92,4 +92,6 @@ const resetBGImage = () => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+@import './index.scss';
+</style>

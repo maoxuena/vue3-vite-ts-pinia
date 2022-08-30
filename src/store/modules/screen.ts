@@ -169,8 +169,8 @@ export const useScreenStore = defineStore({
         const width = document.documentElement.clientWidth - offset.offsetX - rule
         const height = document.documentElement.clientHeight - offset.offsetY - rule - header - footer
 
-        const a = (width - padding * 2) / this.pageConfig.width
-        const b = (height - padding * 2) / this.pageConfig.height
+        const a = (width - (padding - rule) * 2) / this.pageConfig.width
+        const b = (height - (padding - rule) * 2) / this.pageConfig.height
         const scale = parseFloat((a > b ? b : a).toFixed(6)) * 100
 
         this.setScale(scale, offset.offsetX, offset.offsetY)

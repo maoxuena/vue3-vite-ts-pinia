@@ -1,0 +1,56 @@
+.n-space {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  > div {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .footer-tool-bar {
+    display: flex;
+    align-items: center;
+    .scale-input-wrap {
+      position: relative;
+      display: block;
+      width: 0.58rem;
+      height: 0.24rem;
+      line-height: 0.22rem;
+      margin-right: 0.2rem;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--datav-bg-color-light-5);
+      border: var(--datav-border);
+      .scale-input {
+        width: 0.27rem;
+        padding-left: 0.05rem;
+        padding-right: 0;
+        font-size: 0.12rem;
+        color: var(--datav-font-color);
+        text-align: right;
+        background: transparent;
+        caret-color: var(--datav-font-color);
+        border: none;
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          margin: 0;
+          appearance: none;
+        }
+      }
+      .percent {
+        padding-left: 0.01rem;
+        color: var(--datav-font-color);
+      }
+      .open-icon {
+        position: absolute;
+        font-weight: bold;
+        color: var(--datav-font-color);
+        transform: scale(0.6);
+        margin-top: 0.02rem;
+        padding: 0 0.02rem;
+        right: -0.04rem;
+      }
+    }
+    .scale-slider {
+      width: 2rem;
+    }
+  }
+}

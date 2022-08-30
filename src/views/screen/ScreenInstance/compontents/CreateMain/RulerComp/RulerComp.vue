@@ -217,7 +217,7 @@ $line-border-3: 1px solid rgb(161 174 179 / 80%);
     font-size: 16px;
     color: var(--datav-font-color);
     cursor: pointer;
-    background: var(--datav-data-form-bgcolor);
+    background: var(--datav-bg-color-light-2);
     border-right: $line-border-3;
     border-bottom: $line-border-3;
     align-items: center;

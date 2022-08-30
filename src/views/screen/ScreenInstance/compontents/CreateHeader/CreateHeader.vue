@@ -44,4 +44,6 @@ const changeRightPanel = () => {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import './index.scss';
+</style>

@@ -1,6 +1,6 @@
 <template>
   <n-space justify="end">
-    <div class="tool-item">
+    <div class="footer-tool-bar">
       <div class="scale-input-wrap">
         <input v-model="inputScale" type="number" class="scale-input" @keydown.enter="changeScale(0)" />
         <span class="percent">%</span>
@@ -9,12 +9,13 @@
           placement="top-end"
           trigger="click"
           :show-arrow="false"
+          :show="show"
           raw
           :style="{
-            '--n-color': 'var(--datav-component-bg)',
+            '--n-color': 'var(--datav-bg-color-light-6)',
           }">
           <template #trigger>
-            <span class="open-icon">
+            <span class="open-icon" @click="show = !show">
               <svg-icon name="arrow-down" />
             </span>
           </template>
@@ -36,6 +37,7 @@ import { useScreenStore } from '@/store/modules/screen'
 
 const screenStore = useScreenStore()
 
+const show = ref(false)
 const scale = ref(20)
 const inputScale = ref(20)
 const scaleList = [
@@ -65,6 +67,7 @@ const getPanelOffset = () => ({
  * @param { number } value 缩放比
  */
 const changeScale = (value: number) => {
+  show.value = false
   if (value === -1) {
     screenStore.autoScale(getPanelOffset)
   } else {
@@ -74,4 +77,30 @@ const changeScale = (value: number) => {
 }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" scoped>
+@import './index.scss';
+</style>
+<style lang="scss">
+.scale-value-list {
+  font-size: 0.12rem;
+  background: var(--datav-bg-color-light-5);
+  border: var(--datav-border) !important;
+  user-select: none;
+  .scale-value-item {
+    padding: 0.05rem 0;
+    color: var(--datav-font-color);
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      color: var(--primary-color-hover);
+      background: var(--datav-bg-color);
+    }
+
+    &:not(:first-child) {
+      border-top: var(--datav-border);
+    }
+  }
+}
+</style>

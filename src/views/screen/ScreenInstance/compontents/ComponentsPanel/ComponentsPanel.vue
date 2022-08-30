@@ -1,5 +1,5 @@
 <template>
-  <div class="panel-wrap">
+  <div class="screen-panel-wrap">
     <div class="panel-head">全部组件</div>
     <div class="panel-content">
       <el-tabs tab-position="left" class="screen-tabs has-icon">
@@ -52,11 +52,13 @@ const categories = computed(() => {
   list.forEach((item) => {
     item.data.unshift({
       ...first,
-      data: item.data.flatMap((m) => m.data),
+      data: item.data.flatMap((m: CategoryType) => m.data),
     })
   })
   return list
 })
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+@import './index.scss';
+</style>

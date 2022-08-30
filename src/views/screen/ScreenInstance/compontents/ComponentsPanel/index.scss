@@ -1,0 +1,183 @@
+.screen-panel-wrap {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.3s ease;
+  user-select: none;
+
+  .panel-head {
+    height: 0.3rem;
+    line-height: 0.3rem;
+    font-size: 0.12rem;
+    padding: 0 0.1rem;
+    color: var(--datav-font-color);
+    background: var(--datav-bg-color-light-6);
+    user-select: none;
+  }
+
+  .panel-content {
+    height: calc(100% - 0.3rem);
+  }
+
+  .el-tabs {
+    height: 100%;
+    &.screen-tabs {
+      .el-tabs__header {
+        margin-right: 0;
+      }
+      .el-tabs__content,
+      .el-tab-pane,
+      .n-scrollbar-content {
+        height: 100%;
+      }
+    }
+    &.has-icon {
+      .el-tabs__header {
+        .el-tabs__nav-wrap {
+          height: 100%;
+          background: var(--datav-bg-color-light-4);
+
+          &.is-left {
+            margin-right: 0;
+
+            &::after {
+              right: auto;
+              background-color: transparent;
+            }
+          }
+
+          .el-tabs__active-bar {
+            background-color: var(--primary-color);
+
+            &.is-left {
+              right: auto;
+              min-height: 0.67rem;
+            }
+          }
+
+          .el-tabs__item {
+            color: var(--datav-font-color);
+            height: auto;
+            line-height: normal;
+            padding: 0.14rem 0.1rem !important;
+
+            .tab-icon {
+              width: 0.18rem;
+              height: 0.18rem;
+              font-size: 0.18rem;
+              font-weight: normal;
+            }
+
+            .tab-title {
+              font-size: 0.12rem;
+              width: 100%;
+              line-height: 0.16rem;
+              color: var(--datav-font-color);
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: block;
+              font-weight: normal;
+            }
+
+            &:hover {
+              color: var(--primary-color-hover);
+            }
+
+            &.is-left {
+              text-align: center;
+            }
+
+            &.is-active {
+              color: var(--primary-color);
+              background: var(--datav-bg-color-light-3);
+              .tab-icon,
+              .tab-title {
+                color: var(--primary-color);
+              }
+            }
+          }
+        }
+      }
+      .el-tabs__content {
+        flex: 1;
+      }
+    }
+
+    &.no-icon {
+      .el-tabs__header {
+        width: 0.6rem;
+
+        .el-tabs__nav-wrap {
+          background: var(--datav-bg-color-light-3);
+
+          .el-tabs__active-bar {
+            display: none;
+          }
+
+          .el-tabs__item {
+            text-align: left !important;
+            padding: 0.16rem 0.07rem !important;
+
+            &.is-active {
+              background: var(--datav-bg-color);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .menu-wrap {
+    background: var(--datav-bg-color);
+    min-height: 100%;
+  }
+
+  .menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0.15rem;
+  }
+
+  .menu-item {
+    cursor: pointer;
+    display: inline-block;
+    color: var(--datav-font-color);
+    vertical-align: top;
+    user-select: none;
+    flex: none;
+    margin-bottom: 0.15rem;
+    border-radius: 0.03rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    .item-text {
+      font-size: 0.12rem;
+      padding: 0 0.05rem;
+      text-align: left;
+      overflow: hidden;
+      background: var(--datav-bg-color-light-4);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      line-height: 0.22rem;
+    }
+
+    .item-img {
+      overflow: hidden;
+      width: 100%;
+      background-clip: content-box;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: var(--datav-bg-color-light-3);
+      position: relative;
+      text-align: center;
+      box-sizing: content-box;
+      transition: border-color 0.2s;
+      height: 0.45rem;
+    }
+  }
+}

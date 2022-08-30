@@ -43,37 +43,12 @@ const screenPanelStyle = computed(() => {
 const hScroll = ref(0)
 const vScroll = ref(0)
 const handleScroll = (e: Event) => {
-  hScroll.value = e.target.scrollLeft
-  vScroll.value = e.target.scrollTop
+  const target = e.target as HTMLInputElement
+  hScroll.value = target.scrollLeft
+  vScroll.value = target.scrollTop
 }
 </script>
 
 <style lang="scss" scoped>
-.create-main {
-  position: relative;
-  display: flex;
-  height: 100%;
-  padding: 0;
-  user-select: none;
-  flex-basis: auto;
-  overflow: auto;
-  background: url('@/assets/images/screen/bg-canvas.png');
-}
-.screen-wrap {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-
-  .screen-panel {
-    top: 60px;
-    left: 60px;
-    background-position: center, right bottom;
-    background-repeat: no-repeat, no-repeat;
-    background-size: cover, contain;
-    box-shadow: rgb(0 0 0 / 50%) 0 0 30px 0;
-    transition: 0.2s all ease-in-out;
-    transform-origin: 0 0;
-  }
-}
+@import './index.scss';
 </style>
