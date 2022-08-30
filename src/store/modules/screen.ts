@@ -61,6 +61,9 @@ interface ScreenState {
     h: number[]
     v: number[]
   }
+  referLine: {
+    enable: boolean
+  }
   panel: {
     left?: string
     right?: string
@@ -109,6 +112,9 @@ export const useScreenStore = defineStore({
     guideLine: {
       h: [],
       v: [],
+    },
+    referLine: {
+      enable: true,
     },
     panel: {
       left: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).left,
