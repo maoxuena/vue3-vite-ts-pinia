@@ -44,6 +44,8 @@
       <p>卡片内容</p>
       <p>卡片内容</p>
     </n-card>
+    <n-divider title-placement="left">DataV 组件使用</n-divider>
+    <d-basic-text :com="com"></d-basic-text>
   </div>
 </template>
 
@@ -95,6 +97,34 @@ limitRequest.limitGet('/getUserInfo').then((res) => {
 })
 limitRequest.limitGet('/getUserInfo').then((res) => {
   console.log(46, res)
+})
+
+const com = ref({
+  title: '我是标题数据',
+  width: 200,
+  height: 30,
+  textStyle: {
+    fontFamily: 'Microsoft Yahei',
+    fontSize: 24,
+    color: '#000',
+    fontWeight: 'normal',
+  },
+  textAlign: 'center',
+  writingMode: 'horizontal-tb',
+  letterSpacing: 0,
+  backgroundStyle: {
+    show: false,
+    bgColor: '#008bff',
+    borderRadius: 15,
+    borderColor: '#fff',
+    borderStyle: 'solid',
+    borderWidth: 1,
+  },
+  ellipsis: false,
+  urlConfig: {
+    url: '',
+    isBlank: false,
+  },
 })
 </script>
 
