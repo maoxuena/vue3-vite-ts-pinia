@@ -1,0 +1,16 @@
+.field-item {
+  display: flex;
+  padding: 0.04rem 0.1rem 0.04rem 0.15rem;
+  flex-wrap: wrap;
+  .field-label {
+    width: 0.8rem;
+    font-size: 0.12rem;
+    height: 0.28rem;
+    line-height: 0.28rem;
+    color: var(--datav-font-color);
+  }
+  .field-container {
+    width: calc(100% - 0.8rem);
+    display: flex;
+  }
+}

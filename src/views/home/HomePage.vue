@@ -46,6 +46,7 @@
     </n-card>
     <n-divider title-placement="left">DataV 组件使用</n-divider>
     <d-basic-text :com="com"></d-basic-text>
+    <d-async-loading></d-async-loading>
   </div>
 </template>
 

@@ -1,59 +1,36 @@
-.screen-page-config-wrap{
-  .config-field {
-    display: flex;
-    padding: 0.04rem 0.1rem 0.04rem 0.15rem;
-    .config-label {
-      width: 0.8rem;
+.screen-page-config-wrap {
+  .screen-input-number-wrap {
+    display: inline;
+    &:not(:last-child) {
+      margin-right: 0.04rem;
+    }
+    .item-describe {
+      width: 100%;
       font-size: 0.12rem;
-      height: 0.28rem;
-      line-height: 0.28rem;
+      height: 0.16rem;
+      line-height: 0.16rem;
       color: var(--datav-font-color);
-    }
-    .config-container {
-      width: calc(100% - 0.8rem);
-      display: flex;
-      &.config-wrap {
-        flex-wrap: wrap;
-      }
-      .config-item {
-        flex: 1;
-        padding-right: 0.05rem;
-        .item-describe {
-          width: 100%;
-          font-size: 0.12rem;
-          height: 0.16rem;
-          line-height: 0.16rem;
-          color: var(--datav-font-color);
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-        }
-        &:last-child {
-          padding-right: 0;
-        }
-      }
-      .screen-color-input {
-        width: calc(100% - 0.02rem - var(--n-height));
-        margin-right: 0.02rem;
-      }
-      .screen-upload {
-        width: 100%;
-        flex: 0 0 100%;
-        display: block;
-        margin-top: 0.05rem;
-      }
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
-}
-
-.screen-upload {
-  height: 1.50rem;
-  .n-upload-trigger,
-  .n-upload-dragger {
-    height: 100%;
+  .screen-color-input {
+    margin-right: 0.04rem;
+  }
+  .screen-upload {
+    height: 1.5rem;
     width: 100%;
-  }
-  .n-upload-dragger {
-    padding: 0.15rem 0;
+    flex: 0 0 100%;
+    display: block;
+    margin-top: 0.05rem;
+    .n-upload-trigger,
+    .n-upload-dragger {
+      height: 100%;
+      width: 100%;
+    }
+    .n-upload-dragger {
+      padding: 0.15rem 0;
+    }
   }
 }

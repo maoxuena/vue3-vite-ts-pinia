@@ -1,44 +1,36 @@
 <template>
   <div class="screen-page-config-wrap">
-    <div class="config-field">
-      <div class="config-label">标题</div>
-      <div class="config-container">
-        <n-input v-model:value="screen.name" @update:value="onColorChange" />
+    <d-field label="标题">
+      <n-input v-model:value="screen.name" @update:value="onTitleChange" />
+    </d-field>
+    <d-field label="屏幕大小">
+      <div class="screen-input-number-wrap">
+        <n-input-number
+          v-model:value="pageConfig.width"
+          :min="100"
+          :max="20000"
+          class="screen-input-number"
+          inline
+          @update:value="onSizeChange" />
+        <span class="item-describe">宽度</span>
       </div>
-    </div>
-    <div class="config-field">
-      <div class="config-label">屏幕大小</div>
-      <div class="config-container">
-        <div class="config-item">
-          <n-input-number
-            v-model:value="pageConfig.width"
-            :min="100"
-            :max="20000"
-            class="screen-input-number"
-            @update:value="onSizeChange" />
-          <span class="item-describe">宽度</span>
-        </div>
-        <div class="config-item">
-          <n-input-number
-            v-model:value="pageConfig.height"
-            :min="100"
-            :max="20000"
-            class="screen-input-number"
-            @update:value="onSizeChange" />
-          <span class="item-describe">高度</span>
-        </div>
+      <div class="screen-input-number-wrap">
+        <n-input-number
+          v-model:value="pageConfig.height"
+          :min="100"
+          :max="20000"
+          class="screen-input-number"
+          inline
+          @update:value="onSizeChange" />
+        <span class="item-describe">高度</span>
       </div>
-    </div>
-    <div class="config-field">
-      <div class="config-label">背景颜色</div>
-      <div class="config-container">
-        <n-input v-model:value="pageConfig.bgcolor" class="screen-color-input" @update:value="onColorChange" />
-        <n-color-picker v-model:value="pageConfig.bgcolor" class="screen-color-picker" @update:value="onColorChange" />
-      </div>
-    </div>
-    <div class="config-field">
-      <div class="config-label">背景图</div>
-      <div class="config-container config-wrap">
+    </d-field>
+    <d-field label="背景颜色">
+      <n-input v-model:value="pageConfig.bgcolor" class="screen-color-input" inline @update:value="onColorChange" />
+      <n-color-picker v-model:value="pageConfig.bgcolor" class="screen-color-picker" inline @update:value="onColorChange" />
+    </d-field>
+    <d-field label="背景图">
+      <div style="width: 100%">
         <n-input v-model:value="pageConfig.bgimage" @update:value="onBgChange">
           <template #prefix>
             <svg-icon name="link"></svg-icon>
@@ -56,13 +48,10 @@
           </n-upload-dragger>
         </n-upload>
       </div>
-    </div>
-    <div class="config-field">
-      <div class="config-label">重置</div>
-      <div class="config-container">
-        <n-button> 恢复默认背景 </n-button>
-      </div>
-    </div>
+    </d-field>
+    <d-field label="重置">
+      <n-button> 恢复默认背景 </n-button>
+    </d-field>
   </div>
 </template>
 
@@ -79,6 +68,9 @@ const onSizeChange = () => {
     offsetY: screenStore.getPanelOffsetY,
   }))
 }
+
+// 改变标题
+const onTitleChange = (value) => {}
 
 // 改变屏幕背景色
 const onColorChange = (value) => {}
