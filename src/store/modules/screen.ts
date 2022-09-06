@@ -1,74 +1,8 @@
 import { defineStore } from 'pinia'
 import { debounce } from 'lodash-es'
+import { ScreenState, Project, PageConfig, DatavComponent } from './types'
 import { createStorage } from '@/utils/storage'
 const Storage = createStorage({ storage: localStorage })
-
-enum ZoomMode {
-  // 全屏铺满
-  auto,
-  // 等比缩放宽度铺满
-  width,
-  // 等比缩放高度铺满
-  height,
-  // 等比缩放高度铺满并且可以左右移动
-  full,
-  // 不缩放
-  disabled,
-}
-
-interface Project {
-  id: number
-  name: string
-  share: string
-  thumbnail: string
-  groupId: number
-  createAt: string
-  updateAt: string
-  config?: any
-}
-
-interface PageStyleFilter {
-  enable: boolean
-  hue: number
-  saturate: number
-  brightness: number
-  contrast: number
-  opacity: number
-}
-
-interface PageConfig {
-  width: number
-  height: number
-  bgcolor: string
-  bgimage: string
-  grid: number
-  screenshot: string
-  zoomMode: ZoomMode
-  useWatermark: boolean
-  styleFilterParams: PageStyleFilter
-}
-
-interface ScreenState {
-  editMode: boolean
-  screen: Partial<Project>
-  pageConfig: PageConfig
-  canvas: {
-    scale: number
-    width: number
-    height: number
-  }
-  guideLine: {
-    h: number[]
-    v: number[]
-  }
-  referLine: {
-    enable: boolean
-  }
-  panel: {
-    left?: string
-    right?: string
-  }
-}
 
 const rule = 20
 const header = 48
@@ -120,6 +54,8 @@ export const useScreenStore = defineStore({
       left: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).left,
       right: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).right,
     },
+    coms: [],
+    loading: 0,
   }),
   getters: {
     getPanelOffsetX(state) {
@@ -202,6 +138,28 @@ export const useScreenStore = defineStore({
       }
 
       this.canvas = { scale: deltaS, width, height }
+    },
+    selectCom(id: string) {
+      this.coms.forEach(com => {
+        if (com.id === id) {
+          com.selected = true
+        } else {
+          com.selected = false
+        }
+        com.hovered = false
+      })
+    },
+    async addCom(com: DatavComponent) {
+      this.coms.push(com)
+    },
+    addLoading() {
+      this.loading = this.loading + 1
+    },
+    removeLoading() {
+      this.loading = Math.max(this.loading - 1, 0)
+    },
+    removeAllLoading() {
+      this.loading = 0
     },
   },
 })

@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { PropType, computed } from 'vue'
+import { toRef, computed } from 'vue'
 import type { CSSProperties } from 'vue'
 import { BasicText } from './BasicText'
 
@@ -22,14 +22,14 @@ const props = defineProps<{
   com: BasicText
 }>()
 
-const config = computed(() => {
-  return props.com
-})
+const config = toRef(props.com, 'config')
+
+const attr = toRef(props.com, 'attr')
 
 const titleStyle = computed(() => {
   const style = {
-    width: `${config.value.width}px`,
-    height: `${config.value.height}px`,
+    width: `${attr.value.width}px`,
+    height: `${attr.value.height}px`,
     'font-family': `${config.value.textStyle.fontFamily}, Arial, sans-serif`,
     'font-size': `${config.value.textStyle.fontSize}px`,
     'font-weight': config.value.textStyle.fontWeight,

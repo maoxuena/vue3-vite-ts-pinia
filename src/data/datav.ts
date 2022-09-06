@@ -1,3 +1,17 @@
+export const text = {
+  type: 'text',
+  name: '文本',
+  icon: 'text',
+  data: [
+    {
+      name: 'VBasicText',
+      alias: '基础文本',
+      img: '/screen/components/basic-text.png',
+      used: true,
+    },
+  ],
+}
+
 export const bar = {
   type: 'bar',
   name: '柱状图',
@@ -7,19 +21,19 @@ export const bar = {
       name: 'VBasicBar',
       alias: '柱状图',
       img: '/screen/components/basic-bar.png',
-      used: true,
+      used: false,
     },
     {
       name: 'VArcBar',
       alias: '玉环图',
       img: '/screen/components/arc-bar.png',
-      used: true,
+      used: false,
     },
     {
       name: 'VLineBarChart',
       alias: '折线柱图',
       img: '/screen/components/line-bar-chart.png',
-      used: true,
+      used: false,
     },
   ],
 }
@@ -33,7 +47,7 @@ export const map2d = {
       name: 'VChina2d',
       alias: '2D基础地图',
       img: '/screen/components/2d-china.png',
-      used: true,
+      used: false,
     },
   ],
 }
@@ -47,12 +61,18 @@ export const map3d = {
       name: 'VWorld3d',
       alias: '3D基础地图',
       img: '/screen/components/3d-world.png',
-      used: true,
+      used: false,
     },
   ],
 }
 
 export const classifications = [
+  {
+    type: 'basic',
+    name: '基础',
+    icon: 'basic-components',
+    data: [text],
+  },
   {
     type: 'regular',
     name: '图表',
@@ -66,3 +86,23 @@ export const classifications = [
     data: [map2d, map3d],
   },
 ]
+
+export function findComByName(name: string) {
+  for (let i = 0; i < classifications.length; i++) {
+    const classification = classifications[i]
+    for (let j = 0; j < classification.data.length; j++) {
+      const category = classification.data[j]
+      const com = category.data.find(m => m.name === name)
+      console.log(com)
+      if (com) {
+        return {
+          classification,
+          category,
+          com,
+        }
+      }
+    }
+  }
+
+  return null
+}

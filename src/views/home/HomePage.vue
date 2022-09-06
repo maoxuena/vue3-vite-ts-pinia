@@ -101,30 +101,34 @@ limitRequest.limitGet('/getUserInfo').then((res) => {
 })
 
 const com = ref({
-  title: '我是标题数据',
-  width: 200,
-  height: 30,
-  textStyle: {
-    fontFamily: 'Microsoft Yahei',
-    fontSize: 24,
-    color: '#000',
-    fontWeight: 'normal',
+  attr: {
+    width: 200,
+    height: 30,
   },
-  textAlign: 'center',
-  writingMode: 'horizontal-tb',
-  letterSpacing: 0,
-  backgroundStyle: {
-    show: false,
-    bgColor: '#008bff',
-    borderRadius: 15,
-    borderColor: '#fff',
-    borderStyle: 'solid',
-    borderWidth: 1,
-  },
-  ellipsis: false,
-  urlConfig: {
-    url: '',
-    isBlank: false,
+  config: {
+    title: '我是标题数据',
+    textStyle: {
+      fontFamily: 'Microsoft Yahei',
+      fontSize: 24,
+      color: '#000',
+      fontWeight: 'normal',
+    },
+    textAlign: 'center',
+    writingMode: 'horizontal-tb',
+    letterSpacing: 0,
+    backgroundStyle: {
+      show: false,
+      bgColor: '#008bff',
+      borderRadius: 15,
+      borderColor: '#fff',
+      borderStyle: 'solid',
+      borderWidth: 1,
+    },
+    ellipsis: false,
+    urlConfig: {
+      url: '',
+      isBlank: false,
+    },
   },
 })
 </script>

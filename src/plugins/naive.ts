@@ -72,6 +72,7 @@ import {
   NSlider,
   NScrollbar,
   NUploadDragger,
+  NText,
 } from 'naive-ui'
 
 const naive = create({
@@ -147,6 +148,7 @@ const naive = create({
     NSlider,
     NScrollbar,
     NUploadDragger,
+    NText,
   ],
 })
 

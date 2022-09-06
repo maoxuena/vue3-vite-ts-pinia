@@ -4,10 +4,22 @@
   flex-wrap: wrap;
   .field-label {
     width: 0.8rem;
-    font-size: 0.12rem;
-    height: 0.28rem;
-    line-height: 0.28rem;
     color: var(--datav-font-color);
+
+    .field-title{
+      font-size: 0.12rem;
+      height: 0.28rem;
+      line-height: 0.28rem;
+      font-weight: normal;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .has-description {
+      cursor: help;
+      text-decoration: underline dotted;
+    }
   }
   .field-container {
     width: calc(100% - 0.8rem);

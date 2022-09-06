@@ -62,6 +62,7 @@
 // screen 中的 tooltip
 .n-popover-shared {
   &.screen-tip {
+    font-size: 0.12rem;
     background: var(--primary-color);
     .n-popover-arrow-wrapper {
       .n-popover-arrow {

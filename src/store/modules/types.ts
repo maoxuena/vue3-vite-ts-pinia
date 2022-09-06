@@ -1,5 +1,10 @@
 import { RouteRecordRaw } from 'vue-router'
+import { generateId } from '@/utils/index'
+import { findComByName } from '@/data/datav'
 
+/**
+ * user
+ */
 // User
 export interface IUserState {
   token: string
@@ -17,6 +22,9 @@ export interface IUserInfoState {
   menu: any[]
 }
 
+/**
+ * asyncRoute
+ */
 // Route
 export interface IAsyncRouteState {
   menus: RouteRecordRaw[]
@@ -24,6 +32,9 @@ export interface IAsyncRouteState {
   addRouters: any[]
 }
 
+/**
+ * setting
+ */
 // 顶部
 export interface IheaderSetting {
   bgColor: string
@@ -51,4 +62,133 @@ export interface ImenuSetting {
 export interface IcrumbsSetting {
   show: boolean
   showIcon: boolean
+}
+
+/**
+ * screen
+ */
+
+enum ZoomMode {
+  // 全屏铺满
+  auto,
+  // 等比缩放宽度铺满
+  width,
+  // 等比缩放高度铺满
+  height,
+  // 等比缩放高度铺满并且可以左右移动
+  full,
+  // 不缩放
+  disabled,
+}
+
+export interface Project {
+  id: number
+  name: string
+  share: string
+  thumbnail: string
+  groupId: number
+  createAt: string
+  updateAt: string
+  config?: any
+}
+
+interface PageStyleFilter {
+  enable: boolean
+  hue: number
+  saturate: number
+  brightness: number
+  contrast: number
+  opacity: number
+}
+
+export interface PageConfig {
+  width: number
+  height: number
+  bgcolor: string
+  bgimage: string
+  grid: number
+  screenshot: string
+  zoomMode: ZoomMode
+  useWatermark: boolean
+  styleFilterParams: PageStyleFilter
+}
+
+export interface ComponentAttr {
+  x: number
+  y: number
+  width: number
+  height: number
+  deg: number
+  opacity: number
+  filpV: boolean
+  filpH: boolean
+}
+
+export abstract class DatavComponent {
+  id: string
+  readonly name: string
+
+  alias: string
+  icon: string
+  img: string
+
+  locked = false
+  hided = false
+
+  // 以下几个状态可以不进行持久化，为了操作方便在此声明
+  selected = false
+  hovered = false
+  renameing = false
+
+  attr: ComponentAttr = {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 100,
+    deg: 0,
+    opacity: 1,
+    filpV: false,
+    filpH: false,
+  }
+
+  projectId = 0
+  parentId?: string
+
+  abstract config: Record<string, any>
+
+  constructor(name: string, attr: Partial<ComponentAttr>) {
+    this.id = generateId(name)
+    this.name = `V${name}`
+
+    const obj = findComByName(this.name)!
+    this.alias = obj.com.alias
+    this.icon = obj.category.icon
+    this.img = obj.com.img
+
+    this.attr = { ...this.attr, ...attr }
+  }
+}
+
+export interface ScreenState {
+  editMode: boolean
+  screen: Partial<Project>
+  pageConfig: PageConfig
+  canvas: {
+    scale: number
+    width: number
+    height: number
+  }
+  guideLine: {
+    h: number[]
+    v: number[]
+  }
+  referLine: {
+    enable: boolean
+  }
+  panel: {
+    left?: string
+    right?: string
+  }
+  coms: DatavComponent[]
+  loading: number
 }

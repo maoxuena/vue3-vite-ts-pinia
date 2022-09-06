@@ -1,27 +1,38 @@
-export interface BasicText {
-  title: string
-  width: number
-  height: number
-  textStyle: {
-    fontFamily: string
-    fontSize: number
-    color: string
-    fontWeight: string
+import { DatavComponent } from '@/store/modules/types'
+
+export class BasicText extends DatavComponent{
+  config = {
+    title: '我是标题数据',
+    textStyle: {
+      fontFamily: 'Microsoft Yahei',
+      fontSize: 24,
+      color: '#fff',
+      fontWeight: 'normal',
+    },
+    textAlign: 'center',
+    writingMode: 'horizontal-tb',
+    letterSpacing: 0,
+    backgroundStyle: {
+      show: false,
+      bgColor: '#008bff',
+      borderRadius: 15,
+      borderColor: '#fff',
+      borderStyle: 'solid',
+      borderWidth: 1,
+    },
+    ellipsis: false,
+    urlConfig: {
+      url: '',
+      isBlank: false,
+    },
   }
-  textAlign: string
-  writingMode: string
-  letterSpacing: number
-  backgroundStyle: {
-    show: false
-    bgColor: string
-    borderRadius: number
-    borderColor: string
-    borderStyle: string
-    borderWidth: 1
+  constructor() {
+    super('BasicText', { width: 300, height: 56 })
+    // this.initData()
   }
-  ellipsis: false
-  urlConfig: {
-    url: ''
-    isBlank: false
-  }
+  // initData() {
+  //   return this
+  // }
 }
+
+export default BasicText

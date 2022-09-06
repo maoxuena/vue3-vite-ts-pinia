@@ -1,5 +1,36 @@
+import {
+  isObject,
+  isPlainObject,
+  isArray,
+  isString,
+  hyphenate,
+  looseEqual,
+} from '@vue/shared'
+import shortid from 'shortid'
+
+export {
+  isObject, // 包括数组
+  isPlainObject, // 不包括数组
+  isArray,
+  isString,
+  looseEqual, // 判断两对象是否相等
+}
+
 /**
- * 驼峰转短横线
+ * Generate shortId 生成短ID
+ */
+export const generateId = (prefix?: string) => {
+  const id = shortid.generate()
+  return prefix ? `${prefix}_${id}` : id
+}
+
+/**
+ * 大小驼峰转短横线连接
+ */
+export const kebabCase = hyphenate
+
+/**
+ * 小驼峰转短横线
  * @param str
  * @returns
  */
@@ -11,7 +42,7 @@ export function camelToDash(str: string) {
 }
 
 /**
- * 短横线转驼峰
+ * 短横线转小驼峰
  * @param str
  * @returns
  */
