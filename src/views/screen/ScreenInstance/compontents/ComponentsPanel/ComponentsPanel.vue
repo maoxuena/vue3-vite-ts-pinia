@@ -75,8 +75,8 @@ const toAddCom = async (comName: string, used: boolean) => {
   if (used) {
     screenStore.addLoading()
     const com = await createComponent(comName)
-    com.attr.x = Math.floor((screenStore.pageConfig.width - com.attr.w) / 2)
-    com.attr.y = Math.floor((screenStore.pageConfig.height - com.attr.h) / 2)
+    com.attr.x = Math.floor((screenStore.pageConfig.width - com.attr.width) / 2)
+    com.attr.y = Math.floor((screenStore.pageConfig.height - com.attr.height) / 2)
     await screenStore.addCom(com)
     screenStore.selectCom(com.id)
     screenStore.removeLoading()
@@ -85,11 +85,11 @@ const toAddCom = async (comName: string, used: boolean) => {
   }
 }
 
-const dragStart = (ev: any, comName: string) => {
+const dragStart = (ev: DragEvent, comName: string) => {
   ev.dataTransfer.setData('text', comName)
 }
 
-const dragOver = (ev: any) => {
+const dragOver = (ev: DragEvent) => {
   ev.preventDefault()
   ev.stopPropagation()
   ev.dataTransfer.dropEffect = 'none'

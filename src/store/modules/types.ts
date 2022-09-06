@@ -158,7 +158,7 @@ export abstract class DatavComponent {
 
   constructor(name: string, attr: Partial<ComponentAttr>) {
     this.id = generateId(name)
-    this.name = `V${name}`
+    this.name = `D${name}`
 
     const obj = findComByName(this.name)!
     this.alias = obj.com.alias
@@ -167,6 +167,17 @@ export abstract class DatavComponent {
 
     this.attr = { ...this.attr, ...attr }
   }
+}
+
+export interface AlignLine {
+  top: number
+  bottom: number
+  left: number
+  right: number
+  vertical: number
+  horizontal: number
+  enable: boolean
+  show: boolean
 }
 
 export interface ScreenState {
@@ -185,6 +196,7 @@ export interface ScreenState {
   referLine: {
     enable: boolean
   }
+  alignLine: AlignLine
   panel: {
     left?: string
     right?: string

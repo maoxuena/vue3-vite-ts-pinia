@@ -1,10 +1,10 @@
 <template>
   <div class="create-main">
     <n-scrollbar x-scrollable style="height: 100%" @scroll="handleScroll">
-      <div id="screen-wrap" class="screen-wrap">
+      <div id="screen-wrap" class="screen-wrap" @mousedown.stop="cancelSelectCom">
         <div class="screen-inner" :style="screenInnerStyle">
           <ruler-comp :h-scroll="hScroll" :v-scroll="vScroll"></ruler-comp>
-          <div id="screen-panel" class="screen-panel" :style="screenPanelStyle">
+          <div id="screen-panel" class="screen-panel" :style="screenPanelStyle" @dragover="dragOver" @drop="dropToAddCom">
             <components-container v-for="com in coms" :key="com.id" :com="com">
               <component
                 :is="com.name"
@@ -26,12 +26,13 @@ import { computed, ref } from 'vue'
 import type { CSSProperties } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useScreenStore } from '@/store/modules/screen'
+import { createComponent } from '@/components/DatavUi/datav'
 import RulerComp from './RulerComp/RulerComp.vue'
 import ComponentsContainer from '../ComponentsContainer/ComponentsContainer.vue'
 
 const screenStore = useScreenStore()
 
-const { pageConfig, canvas } = storeToRefs(screenStore)
+const { pageConfig, canvas, coms } = storeToRefs(screenStore)
 
 const screenInnerStyle = computed(() => {
   return {
@@ -59,56 +60,36 @@ const handleScroll = (e: Event) => {
   vScroll.value = target.scrollTop
 }
 
-const coms = [
-  {
-    id: '4C9FbF37-AbA5-C7f3-dB3C-67D61180CaDb',
-    type: 'com',
-    alias: '通用标题',
-    name: 'NButton',
-    locked: false,
-    parentId: null,
-    hided: false,
-    attr: { opacity: 1, x: 472, w: 300, y: 332, deg: 0, h: 284, filpV: false, filpH: false },
-    icon: 'v-icon-title',
-    config: {
-      title: '我是标题',
-      textStyle: { fontFamily: 'Microsoft Yahei', fontSize: 24, color: '#fff', fontWeight: 'normal' },
-      textAlign: 'center',
-      urlConfig: { url: '', isBlank: false },
-      writingMode: 'horizontal-tb',
-      letterSpacing: 0,
-      ellipsis: false,
-      backgroundStyle: { show: false, bgColor: '#008bff', borderRadius: 15, borderColor: '#fff', borderStyle: 'solid', borderWidth: 1 },
-    },
-    children: null,
-    img: '//files.pengxiaotian.com/com-thum/main-title-370-208.png',
-    apis: {
-      source: {
-        autoUpdate: 1,
-        description: '',
-        fields: {
-          title: { type: 'string', path: '', map: '', description: '标题值', optional: true },
-          url: { type: 'string', path: '', map: '', description: '超链接', optional: true },
-        },
-        render: 'render',
-        useAutoUpdate: false,
-      },
-    },
-    apiData: {
-      source: {
-        id: '426ef5b1-24Eb-BBAe-A5c8-8117e56EB2c8',
-        type: 'static',
-        comId: 'EeBe2B9B-7741-62B9-94Ed-B1f432Cb067c',
-        config: { useFilter: false, pageFilters: [], data: '{"title":"我是标题数据","url":""}' },
-        pageFilters: [],
-      },
-    },
-    projectId: 1,
-    events: [],
-    selected: true,
-    hovered: true,
-  },
-]
+const dragOver = (ev: DragEvent) => {
+  ev.preventDefault()
+  ev.stopPropagation()
+  ev.dataTransfer.dropEffect = 'copy'
+}
+
+const dropToAddCom = async (event: any) => {
+  event.preventDefault()
+  try {
+    const name = event.dataTransfer.getData('text')
+    if (name) {
+      screenStore.addLoading()
+      const com = await createComponent(name)
+      const { scale } = canvas.value
+      const offsetX = (event.clientX - screenStore.getPanelOffsetLeft) / scale
+      const offsetY = (event.clientY - screenStore.getPanelOffsetTop) / scale
+      com.attr.x = Math.round(offsetX - com.attr.width / 2)
+      com.attr.y = Math.round(offsetY - com.attr.height / 2)
+      await screenStore.addCom(com)
+      screenStore.selectCom(com.id)
+      screenStore.removeLoading()
+    }
+  } catch {
+    // TODO
+  }
+}
+
+const cancelSelectCom = () => {
+  screenStore.selectCom('')
+}
 </script>
 
 <style lang="scss" scoped>

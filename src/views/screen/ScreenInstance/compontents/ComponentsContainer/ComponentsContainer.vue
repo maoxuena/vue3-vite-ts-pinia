@@ -1,7 +1,12 @@
 <template>
   <div class="components-container" :class="containerClass" :style="containerStyle">
     <refer-line v-if="referLine.enable && com.selected" :attr="com.attr" :scale="scale" />
-    <div :class="['components-scale', { hovered: com.hovered }]" :style="hideStyle">
+    <div
+      :class="['components-scale', { hovered: com.hovered }]"
+      :style="hideStyle"
+      @mouseenter="onEnter"
+      @mouseleave="onLeave"
+      @mousedown.prevent.stop="onMove">
       <div class="container-handler" :class="handlerClass" :style="handlerStyle">
         <div class="container-com" :style="comStyle">
           <slot></slot>
@@ -9,12 +14,12 @@
         </div>
         <template v-for="(v, k) in points" :key="k">
           <i v-if="v.rotateStyle" :class="`${v.name}-handler`" data-html2canvas-ignore>
-            <span class="rotate-handler" :style="v.rotateStyle">
-              <span class="control-point" :style="v.style"></span>
+            <span class="rotate-handler" :style="v.rotateStyle" @mousedown.prevent.stop="onRotate">
+              <span class="control-point" :style="v.style" @mousedown.prevent.stop="onZoom($event, k)"></span>
             </span>
           </i>
           <i v-else :class="`${v.name}-handler`" data-html2canvas-ignore>
-            <span class="control-point" :style="v.style"></span>
+            <span class="control-point" :style="v.style" @mousedown.prevent.stop="onZoom($event, k)"></span>
           </i>
         </template>
         <div class="container-bg"></div>
@@ -24,99 +29,13 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, getCurrentInstance } from 'vue'
 import type { CSSProperties } from 'vue'
 import { useScreenStore } from '@/store/modules/screen'
 import { Direction, getCursors } from './index'
 import ReferLine from './ReferLine.vue'
-interface DatavComponent {
-  id: string
-  type: string
-  alias: string
-  name: string
-  locked: boolean
-  parentId: number
-  hided: boolean
-  attr: {
-    opacity: number
-    x: number
-    w: number
-    y: number
-    deg: number
-    h: number
-    filpV: boolean
-    filpH: boolean
-  }
-  icon: string
-  config: {
-    title: string
-    textStyle: {
-      fontFamily: string
-      fontSize: number
-      color: string
-      fontWeight: string
-    }
-    textAlign: string
-    urlConfig: {
-      url: string
-      isBlank: boolean
-    }
-    writingMode: string
-    letterSpacing: number
-    ellipsis: boolean
-    backgroundStyle: {
-      show: boolean
-      bgColor: string
-      borderRadius: number
-      borderColor: string
-      borderStyle: string
-      borderWidth: number
-    }
-  }
-  children: any[]
-  img: string
-  apis: {
-    source: {
-      autoUpdate: number
-      description: string
-      fields: {
-        title: {
-          type: string
-          path: string
-          map: string
-          description: string
-          optional: boolean
-        }
-        url: {
-          type: string
-          path: string
-          map: string
-          description: string
-          optional: boolean
-        }
-      }
-      render: string
-      useAutoUpdate: boolean
-    }
-  }
-  apiData: {
-    source: {
-      id: string
-      type: string
-      comId: string
-      config: {
-        useFilter: boolean
-        pageFilters: any[]
-        data: string
-      }
-      pageFilters: any[]
-    }
-  }
-  projectId: number
-  events: any[]
-  selected: boolean
-  hovered: boolean
-}
+import { DatavComponent } from '@/store/modules/types'
+import { handleMove, handleZoom, handleRotate } from './index'
 
 const props = defineProps<{
   com: DatavComponent
@@ -135,8 +54,8 @@ const containerClass = computed(() => ({
 const containerStyle = computed(() => ({
   top: 0,
   left: 0,
-  width: `${props.com.attr.w}px`,
-  height: `${props.com.attr.h}px`,
+  width: `${props.com.attr.width}px`,
+  height: `${props.com.attr.height}px`,
   transform: `translate(${props.com.attr.x}px, ${props.com.attr.y}px)`,
 }))
 
@@ -168,8 +87,8 @@ const comStyle = computed(() => {
 })
 
 const wrapperStyle = computed(() => ({
-  width: `${props.com.attr.w}px`,
-  height: `${props.com.attr.h}px`,
+  width: `${props.com.attr.width}px`,
+  height: `${props.com.attr.height}px`,
 }))
 
 const cursor = computed(() => getCursors(props.com.attr.deg))
@@ -221,6 +140,68 @@ const points = computed<{
     },
   }
 })
+
+const selectCom = () => {
+  if (props.com.selected) {
+    return
+  }
+
+  screenStore.selectCom(props.com.id)
+}
+
+const onEnter = () => {
+  screenStore.hoverCom(props.com.id, true)
+}
+
+const onLeave = () => {
+  screenStore.hoverCom(props.com.id, false)
+}
+
+const onMove = (ev: MouseEvent) => {
+  selectCom()
+  handleMove(
+    ev,
+    props.com,
+    scale.value,
+    screenStore.pageConfig.grid,
+    () => {
+      screenStore.calcAlignLine(props.com)
+    },
+    () => {
+      screenStore.hideAlignLine(props.com.id)
+    }
+  )
+}
+
+const onZoom = (ev: MouseEvent, dir: Direction) => {
+  selectCom()
+  handleZoom(
+    ev,
+    dir,
+    props.com,
+    scale.value,
+    screenStore.isNormalResizeMode,
+    () => {
+      screenStore.calcAlignLine(props.com)
+    },
+    () => {
+      screenStore.hideAlignLine(props.com.id)
+    }
+  )
+}
+
+const instance = getCurrentInstance()
+const onRotate = (ev: MouseEvent) => {
+  handleRotate(
+    ev,
+    instance.vnode.el as HTMLElement,
+    props.com,
+    () => {},
+    () => {
+      screenStore.hideAlignLine(props.com.id)
+    }
+  )
+}
 </script>
 
 <style lang="scss" scoped>

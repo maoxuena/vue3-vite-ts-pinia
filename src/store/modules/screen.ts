@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { debounce } from 'lodash-es'
 import { ScreenState, Project, PageConfig, DatavComponent } from './types'
+import { calcIntersectingLines } from '@/utils/intersecting-line-util'
 import { createStorage } from '@/utils/storage'
 const Storage = createStorage({ storage: localStorage })
 
@@ -50,6 +51,16 @@ export const useScreenStore = defineStore({
     referLine: {
       enable: true,
     },
+    alignLine: {
+      enable: false,
+      show: false,
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      vertical: 0,
+      horizontal: 0,
+    },
     panel: {
       left: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).left,
       right: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).right,
@@ -63,15 +74,24 @@ export const useScreenStore = defineStore({
       if (state.panel.left === '1') {
         offsetX += 240
       }
-
       if (state.panel.right === '1') {
         offsetX += 300
       }
-
       return offsetX
     },
     getPanelOffsetY(state) {
       const offsetY = 0
+      return offsetY
+    },
+    getPanelOffsetLeft(state) {
+      let offsetX = padding
+      if (state.panel.left === '1') {
+        offsetX += 240
+      }
+      return offsetX
+    },
+    getPanelOffsetTop(state) {
+      const offsetY = header + padding
       return offsetY
     },
   },
@@ -139,14 +159,39 @@ export const useScreenStore = defineStore({
 
       this.canvas = { scale: deltaS, width, height }
     },
+    calcAlignLine(com: DatavComponent) {
+      if (!this.alignLine.enable) {
+        return
+      }
+
+      const attr = calcIntersectingLines(com, this.coms, this.canvas.scale)
+      this.alignLine = { ...this.alignLine, ...attr, show: true }
+    },
+    hideAlignLine(id: string) {
+      if (!this.alignLine.enable) {
+        return
+      }
+
+      if (this.alignLine.show) {
+        this.alignLine.show = false
+        this.selectCom(id)
+      }
+    },
     selectCom(id: string) {
-      this.coms.forEach(com => {
+      this.coms.forEach((com) => {
         if (com.id === id) {
           com.selected = true
         } else {
           com.selected = false
         }
         com.hovered = false
+      })
+    },
+    hoverCom(id: string, flag: boolean) {
+      this.coms.forEach((com) => {
+        if (com.id === id) {
+          com.hovered = flag
+        }
       })
     },
     async addCom(com: DatavComponent) {
