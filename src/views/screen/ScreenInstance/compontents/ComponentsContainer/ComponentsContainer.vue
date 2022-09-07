@@ -81,7 +81,7 @@ const comStyle = computed(() => {
   }
   return {
     display: hided ? 'none' : 'block',
-    transform: `scaleX(${attr.filpH ? -1 : 1}) scaleY(${attr.filpV ? -1 : 1}) rotateZ(360deg)`,
+    transform: `scaleX(${attr.flipH ? -1 : 1}) scaleY(${attr.flipV ? -1 : 1}) rotateZ(360deg)`,
     filter,
   }
 })

@@ -84,3 +84,51 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+// 配置面板
+.screen-setting-config-wrap {
+  .screen-input-number-wrap {
+    display: inline;
+    &:not(:last-child) {
+      margin-right: 0.04rem;
+    }
+    .item-describe {
+      width: 100%;
+      font-size: 0.12rem;
+      height: 0.16rem;
+      line-height: 0.16rem;
+      color: var(--datav-font-color);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+  .screen-color-input {
+    margin-right: 0.04rem;
+  }
+  .screen-upload {
+    height: 1.5rem;
+    width: 100%;
+    flex: 0 0 100%;
+    display: block;
+    margin-top: 0.05rem;
+    .n-upload-trigger,
+    .n-upload-dragger {
+      height: 100%;
+      width: 100%;
+    }
+    .n-upload-dragger {
+      padding: 0.15rem 0;
+    }
+  }
+  .flip-wrap{
+    width: calc(100% - 0.02rem);
+    display: flex;
+    align-items: center;
+    .flip-item{
+      display: inline-block;
+      padding: 0.1rem;
+      margin-left: 0.04rem;
+    }
+  }
+}

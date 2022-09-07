@@ -94,6 +94,9 @@ export const useScreenStore = defineStore({
       const offsetY = header + padding
       return offsetY
     },
+    selectedCom(state) {
+      return state.coms.find((m) => m.selected)
+    },
   },
   actions: {
     setEditorOption(payload: {

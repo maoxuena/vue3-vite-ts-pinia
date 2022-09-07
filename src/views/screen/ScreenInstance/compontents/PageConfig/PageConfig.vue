@@ -1,5 +1,5 @@
 <template>
-  <div class="screen-page-config-wrap">
+  <div class="screen-setting-config-wrap">
     <d-field label="标题">
       <n-input v-model:value="screen.name" @update:value="onTitleChange" />
     </d-field>
@@ -84,6 +84,4 @@ const resetBGImage = () => {
 }
 </script>
 
-<style lang="scss">
-@import './index.scss';
-</style>
+<style lang="scss"></style>

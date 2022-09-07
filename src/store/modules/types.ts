@@ -120,8 +120,8 @@ export interface ComponentAttr {
   height: number
   deg: number
   opacity: number
-  filpV: boolean
-  filpH: boolean
+  flipV: boolean
+  flipH: boolean
 }
 
 export abstract class DatavComponent {
@@ -147,8 +147,8 @@ export abstract class DatavComponent {
     height: 100,
     deg: 0,
     opacity: 1,
-    filpV: false,
-    filpH: false,
+    flipV: false,
+    flipH: false,
   }
 
   projectId = 0

@@ -16,8 +16,8 @@ interface ComponentAttr {
   h: number
   deg: number
   opacity: number
-  filpV: boolean
-  filpH: boolean
+  flipV: boolean
+  flipH: boolean
 }
 
 const props = defineProps<{

@@ -43,9 +43,15 @@
               <n-tab-pane name="layout" tab="图层" display-directive="show:lazy"> 图层 </n-tab-pane>
             </n-tabs>
             <n-tabs v-else class="config-tabs tabs-num-3" type="card" display-directive="show:lazy">
-              <n-tab-pane name="config" tab="配置" display-directive="show:lazy"> 配置 </n-tab-pane>
-              <n-tab-pane name="data" tab="数据" display-directive="show:lazy"> 数据 </n-tab-pane>
-              <n-tab-pane name="interaction" tab="交互" display-directive="show:lazy"> 交互 </n-tab-pane>
+              <n-tab-pane name="config" tab="配置" display-directive="show:lazy">
+                <setting-panel :com="selectedCom"></setting-panel>
+              </n-tab-pane>
+              <n-tab-pane name="data" tab="数据" display-directive="show:lazy">
+                <data-panel :key="selectedCom.id"></data-panel>
+              </n-tab-pane>
+              <n-tab-pane name="interaction" tab="交互" display-directive="show:lazy">
+                <interaction-panel :key="selectedCom.id"></interaction-panel>
+              </n-tab-pane>
             </n-tabs>
           </n-layout-sider>
         </n-layout>
@@ -55,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue'
+import { computed, onMounted } from 'vue'
 import { darkTheme } from 'naive-ui'
 import { storeToRefs } from 'pinia'
 import { useScreenStore } from '@/store/modules/screen'
@@ -64,12 +70,15 @@ import CreateMain from './compontents/CreateMain/CreateMain.vue'
 import CreateFooter from './compontents/CreateFooter/CreateFooter.vue'
 import ComponentsPanel from './compontents/ComponentsPanel/ComponentsPanel.vue'
 import PageConfig from './compontents/PageConfig/PageConfig.vue'
+import settingPanel from './compontents/ComponentsConfig/SettingPanel.vue'
+import dataPanel from './compontents/ComponentsConfig/DataPanel.vue'
+import interactionPanel from './compontents/ComponentsConfig/InteractionPanel.vue'
 
 const screenStore = useScreenStore()
 const { panel } = storeToRefs(screenStore)
 
 // 当前是否选择组件
-const selectedCom = ref(false)
+const selectedCom = computed(() => screenStore.selectedCom)
 
 // 侧边栏是否折叠
 const collapsedLeft = computed(() => {
