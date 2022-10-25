@@ -8,7 +8,9 @@
     </n-empty>
   </template>
   <template v-else>
-    <n-grid :x-gap="10" :y-gap="10" cols="2 450:3 600:4 750:5 900:6 1050:7 1200:8 1350:9 1500:10 1650:11 1800:12">
+    <!-- Self 响应式突然不起作用了，改成 Screen 响应式 -->
+    <!-- <n-grid :x-gap="10" :y-gap="10" cols="2 450:3 600:4 750:5 900:6 1050:7 1200:8 1350:9 1500:10 1650:11 1800:12"> -->
+    <n-grid :x-gap="10" :y-gap="10" cols="1 s:2 m:4 l:8 xl:10 2xl:12" responsive="screen">
       <n-grid-item v-for="icon in icons" :key="icon">
         <div class="icon-wrap">
           <svg-icon :name="icon" @click="handleCopyIcon(icon)"></svg-icon>
@@ -66,8 +68,13 @@ const handleCopyText = (text: string) => {
   }
   span {
     display: inline-block;
+    width: 100%;
     font-size: 0.14rem;
+    text-align: center;
     cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .icon-copy {
     position: absolute;
