@@ -3,8 +3,61 @@ import axios, { AxiosRequestConfig } from 'axios'
 import NProgress from 'nprogress'
 import { storage } from '@/utils/Storage'
 
-const cancelToken = axios.CancelToken // 阻止请求
-const source = cancelToken.source()
+// const cancelToken = axios.CancelToken // 阻止请求
+// const source = cancelToken.source()
+
+const pendingMap = new Map()
+/**
+ * 生成唯一的每个请求的唯一key
+ * @param {*} config
+ * @returns
+ */
+function getPendingKey(config: any) {
+  const { url, method, params, data } = config
+  // response里面返回的config.data是个字符串对象
+  const tempData = (typeof data === 'string' ? JSON.parse(data) : data) ?? {}
+  const key = [url, method, JSON.stringify(params), JSON.stringify(tempData)].join('&')
+  return key
+}
+
+/**
+ * 删除进行中的重复请求
+ * @param {*} config
+ */
+function removePending(config: any) {
+  const pendingKey = getPendingKey(config)
+  if (pendingMap.has(pendingKey)) {
+    const cancelToken = pendingMap.get(pendingKey)
+    cancelToken(pendingKey)
+    pendingMap.delete(pendingKey)
+  }
+}
+
+/**
+ * 删除进行中的所有请求
+ */
+function removeAllPending() {
+  for (const [name, value] of pendingMap) {
+    const cancelToken = pendingMap.get(name)
+    cancelToken(name)
+  }
+  pendingMap.clear()
+}
+
+/**
+ * 储存每个请求的唯一cancel回调, 以此为标识
+ * @param {*} config
+ */
+function addPending(config: any) {
+  const pendingKey = getPendingKey(config)
+  config.cancelToken =
+    config.cancelToken ||
+    new axios.CancelToken((cancel) => {
+      if (!pendingMap.has(pendingKey)) {
+        pendingMap.set(pendingKey, cancel)
+      }
+    })
+}
 
 // 设置请求头和请求路径
 axios.defaults.baseURL = import.meta.env.VITE_APP_WEB_URL as string // 默认地址
@@ -13,7 +66,9 @@ axios.defaults.withCredentials = true // 跨域时候允许携带凭证
 axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 axios.interceptors.request.use(
   (config): AxiosRequestConfig<any> => {
-    config.cancelToken = source.token // 全局添加cancelToken
+    // config.cancelToken = source.token // 全局添加cancelToken
+    removePending(config) // 移除已存在的重复请求
+    addPending(config) // 添加请求
     const token = storage.get('ACCESS-TOKEN')
     if (token) {
       //@ts-ignore
@@ -31,7 +86,8 @@ axios.interceptors.response.use(
     // 对于token过期的处理
     if (res.data.code === '101') {
       // 取消其他正在进行的请求
-      source.cancel('登录信息已过期')
+      // source.cancel('登录信息已过期')
+      removeAllPending()
       window.$dialog.info({
         title: '提示',
         content: '登录信息已过期，您确定要退出登录吗',
@@ -46,6 +102,8 @@ axios.interceptors.response.use(
           NProgress.done()
         },
       })
+    } else {
+      removePending(res.config) // 请求成功，删除请求
     }
     return res
   },

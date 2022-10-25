@@ -47,12 +47,16 @@
     <n-divider title-placement="left">DataV 组件使用</n-divider>
     <d-basic-text :com="com"></d-basic-text>
     <d-async-loading></d-async-loading>
+    <n-divider title-placement="left">Token 过期/重复请求</n-divider>
+    <n-button @click="tokenExpired">Token 过期</n-button>
+    <n-button @click="repeatRequest">重复请求</n-button>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 import { limitRequest } from '@/service/http'
+import loginApi from '@/service/api/login/login'
 import useCurrentInstance from '@/hooks/useCurrentInstance'
 import { useSettingStore } from '@/store/modules/setting'
 // 系统配置
@@ -99,6 +103,22 @@ limitRequest.limitGet('/getUserInfo').then((res) => {
 limitRequest.limitGet('/getUserInfo').then((res) => {
   console.log(46, res)
 })
+
+const repeatRequest = () => {
+  loginApi.getUserInfo()
+  setTimeout(() => {
+    loginApi.getUserInfo()
+  }, 100)
+}
+
+const tokenExpired = () => {
+  limitRequest.limitGet('/tokenExpired').then((res) => {
+    console.log(16, res)
+  })
+  setTimeout(() => {
+    loginApi.getUserInfo()
+  }, 200)
+}
 
 const com = ref({
   attr: {
