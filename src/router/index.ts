@@ -6,6 +6,7 @@ import { storage } from '@/utils/Storage'
 import { WHITE_PATH_LIST } from '@/config/config'
 import router from './router'
 import { redirectRouter } from './redirect'
+import { removeAllPending } from '@/service/http'
 
 router.beforeEach(async (to, from, next) => {
   NProgress.start()
@@ -56,6 +57,7 @@ router.beforeEach(async (to, from, next) => {
 })
 
 router.afterEach(() => {
+  removeAllPending()
   NProgress.done()
 })
 

@@ -36,10 +36,10 @@ function removePending(config: any) {
 /**
  * 删除进行中的所有请求
  */
-function removeAllPending() {
-  for (const [name, value] of pendingMap) {
-    const cancelToken = pendingMap.get(name)
-    cancelToken(name)
+export function removeAllPending() {
+  for (const [pendingKey] of pendingMap) {
+    const cancelToken = pendingMap.get(pendingKey)
+    cancelToken(pendingKey)
   }
   pendingMap.clear()
 }
@@ -67,8 +67,8 @@ axios.defaults.headers.post['Content-Type'] = 'application/json;charset=UTF-8'
 axios.interceptors.request.use(
   (config): AxiosRequestConfig<any> => {
     // config.cancelToken = source.token // 全局添加cancelToken
-    removePending(config) // 移除已存在的重复请求
-    addPending(config) // 添加请求
+    removePending(config) // 取消进行中的重复请求
+    addPending(config) // 添加当前请求
     const token = storage.get('ACCESS-TOKEN')
     if (token) {
       //@ts-ignore
@@ -103,7 +103,7 @@ axios.interceptors.response.use(
         },
       })
     } else {
-      removePending(res.config) // 请求成功，删除请求
+      removePending(res.config) // 请求成功，删除当前请求
     }
     return res
   },
