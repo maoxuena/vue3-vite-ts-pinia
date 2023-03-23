@@ -201,6 +201,7 @@ export interface ScreenState {
     left?: string
     right?: string
   }
+  isNormalResizeMode: boolean
   coms: DatavComponent[]
   loading: number
 }

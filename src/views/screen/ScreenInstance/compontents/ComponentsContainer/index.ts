@@ -7,6 +7,7 @@ export type Direction = 'lt' | 't' | 'rt' | 'r' | 'rb' | 'b' | 'lb' | 'l'
 // 双向指示
 export type BidirectionalCursor = 'ew-resize' | 'ns-resize' | 'nesw-resize' | 'nwse-resize'
 
+// 缩放模式
 export type ResizeMode = 'normal' | 'stretch'
 
 interface IPoint {

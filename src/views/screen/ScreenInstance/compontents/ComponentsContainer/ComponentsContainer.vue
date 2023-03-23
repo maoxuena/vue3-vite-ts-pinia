@@ -29,7 +29,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance } from 'vue'
+import { PropType, computed, getCurrentInstance, ComponentInternalInstance } from 'vue'
 import type { CSSProperties } from 'vue'
 import { useScreenStore } from '@/store/modules/screen'
 import { Direction, getCursors } from './index'
@@ -37,9 +37,12 @@ import ReferLine from './ReferLine.vue'
 import { DatavComponent } from '@/store/modules/types'
 import { handleMove, handleZoom, handleRotate } from './index'
 
-const props = defineProps<{
-  com: DatavComponent
-}>()
+const props = defineProps({
+  com: {
+    type: Object as PropType<DatavComponent>,
+    required: true,
+  },
+})
 
 const screenStore = useScreenStore()
 const referLine = computed(() => screenStore.referLine)
@@ -190,17 +193,19 @@ const onZoom = (ev: MouseEvent, dir: Direction) => {
   )
 }
 
-const instance = getCurrentInstance()
+const instance: ComponentInternalInstance | null = getCurrentInstance()
 const onRotate = (ev: MouseEvent) => {
-  handleRotate(
-    ev,
-    instance.vnode.el as HTMLElement,
-    props.com,
-    () => {},
-    () => {
-      screenStore.hideAlignLine(props.com.id)
-    }
-  )
+  if (instance) {
+    handleRotate(
+      ev,
+      instance.vnode.el as HTMLElement,
+      props.com,
+      () => {},
+      () => {
+        screenStore.hideAlignLine(props.com.id)
+      }
+    )
+  }
 }
 </script>
 

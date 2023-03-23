@@ -65,6 +65,7 @@ export const useScreenStore = defineStore({
       left: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).left,
       right: Storage.get('SCREEN-PANEL', { left: '1', right: '1' }).right,
     },
+    isNormalResizeMode: true,
     coms: [],
     loading: 0,
   }),
