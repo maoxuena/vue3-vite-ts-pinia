@@ -12,8 +12,8 @@ import { computed } from 'vue'
 interface ComponentAttr {
   x: number
   y: number
-  w: number
-  h: number
+  width: number
+  height: number
   deg: number
   opacity: number
   flipV: boolean
