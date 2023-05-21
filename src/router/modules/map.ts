@@ -45,6 +45,15 @@ const mapRouter: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/map/BMap/BMapPage.vue'),
       },
+      {
+        path: 'WebGL/index',
+        name: 'WebGLPage',
+        meta: {
+          title: 'WebGL',
+          sort: 2,
+        },
+        component: () => import('@/views/map/WebGL/WebGLPage.vue'),
+      },
     ],
   },
 ]

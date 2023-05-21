@@ -10,6 +10,8 @@ import resolveExternalsPlugin from 'vite-plugin-resolve-externals'
 
 import svgLoader from 'vite-svg-loader'
 
+import cesium from 'vite-plugin-cesium' // 引入插件
+
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
@@ -81,6 +83,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       resolveExternalsPlugin({
         AMap: 'AMap',
       }),
+      cesium(),
       // 打包分析
       visualizer({
         filename: 'dist/report.html',
