@@ -6,5 +6,8 @@ export const HOME_URL = '/home/index'
 // 白名单地址
 export const WHITE_PATH_LIST: string[] = ['/401', '/403', '/404', '/500', '/login']
 
+// 接口基础路径
+export const APP_WEB_URL = import.meta.env.VITE_APP_WEB_URL || '/api'
+
 // 路由导出方式（all：后端导出路由；intelligence：前端导出路由）
 export const AUTHENTICATION = 'intelligence'

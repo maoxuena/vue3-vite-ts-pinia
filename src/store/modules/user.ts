@@ -1,3 +1,11 @@
+/*
+ * @Author: maoxuena
+ * @Date: 2024-08-29 09:55:12
+ * @LastEditors: maoxuena
+ * @LastEditTime: 2024-08-30 16:26:31
+ * @FilePath: \vue3-vite-ts-pinia\src\store\modules\user.ts
+ * @Description:
+ */
 import { defineStore } from 'pinia'
 import { createStorage } from '@/utils/storage'
 import { ResultEnum } from '@/enums/httpEnum'
