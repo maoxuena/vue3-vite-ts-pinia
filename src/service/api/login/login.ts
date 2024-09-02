@@ -8,6 +8,9 @@ const loginApi: T.ILoginApi = {
   getUserInfo() {
     return http.get('/getUserInfo')
   },
+  getTest() {
+    return http.get('/imooc/search/hotwords')
+  },
 }
 
 export default loginApi

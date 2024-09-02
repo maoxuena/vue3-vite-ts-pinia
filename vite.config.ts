@@ -110,7 +110,28 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       open: true,
       https: false,
       hmr: true, // 禁用或配置 HMR 连接
-      proxy: {},
+      proxy: {
+        // '/api': {
+        //   target: 'https://www.fastmock.site/mock/f83873e13c27d6d7ad225f4aa9e41eff',
+        //   changeOrigin: true,
+        //   rewrite: (path) => path.replace(/^\/api/, '/api'),
+        // },
+        // '/api': {
+        //   target: 'https://vcs.zijieapi.com',
+        //   changeOrigin: true,
+        //   rewrite: (path) => path.replace(/^\/api/, ''),
+        // },
+        '/api/imooc': {
+          target: 'https://www.imooc.com',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/imooc/, ''),
+        },
+        // '/third/shipxy': {
+        //   target: 'https://nbzsg.zjseaport.com/',
+        //   changeOrigin: true,
+        //   rewrite: (path) => path.replace(/^\/third\/shipxy/, '/shipxy'),
+        // },
+      },
     },
     // 生产环境打包配置
     build: {

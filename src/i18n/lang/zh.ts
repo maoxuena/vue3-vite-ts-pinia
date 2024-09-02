@@ -15,6 +15,7 @@ const zh = {
     AMap: '高德地图',
     BMap: '百度地图',
     WebGL: 'WebGL',
+    OpenLayers: 'OpenLayers',
     screen: '可视化大屏',
     ScreenDesign: '大屏设计',
     ScreenInstance: '大屏实例',

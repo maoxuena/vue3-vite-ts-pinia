@@ -15,6 +15,7 @@ const en = {
     AMap: 'aMap',
     BMap: 'bMap',
     WebGL: 'WebGL',
+    OpenLayers: 'OpenLayers',
     screen: 'screen',
     ScreenDesign: 'ScreenDesign',
     ScreenInstance: 'ScreenInstance',

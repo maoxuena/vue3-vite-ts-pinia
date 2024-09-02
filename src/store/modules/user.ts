@@ -2,7 +2,7 @@
  * @Author: maoxuena
  * @Date: 2024-08-29 09:55:12
  * @LastEditors: maoxuena
- * @LastEditTime: 2024-08-30 16:26:31
+ * @LastEditTime: 2024-09-02 09:13:07
  * @FilePath: \vue3-vite-ts-pinia\src\store\modules\user.ts
  * @Description:
  */
@@ -88,6 +88,10 @@ export const useUserStore = defineStore({
       } catch (e) {
         return Promise.reject(e)
       }
+    },
+
+    async getTest() {
+      const response = await loginApi.getTest()
     },
 
     // 登出

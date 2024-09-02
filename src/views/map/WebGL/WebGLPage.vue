@@ -12,7 +12,7 @@ import * as Cesium from 'cesium'
 
 const cesiumViewer = ref<HTMLDivElement>()
 onMounted(() => {
-  const viewer = new Cesium.Viewer(cesiumViewer.value, {
+  const viewer = new Cesium.Viewer(cesiumViewer.value as HTMLElement, {
     infoBox: false,
   })
 })

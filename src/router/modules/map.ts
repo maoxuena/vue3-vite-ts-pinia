@@ -54,6 +54,15 @@ const mapRouter: Array<RouteRecordRaw> = [
         },
         component: () => import('@/views/map/WebGL/WebGLPage.vue'),
       },
+      {
+        path: 'OpenLayers/index',
+        name: 'OpenLayersPage',
+        meta: {
+          title: 'OpenLayers',
+          sort: 3,
+        },
+        component: () => import('@/views/map/OpenLayers/OpenLayersPage.vue'),
+      },
     ],
   },
 ]

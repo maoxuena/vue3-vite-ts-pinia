@@ -14,7 +14,7 @@
             <div class="login-form">
               <div class="login-title flex-container c-c">
                 <svg-icon name="logo"></svg-icon>
-                <p class="logo-text">Snow-Admin</p>
+                <p class="logo-text">S-Admin</p>
               </div>
               <LoginForm></LoginForm>
             </div>

@@ -70,6 +70,9 @@ const handleLogin = () => {
   })
 }
 
+// 跨域，vite.config.ts配置代理
+userStore.getTest()
+
 // 重置
 // const handleReset = () => {
 //   loginFormRef.value?.restoreValidation()
