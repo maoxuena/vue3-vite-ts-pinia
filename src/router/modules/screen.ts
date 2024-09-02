@@ -30,7 +30,7 @@ const screenRouter: Array<RouteRecordRaw> = [
     children: [
       {
         path: 'ScreenDesign/index',
-        name: 'ScreenDesign',
+        name: 'screenDesign',
         meta: {
           title: 'ScreenDesign',
           sort: 0,
@@ -38,19 +38,19 @@ const screenRouter: Array<RouteRecordRaw> = [
         component: () => import('@/views/screen/ScreenDesign/ListPage.vue'),
       },
       {
-        path: 'screenA/index',
+        path: 'ScreenA/index',
         name: 'ScreenAPage',
         meta: {
-          title: 'screenA',
+          title: 'ScreenA',
           sort: 0,
         },
         component: () => import('@/views/screen/ScreenA/ScreenAPage.vue'),
       },
       {
-        path: 'screenB/index',
+        path: 'ScreenB/index',
         name: 'ScreenBPage',
         meta: {
-          title: 'screenB',
+          title: 'ScreenB',
           sort: 1,
         },
         component: () => import('@/views/screen/ScreenB/ScreenBPage.vue'),

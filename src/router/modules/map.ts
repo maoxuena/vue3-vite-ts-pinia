@@ -28,7 +28,7 @@ const mapRouter: Array<RouteRecordRaw> = [
     component: Layout,
     children: [
       {
-        path: 'AMap/index',
+        path: 'aMap/index',
         name: 'AMapPage',
         meta: {
           title: 'AMap',

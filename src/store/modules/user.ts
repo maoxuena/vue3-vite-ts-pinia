@@ -2,7 +2,7 @@
  * @Author: maoxuena
  * @Date: 2024-08-29 09:55:12
  * @LastEditors: maoxuena
- * @LastEditTime: 2024-09-02 09:13:07
+ * @LastEditTime: 2024-09-02 10:32:11
  * @FilePath: \vue3-vite-ts-pinia\src\store\modules\user.ts
  * @Description:
  */
@@ -80,8 +80,10 @@ export const useUserStore = defineStore({
         const response = await loginApi.getUserInfo()
         const { data, code } = response
         if (code === ResultEnum.SUCCESS) {
+          const ex = 7 * 24 * 60 * 60 * 1000
+          Storage.set('CURRENT-USER', data, ex)
           this.setUserInfo(data)
-          // TODO:改成实际返回数据
+          // TODO:改成实际返回数据 data.auth
           this.setPermissions([{ value: 'system:user:add' }, { value: 'system:user:edit' }])
         }
         return Promise.resolve(data)
