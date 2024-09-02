@@ -1,7 +1,7 @@
 <!--
  * @Author: maoxuena
  * @Date: 2024-01-25 14:02:13
- * @LastEditTime: 2024-09-02 09:15:45
+ * @LastEditTime: 2024-09-02 09:32:20
  * @LastEditors: maoxuena
  * @Description:
 -->
@@ -26,6 +26,15 @@ const initMap = () => {
   const target = mapBox.value
   const _map = createMap(target!, center) //创建地图实例
   map.value = _map
+}
+
+const worker = new Worker(new URL('./utils/worker.ts', import.meta.url))
+
+worker.postMessage(5) // 向 worker 发送数据
+
+worker.onmessage = (event) => {
+  const result = event.data
+  console.log('Result received from worker:', result)
 }
 
 onMounted(() => {
