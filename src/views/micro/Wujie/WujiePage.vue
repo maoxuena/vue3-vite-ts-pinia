@@ -2,7 +2,7 @@
  * @Author: maoxuena
  * @Date: 2024-09-03 11:17:55
  * @LastEditors: maoxuena
- * @LastEditTime: 2024-09-03 13:21:49
+ * @LastEditTime: 2024-09-03 13:48:34
  * @FilePath: \vue3-vite-ts-pinia\src\views\micro\Wujie\WujiePage.vue
  * @Description:
 -->
@@ -15,7 +15,7 @@
       width="100%"
       height="100%"
       name="wujieChild"
-      url="https://ythcs.nbport.com.cn/ui/user/login"
+      :url="url"
       :alive="true"
       :sync="false"
       :before-load="beforeLoad"
@@ -30,6 +30,8 @@
 </template>
 
 <script setup lang="ts">
+// const url = 'https://ythcs.nbport.com.cn/ui/user/login'
+const url = 'http://localhost:8080/#/article/ranking'
 const beforeLoad = () => {
   console.log('子应用开始加载静态资源前触发')
 }
