@@ -14,6 +14,7 @@ import {
   Add,
   EyeOffOutline,
   EyeOutline,
+  LogoMicrosoft,
 } from '@vicons/ionicons5'
 import { renderIcon } from '@/utils/route'
 
@@ -25,6 +26,7 @@ export const constantRouterIcon = {
   LogOutOutline: renderIcon(LogOutOutline),
   Map: renderIcon(Map),
   Screen: renderIcon(FundProjectionScreenOutlined),
+  LogoMicrosoft: renderIcon(LogoMicrosoft),
 }
 
 const antdIcon = [ExclamationCircleFilled, FullscreenOutlined, FullscreenExitOutlined, FundProjectionScreenOutlined]
@@ -42,11 +44,16 @@ const ionicons5Icon = [
   Add,
   EyeOffOutline,
   EyeOutline,
+  LogoMicrosoft,
 ]
 const components = [...antdIcon, ...ionicons5Icon]
 
 export function setupNaiveIcon(app: App): void {
   for (const cpn of components) {
-    app.component(cpn.name, cpn)
+    if (cpn.name) {
+      app.component(cpn.name, cpn)
+    } else {
+      console.error('Component name is required')
+    }
   }
 }

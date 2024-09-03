@@ -2,7 +2,7 @@
  * @Author: maoxuena
  * @Date: 2023-06-29 10:17:01
  * @LastEditors: maoxuena
- * @LastEditTime: 2024-08-30 16:50:07
+ * @LastEditTime: 2024-09-03 11:03:20
  * @FilePath: \vue3-vite-ts-pinia\src\main.ts
  * @Description:
  */
@@ -18,6 +18,11 @@ import DataUI from '@/components/DatavUi'
 import SvgIcon from '@/components/SvgIcon/index.vue'
 
 import '@/mocks'
+
+import microApp from '@micro-zoe/micro-app'
+microApp.start({
+  // 'disable-memory-router': true, // 关闭虚拟路由系统
+})
 
 const app = createApp(App)
 setupApp(app)

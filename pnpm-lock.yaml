@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@micro-zoe/micro-app':
+        specifier: 1.0.0-rc.8
+        version: 1.0.0-rc.8
       '@vicons/antd':
         specifier: ^0.12.0
         version: 0.12.0
@@ -422,6 +425,9 @@ packages:
 
   '@juggle/resize-observer@3.4.0':
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
+
+  '@micro-zoe/micro-app@1.0.0-rc.8':
+    resolution: {integrity: sha512-elLPpZjkRHPZVJ3tvaCWHJdU2ORX2Ev/7LipCPkENU9ZqTSg6dGFjQ5cQnip0c1FXEcnY4pIKfbhW+qYfJAJzw==}
 
   '@mswjs/interceptors@0.29.1':
     resolution: {integrity: sha512-3rDakgJZ77+RiQUuSK69t1F0m8BQKA8Vh5DCS5V0DWvNY67zob2JhhQrhCO0AKLGINTRSFd1tBaHcJTkhefoSw==}
@@ -3167,6 +3173,8 @@ snapshots:
       '@jridgewell/sourcemap-codec': 1.4.15
 
   '@juggle/resize-observer@3.4.0': {}
+
+  '@micro-zoe/micro-app@1.0.0-rc.8': {}
 
   '@mswjs/interceptors@0.29.1':
     dependencies:

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from 'vue-router'
 import { Layout } from '@/router/constant'
 
 import { constantRouterIcon } from '@/plugins/naive-icon'
@@ -113,7 +113,8 @@ export const asyncRoutes = [...routerArray]
 export const publicRoutes: RouteRecordRaw[] = [rootRoute, loginRoute, homeRoute, errorRouter]
 
 const router = createRouter({
-  history: createWebHashHistory(), // createWebHistory(),
+  // history: createWebHashHistory(),
+  history: createWebHistory(),
   routes: publicRoutes,
   strict: false,
   scrollBehavior: () => ({ left: 0, top: 0 }),
