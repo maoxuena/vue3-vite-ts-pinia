@@ -1,3 +1,5 @@
+import WujiePage from '@/views/micro/Wujie/WujiePage.vue'
+
 const en = {
   route: {
     home: 'home',
@@ -23,8 +25,9 @@ const en = {
     ScreenA: 'ScreenA',
     ScreenB: 'ScreenB',
     micro: 'micro',
-    MicroApp: 'MicroApp',
     Iframe: 'Iframe',
+    MicroApp: 'MicroApp',
+    Wujie: 'Wujie',
     error: 'error page',
     401: '401 page',
     403: '403 page',

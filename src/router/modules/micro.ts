@@ -2,7 +2,7 @@
  * @Author: maoxuena
  * @Date: 2024-09-02 11:04:20
  * @LastEditors: maoxuena
- * @LastEditTime: 2024-09-03 10:08:58
+ * @LastEditTime: 2024-09-03 11:21:27
  * @FilePath: \vue3-vite-ts-pinia\src\router\modules\micro.ts
  * @Description:
  */
@@ -52,6 +52,15 @@ const microRouter: Array<RouteRecordRaw> = [
           sort: 0,
         },
         component: () => import('@/views/micro/MicroApp/MicroAppPage.vue'),
+      },
+      {
+        path: 'Wujie/index',
+        name: 'WujiePage',
+        meta: {
+          title: 'Wujie',
+          sort: 0,
+        },
+        component: () => import('@/views/micro/Wujie/WujiePage.vue'),
       },
     ],
   },

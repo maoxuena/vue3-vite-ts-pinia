@@ -71,6 +71,9 @@ importers:
       vue-router:
         specifier: 4.0.14
         version: 4.0.14(vue@3.3.4)
+      wujie-vue3:
+        specifier: ^1.0.22
+        version: 1.0.22(vue@3.3.4)
     devDependencies:
       '@commitlint/cli':
         specifier: ^16.2.3
@@ -2813,6 +2816,14 @@ packages:
 
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
+
+  wujie-vue3@1.0.22:
+    resolution: {integrity: sha512-/FD52+3rEg4vQb6EhSq+V9WMhaHYyVliUsVDBIzePcX0yUsep+4oC8r3EmyeS2dfEl3DCmMwLz5MnBGL3c4Msw==}
+    peerDependencies:
+      vue: ^3.0.0
+
+  wujie@1.0.22:
+    resolution: {integrity: sha512-gzx13fp9hgTHdV9XetkVmp794uDSR93Zs9jLr891RaWRuMiLFoxh3Pe4qbmW604SxI8nMTHeIRydbgC7YxQ50Q==}
 
   xml-utils@1.7.0:
     resolution: {integrity: sha512-bWB489+RQQclC7A9OW8e5BzbT8Tu//jtAOvkYwewFr+Q9T9KDGvfzC1lp0pYPEQPEoPQLDkmxkepSC/2gIAZGw==}
@@ -5661,6 +5672,15 @@ snapshots:
       strip-ansi: 6.0.1
 
   wrappy@1.0.2: {}
+
+  wujie-vue3@1.0.22(vue@3.3.4):
+    dependencies:
+      vue: 3.3.4
+      wujie: 1.0.22
+
+  wujie@1.0.22:
+    dependencies:
+      '@babel/runtime': 7.22.5
 
   xml-utils@1.7.0: {}
 
