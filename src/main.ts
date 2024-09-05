@@ -2,7 +2,7 @@
  * @Author: maoxuena
  * @Date: 2023-06-29 10:17:01
  * @LastEditors: maoxuena
- * @LastEditTime: 2024-09-04 09:12:12
+ * @LastEditTime: 2024-09-04 10:51:03
  * @FilePath: \vue3-vite-ts-pinia\src\main.ts
  * @Description:
  */
@@ -22,6 +22,23 @@ import '@/mocks'
 import microApp from '@micro-zoe/micro-app'
 microApp.start({
   'disable-memory-router': true, // 关闭虚拟路由系统
+  lifeCycles: {
+    created() {
+      console.log('main.ts created')
+    },
+    beforemount() {
+      console.log('main.ts beforemount')
+    },
+    mounted() {
+      console.log('main.ts mounted')
+    },
+    unmount() {
+      console.log('main.ts unmount')
+    },
+    error() {
+      console.log('main.ts error')
+    },
+  },
 })
 
 import WujieVue from 'wujie-vue3'

@@ -2,7 +2,7 @@
  * @Author: maoxuena
  * @Date: 2024-09-03 11:17:55
  * @LastEditors: maoxuena
- * @LastEditTime: 2024-09-03 13:48:34
+ * @LastEditTime: 2024-09-04 10:49:21
  * @FilePath: \vue3-vite-ts-pinia\src\views\micro\Wujie\WujiePage.vue
  * @Description:
 -->
@@ -31,7 +31,7 @@
 
 <script setup lang="ts">
 // const url = 'https://ythcs.nbport.com.cn/ui/user/login'
-const url = 'http://localhost:8080/#/article/ranking'
+const url = 'http://localhost:8080/#/system/permission'
 const beforeLoad = () => {
   console.log('子应用开始加载静态资源前触发')
 }
