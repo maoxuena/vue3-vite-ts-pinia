@@ -1,5 +1,6 @@
 <template>
   <n-config-provider
+    cls-prefix="s"
     :locale="i18nLocale.locale"
     :date-locale="i18nLocale.dateLocale"
     :theme="getDarkTheme"
