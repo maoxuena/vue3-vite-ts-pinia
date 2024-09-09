@@ -7,143 +7,120 @@
     <title>Vite App</title>
     <style type="text/css">
       .loading-wrap {
+        overflow: hidden;
         position: fixed;
-        left: 0;
         top: 0;
+        left: 0;
         width: 100vw;
         height: 100vh;
-        overflow: hidden;
         background-color: #eee;
       }
-
       .loading-text {
         position: absolute;
         top: 50%;
         padding-top: 125px;
-        text-align: center;
         width: 100%;
+        text-align: center;
       }
-
       .watch-face {
         margin: calc(50vh - 125px) auto 0;
-        height: 125px;
         width: 125px;
-        animation: pulse 4s cubic-bezier(0.5, 0, 0.5, 1) alternate infinite;
+        height: 125px;
+        animation: pulse 4s cubic-bezier(.5, 0, .5, 1) alternate infinite;
       }
-
       .circle {
-        height: 125px;
-        width: 125px;
-        border-radius: 50%;
         position: absolute;
-        mix-blend-mode: screen;
+        border-radius: 50%;
+        width: 125px;
+        height: 125px;
         transform: translate(0, 0);
         animation: center 6s infinite;
-      }
 
+        mix-blend-mode: screen;
+      }
       .circle:nth-child(odd) {
         /* background: #61bea2; */
         background: #1596cd;
       }
-
       .circle:nth-child(even) {
         /* background: #529ca0; */
         background: #155bcd;
       }
-
       .circle:nth-child(1) {
         animation: circle-1 4s ease alternate infinite;
       }
-
       .circle:nth-child(2) {
         animation: circle-2 4s ease alternate infinite;
       }
-
       .circle:nth-child(3) {
         animation: circle-3 4s ease alternate infinite;
       }
-
       .circle:nth-child(4) {
         animation: circle-4 4s ease alternate infinite;
       }
-
       .circle:nth-child(5) {
         animation: circle-5 4s ease alternate infinite;
       }
-
       .circle:nth-child(6) {
         animation: circle-6 4s ease alternate infinite;
       }
-
       @keyframes pulse {
         0% {
-          transform: scale(0.15) rotate(180deg);
+          transform: scale(.15) rotate(180deg);
         }
-
         100% {
           transform: scale(1);
         }
       }
-
       @keyframes circle-1 {
         0% {
           transform: translate(0, 0);
         }
-
         100% {
           transform: translate(-35px, -50px);
         }
       }
-
       @keyframes circle-2 {
         0% {
           transform: translate(0, 0);
         }
-
         100% {
           transform: translate(35px, 50px);
         }
       }
-
       @keyframes circle-3 {
         0% {
           transform: translate(0, 0);
         }
-
         100% {
           transform: translate(-60px, 0);
         }
       }
-
       @keyframes circle-4 {
         0% {
           transform: translate(0, 0);
         }
-
         100% {
           transform: translate(60px, 0);
         }
       }
-
       @keyframes circle-5 {
         0% {
           transform: translate(0, 0);
         }
-
         100% {
           transform: translate(-35px, 50px);
         }
       }
-
       @keyframes circle-6 {
         0% {
           transform: translate(0, 0);
         }
-
         100% {
           transform: translate(35px, -50px);
         }
       }
+
     </style>
     <script type="text/javascript">
       window._AMapSecurityConfig = {
@@ -154,7 +131,7 @@
   </head>
 
   <body>
-    <div id="app">
+    <div id="app" class="base-app">
       <div class="loading-wrap">
         <div class="watch-face">
           <div class="circle"></div>

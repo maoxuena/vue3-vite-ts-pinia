@@ -12,6 +12,8 @@ import svgLoader from 'vite-svg-loader'
 
 import cesium from 'vite-plugin-cesium' // 引入插件
 
+import postCssPrefixSelector from 'postcss-prefix-selector'
+
 // https://vitejs.dev/config/
 export default ({ command, mode }: ConfigEnv): UserConfig => {
   const root = process.cwd()
@@ -101,6 +103,27 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         scss: {
           additionalData: `@use "@/styles/index.scss" as *; `,
         },
+      },
+      postcss: {
+        plugins: [
+          // postCssPxToRem({
+          //   rootValue: 37.5, // 1rem的大小
+          //   propList: ['*'], // 需要转换的属性
+          //   selectorBlackList: ['.norem', '.vc-*'], // 过滤掉不需要转换的类名
+          //   exclude: /node_modules/i, // 过滤掉node_modules文件夹下的文件
+          // }),
+          postCssPrefixSelector({
+            prefix: '.base-app', // 添加的前缀
+            transform(prefix, selector, prefixedSelector) {
+              // 这里可以排除一些特定的选择器
+              if (selector === 'body' || selector === 'html' || selector === '#app' || selector === ':root') {
+                return selector
+              }
+              return prefixedSelector
+            },
+            // exclude: ['.global'], // 排除全局样式的前缀添加
+          }),
+        ],
       },
     },
     //启动服务配置
